@@ -1,7 +1,6 @@
 #ifndef Project_businessobject_WorksOn_h_
 #define Project_businessobject_WorksOn_h_
 
-#include <string>
 using namespace std;
 
 class WorksOn{
