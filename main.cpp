@@ -6,6 +6,7 @@
 #include "businessobject\WorksOn.h"
 #include "businessobject\Dependent.h"
 //haha
+//hihi
 using namespace std;
 
 int main(){
