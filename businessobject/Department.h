@@ -3,14 +3,16 @@
 
 #include <string>
 using namespace std;
+
 class Department{
 private:
+    int Id;
     string DName;
     int DNumber;
     long MgrSSN;
     string MgrStartDate;
 public :
     Department();
-    Department(string dName, int dNumber, long mgrSSN, string mgrStartDate);
+    Department(int id,string dName, int dNumber, long mgrSSN, string mgrStartDate);
 };
 #endif
