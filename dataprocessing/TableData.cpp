@@ -10,9 +10,8 @@ TableData::TableData(string filePath, TableUnit* ptU){
     char buff[maxSize];
     while(inFile.getline(buff, maxSize))
     {
-        json j = json::parse(buff);
         TableUnit* unit = ptU->ClonePtr();
-        unit->FromJson(j);
+        unit->FromStringDecode(buff);
         Data.push_back(unit);
     }
     inFile.close();
@@ -41,16 +40,6 @@ string TableData::ToString(){
     }
     return sOut;
 };
-int TableData::ToJson(string filePath){
-    ofstream outFile(filePath, ios::out);
-    if (!outFile) return 0;
-    for(TableUnit* unit:Data){
-        outFile << unit->ToJson() << endl;
-    }
-    outFile.close();
-    return Size;
-};
-
 int TableData::Push(TableUnit *unit){
     Data.push_back(unit);
     Size++;
