@@ -1,2 +1,1 @@
-# qlns_group_ex
-bai tap nhom 12_21
+# fs_lg_1231

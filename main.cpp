@@ -1,21 +1,21 @@
 #include <iostream>
-// #include "businessobject\Employee.h"
-#include "businessobject\Department.h"
-// #include "businessobject\DeptLocation.h"
-// #include "businessobject\Project.h"
-// #include "businessobject\WorksOn.h"
-// #include "businessobject\Dependent.h"
-//haha
-//hihi
+#include "businessobject\DeptLocation.h"
+#include "dataprocessing\TableData.h"
 using namespace std;
 
 int main(){
+    int i;
     cout << "-- QLNS Group Linh Thuong Tin --" << endl;
-    // Employee nbc(1, "Chau", "Bao", "Ngo", 111222333, "1975-04-30", "Chicago", 'M', 10000, -1, 5);
-    Department RaD(1, "R&D Department", 5, 333444555, "20-12-2020");
-    // DeptLocation Dept1(1, 5, "Chicago");
-    // Project Prj1(1, "Porche", 23, "Chicago", 5);
-    // WorksOn WO1(1, 333444555, 23, 45.6);
-    // Dependent Dpd1(1, 333444555, "Laura", 'F', "20-11-2005", "Daughter");
+    DeptLocation dl1(1, "hihi11");
+    dl1.DataOut();
+    DeptLocation dl2(2, "hata11");
+    TableData *listDL = new TableData();
+    i = listDL->Push(&dl1);
+    i = listDL->Push(&dl2);
+    //i = listDL->DataIn(&dl1);
+    //listDL->Delele(2);   
+    //listDL->GetPtr(1)->DataOut();
+    listDL->DataOut();
+    cout << "----------------end---------------------"<< endl;
     return 0;
 }
