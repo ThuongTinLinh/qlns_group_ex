@@ -25,7 +25,9 @@ public:
     int Push(TableUnit *ptU);
     int Change(int index, TableUnit *ptU);
     int Delele(int index);
+    vector<TableUnit*> FindList(string key, string value);
     TableUnit* GetPtr(int index);
+    vector<TableUnit*> GetData();
 };
 
 #endif // Project_dataprocessing_TableData_h_

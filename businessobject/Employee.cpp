@@ -11,7 +11,7 @@ Employee::Employee(string fName, string mInit, string lName, long ssn, string bD
     Address = address;
     Sex = sex;
     Salary = salary;
-    SuperSNN = superSSN;
+    SuperSSN = superSSN;
     DNO = dno;
 };
 
@@ -29,7 +29,7 @@ void Employee::FromMapMember(){
     Address = Member["Address"];
     Sex = Member["Sex"][0];
     Salary = stoi(Member["Salary"]);
-    SuperSNN = stol(Member["SuperSNN"]);
+    SuperSSN = stol(Member["SuperSSN"]);
     DNO = stoi(Member["DNO"]);
 }
 void Employee::ToMapMember(){
@@ -41,91 +41,10 @@ void Employee::ToMapMember(){
     Member["Address"] = Address;
     Member["Sex"] = to_string(Sex);
     Member["Salary"] = to_string(Salary);
-    Member["SuperSNN"] = to_string(SuperSNN);
+    Member["SuperSSN"] = to_string(SuperSSN);
     Member["DNO"] = to_string(DNO);
 }
 TableUnit *Employee::ClonePtr(){
     TableUnit *pU = new Employee();
     return pU;
 };
-
-// // ========Get Set========
-// string Employee::GetFName(){
-//     return FName;
-// };
-
-// void Employee::SetFName(string fName){
-//     FName = fName;
-// };
-
-// string Employee::GetMInit(){
-//     return MInit;
-// };
-
-// void Employee::SetMInit(string mInit){
-//     MInit = mInit;
-// };
-
-// string Employee::GetLName(){
-//     return LName;
-// };
-
-// void Employee::SetLName(string lName){
-//     LName = lName;
-// };
-
-// long Employee::GetSSN(){
-//     return SSN;
-// };
-
-// void Employee::SetSSN(long ssn){
-//     SSN = ssn;
-// };
-
-// string Employee::GetBDate(){
-//     return BDate;
-// };
-
-// void Employee::SetBDate(string bDate){
-//     BDate = bDate;
-// };
-
-// string Employee::GetAddress(){
-//     return Address;
-// };
-
-// void Employee::SetAddress(string address){
-//     Address = address;
-// };
-
-// char Employee::GetSex(){
-//     return Sex;
-// };
-
-// void Employee::SetSex(char sex){
-//     Sex = sex;
-// };
-
-// int Employee::GetSalary(){
-//     return Salary;
-// };
-
-// void Employee::SetSalary(int salary){
-//     Salary = salary;
-// };
-
-// long Employee::GetSuperSNN(){
-//     return SuperSNN;
-// };
-
-// void Employee::SetSuperSNN(long superSNN){
-//     SuperSNN = superSNN;
-// };
-
-// int Employee::GetDNO(){
-//     return DNO;
-// };
-
-// void Employee::SetDNO(int dno){
-//     DNO = dno;
-// };

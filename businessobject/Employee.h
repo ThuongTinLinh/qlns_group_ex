@@ -16,7 +16,7 @@ class Employee : public TableUnit{
     string Address;
     char Sex;
     int Salary;
-    long SuperSNN;
+    long SuperSSN;
     int DNO;
 public:
     Employee();
@@ -25,28 +25,6 @@ public:
     void FromMapMember() override;
     void ToMapMember() override;
     TableUnit *ClonePtr() override;
-        
-    // string GetFName();
-    // void SetFName(string fName);
-    // string GetMInit();
-    // void SetMInit(string mInit);
-    // string GetLName();
-    // void SetLName(string lName);
-    // long GetSSN();
-    // void SetSSN(long ssn);
-    // string GetBDate();
-    // void SetBDate(string bDate);
-    // string GetAddress();
-    // void SetAddress(string address);
-    // char GetSex();
-    // void SetSex(char sex);
-    // int GetSalary();
-    // void SetSalary(int salary);
-    // long GetSuperSNN();
-    // void SetSuperSNN(long superSNN);
-    // int GetDNO();
-    // void SetDNO(int dno);
-
 };
 
 #endif

@@ -61,10 +61,24 @@ int TableData::Delele(int index){
     };
     return index;
 };
+
 TableUnit* TableData::GetPtr(int index){
     TableUnit *ptr = nullptr;    
     if(index < Data.size()){
         ptr = Data[index];
     };
     return ptr;
+};
+
+vector<TableUnit*> TableData::FindList(string key, string value){
+    vector<TableUnit*> vts;
+    for(TableUnit* unit:Data){
+        if(unit->CheckValue(key, value)){
+            vts.push_back(unit);
+        }
+    }
+    return vts;
+};
+vector<TableUnit*> TableData::GetData(){
+    return Data;
 };

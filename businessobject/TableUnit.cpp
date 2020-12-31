@@ -19,8 +19,6 @@ void TableUnit::ToMapIO(){
     ToMapMember();
     MemberIO.clear();
     MemberIO = Member;
-    cout << "size Map " << Member.size() << endl;    
-    cout << "size MapIO " << MemberIO.size() << endl;
 };
 
 void TableUnit::FromMapIO(){
@@ -50,7 +48,7 @@ string TableUnit::ToString(){
     string s("");
     for (it = Member.begin(); it != Member.end(); it++)
     {
-        s += Member[it->first] + ", ";
+        s += it->second + ", ";
     };
     s.resize(s.size() - 2);
     s = "{" + s +"}";
@@ -62,7 +60,7 @@ vector<string> TableUnit::ToVt(){
     vector<string> vtOut;
     for (it = Member.begin(); it != Member.end(); it++)
     {
-        vtOut.push_back(Member[it->first]);
+        vtOut.push_back(it->second);
     };
     return vtOut;
 };
@@ -71,4 +69,31 @@ string TableUnit::ToStringEncode(){
     ToMapMember();
     string sFile = Utility::ToString(ToVt());
     return sFile;
+};
+
+string TableUnit::GetValue(string key){
+    ToMapMember();
+    auto it = Member.find(key);
+    string value("");
+    if(it == Member.end()){
+        value = "N/A";
+        cout << "dclmm deo tim thay " << key<<endl;
+    } else {
+        value = it->second;
+    }
+    return value;
+};
+
+bool TableUnit::CheckValue(string key, string value){
+    ToMapMember();
+    auto it = Member.find(key);
+    bool f;
+    if(it == Member.end()){
+        f = false;
+    } else if(value != it->second) {
+        f = false;
+    } else {        
+        f = true;
+    }    
+    return f;
 };

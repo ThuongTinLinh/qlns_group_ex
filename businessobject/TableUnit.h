@@ -4,6 +4,7 @@
 #include "../libs/Utility.h"
 #include "../ui/IO.h"
 #include <string>
+#include <iostream>
 #include <map>
 
 using namespace std;
@@ -28,7 +29,8 @@ public:
     vector<string> ToVt();
     string ToString();
     string ToStringEncode();
-    
+    string GetValue(string key);
+    bool CheckValue(string key, string value); 
 };
 
 #endif
