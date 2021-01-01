@@ -1,3 +1,4 @@
+cls
 g++ ^
 main.cpp ^
 libs\Utility.cpp ^

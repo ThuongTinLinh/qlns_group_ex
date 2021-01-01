@@ -77,7 +77,8 @@ void Menu::Home(){
     }while(select != 0);
 };
 void Menu::Mn1_CRUD(){
-    cout << "   Add, change, delete or read data."<< endl;                                          // todo
+    cout << "   Add, change, delete or read data."<< endl;
+    CompanyData->Q1_CRUD();                                        // todo
 };
 void Menu::Mn2_ShowEmployeeOfManager(){
     string mngName;

@@ -5,7 +5,7 @@ TableUnit::TableUnit(){
 };
 
 map<string, string> TableUnit::GetMapMember(){
-    ToMapMember();
+    ToMapMember();// Tin xoa
     return Member;
 }
 
@@ -14,19 +14,6 @@ void TableUnit::SetMapMember(map<string, string> member){
     Member = member;
     FromMapMember();
 };
-
-void TableUnit::ToMapIO(){
-    ToMapMember();
-    MemberIO.clear();
-    MemberIO = Member;
-};
-
-void TableUnit::FromMapIO(){
-    Member.clear();
-    Member = MemberIO;
-    FromMapMember();
-};
-
 void TableUnit::FromVt(vector<string> vt){
     ToMapMember();
     map<string, string>::iterator it;
@@ -72,7 +59,7 @@ string TableUnit::ToStringEncode(){
 };
 
 void TableUnit::SetValue(string key, string value){
-    ToMapMember();
+    //ToMapMember();// Tin xoa
     Member[key] = value;
     FromMapMember();
 };

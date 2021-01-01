@@ -5,17 +5,16 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "..\businessobject\TableUnit.h"
+#include "..\dataprocessing\TableData.h"
 using namespace std;
 
 class IO{
 protected:
-    map<string, string> MemberIO;
 public:
     IO();
-    virtual void ToMapIO() = 0;
-    virtual void FromMapIO() = 0;
-    void DataIn();
-    void DataOut();
+    void DataIn(TableData*, TableUnit*);
+    void DataOut(TableData*);
 };
 
 #endif // Project_ui_IO_h_

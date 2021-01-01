@@ -144,14 +144,24 @@ void Company::InitData(){
 }
 
 void Company::ShowAllData(){
-    EmployeeData->DataOut();
-    DepartmentData->DataOut();
-    DependentData->DataOut();
-    DeptLocationData->DataOut();
-    ProjectData->DataOut();
-    WorksOnData->DataOut();
+    IO myIO;
+    myIO.DataOut(EmployeeData);
+    myIO.DataOut(DepartmentData);
+    myIO.DataOut(DependentData);
+    myIO.DataOut(DeptLocationData);
+    myIO.DataOut(ProjectData);
+    myIO.DataOut(WorksOnData);
 }
+//********************************************************//
 
+// void Q1_CRUD(TableData* ptD, TableUnit* ptU){
+void Company::Q1_CRUD(){
+    IO myIO;
+    TableUnit* unit = new Employee();
+    myIO.DataIn(EmployeeData, unit);
+    myIO.DataOut(EmployeeData);
+
+}
 vector<vector<string>> Company::Q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
     vector<TableUnit*> employees = EmployeeData->GetData();

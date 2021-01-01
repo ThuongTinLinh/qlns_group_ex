@@ -2,14 +2,13 @@
 #define Project_businessobject_TableUnit_H_
 
 #include "../libs/Utility.h"
-#include "../ui/IO.h"
 #include <string>
 #include <iostream>
 #include <map>
 
 using namespace std;
 
-class TableUnit : public IO{
+class TableUnit{
 protected:
     map<string, string> Member;
 public:
@@ -18,12 +17,8 @@ public:
     virtual void FromMapMember() = 0;
     virtual TableUnit* ClonePtr() = 0;
 
-    void FromMapIO() override;
-    void ToMapIO() override;    
     void SetMapMember(map<string, string> member);
     map<string, string> GetMapMember();
-    // void DataIn();
-    // void DataOut();
     void FromVt(vector<string>);
     void FromStringDecode(string);
     vector<string> ToVt();

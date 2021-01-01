@@ -18,18 +18,6 @@ TableData::TableData(string filePath, TableUnit* ptU){
 };
 
 // ========Ex========
-int TableData::DataIn(TableUnit *ptU){
-    TableUnit* unit = ptU->ClonePtr();
-    unit->DataIn();
-    int size = Push(unit);
-    return size;
-};
-int TableData::DataOut(){
-    for(TableUnit *unit:Data){
-        unit->DataOut();
-    }
-    return Size;
-};
 int TableData::GetSize(){
     return Size;
 };

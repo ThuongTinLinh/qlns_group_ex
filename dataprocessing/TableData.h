@@ -15,9 +15,6 @@ public:
     TableData();
     TableData(string filePath, TableUnit* ptU);
 
-    int DataIn(TableUnit *ptU);
-    int DataOut();
-    int DataOut(int index);
     int GetSize();
     string ToString();
     int ToJson(string filePath);

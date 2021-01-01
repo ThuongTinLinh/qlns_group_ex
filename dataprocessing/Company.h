@@ -9,6 +9,7 @@
 #include "..\businessobject\Project.h"
 #include "..\businessobject\WorksOn.h"
 #include "..\dataprocessing\TableData.h"
+#include "..\ui\IO.h"//
 #include <iostream>
 #include <vector>
 #include <string>
@@ -29,6 +30,7 @@ public:
     void InitData();
     void ShowAllData();
     void Q1_CRUD();
+    //void Q1_CRUD(TableData*, TableUnit*);
     vector<vector<string>> Q2_ShowEmployeeOfManager(string mngNameInput);
     vector<vector<string>> Q3_ShowEmployeeHasDependent();
     vector<vector<string>> Q4_ShowProjecTime();
