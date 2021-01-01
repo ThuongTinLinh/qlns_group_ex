@@ -10,12 +10,12 @@ using namespace std;
 class Dependent : public TableUnit{
     long ESSN;
     string DependentName;
-    char Sex;
+    string Sex;
     string BDate;
     string Relationship;
 public:
     Dependent();
-    Dependent(long eSSN, string dependentName, char sex, string bDate, string relationship);
+    Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship);
     Dependent(vector<string> vt);
     void FromMapMember() override;
     void ToMapMember() override;

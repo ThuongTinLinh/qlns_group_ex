@@ -71,13 +71,21 @@ string TableUnit::ToStringEncode(){
     return sFile;
 };
 
+void TableUnit::SetValue(string key, string value){
+    ToMapMember();
+    Member[key] = value;
+    FromMapMember();
+};
+
 string TableUnit::GetValue(string key){
     ToMapMember();
+    // return Member[key];
+    // for test
     auto it = Member.find(key);
     string value("");
     if(it == Member.end()){
         value = "N/A";
-        cout << "dclmm deo tim thay " << key<<endl;
+        cout << "dclmm deo tim thay " << key <<endl;
     } else {
         value = it->second;
     }
@@ -86,14 +94,5 @@ string TableUnit::GetValue(string key){
 
 bool TableUnit::CheckValue(string key, string value){
     ToMapMember();
-    auto it = Member.find(key);
-    bool f;
-    if(it == Member.end()){
-        f = false;
-    } else if(value != it->second) {
-        f = false;
-    } else {        
-        f = true;
-    }    
-    return f;
+    return Member[key] == value;
 };

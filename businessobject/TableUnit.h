@@ -30,6 +30,7 @@ public:
     string ToString();
     string ToStringEncode();
     string GetValue(string key);
+    void SetValue(string key, string value);
     bool CheckValue(string key, string value); 
 };
 

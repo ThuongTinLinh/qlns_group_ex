@@ -14,13 +14,13 @@ class Employee : public TableUnit{
     long SSN;
     string BDate;
     string Address;
-    char Sex;
+    string Sex;
     int Salary;
     long SuperSSN;
     int DNO;
 public:
     Employee();
-    Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, char sex, int salary, long superSSN, int dno);  
+    Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);  
     Employee(vector<string> vt);
     void FromMapMember() override;
     void ToMapMember() override;

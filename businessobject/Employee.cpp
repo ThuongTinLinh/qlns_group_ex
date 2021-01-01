@@ -2,7 +2,7 @@
 
 Employee::Employee(){};
 
-Employee::Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, char sex, int salary, long superSSN, int dno){
+Employee::Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno){
     FName = fName;
     MInit = mInit;
     LName = lName;
@@ -27,7 +27,7 @@ void Employee::FromMapMember(){
     SSN = stol(Member["SSN"]);
     BDate = Member["BDate"];
     Address = Member["Address"];
-    Sex = Member["Sex"][0];
+    Sex = Member["Sex"];
     Salary = stoi(Member["Salary"]);
     SuperSSN = stol(Member["SuperSSN"]);
     DNO = stoi(Member["DNO"]);
@@ -39,7 +39,7 @@ void Employee::ToMapMember(){
     Member["SSN"] = to_string(SSN);
     Member["BDate"] = BDate;
     Member["Address"] = Address;
-    Member["Sex"] = to_string(Sex);
+    Member["Sex"] = Sex;
     Member["Salary"] = to_string(Salary);
     Member["SuperSSN"] = to_string(SuperSSN);
     Member["DNO"] = to_string(DNO);

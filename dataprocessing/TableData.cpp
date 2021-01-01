@@ -70,6 +70,16 @@ TableUnit* TableData::GetPtr(int index){
     return ptr;
 };
 
+TableUnit* TableData::Find(string key, string value){
+    for(TableUnit* unit:Data){
+        if(unit->CheckValue(key, value)){
+            return unit;
+            break;
+        }
+    }
+    return nullptr;
+};
+
 vector<TableUnit*> TableData::FindList(string key, string value){
     vector<TableUnit*> vts;
     for(TableUnit* unit:Data){
@@ -79,6 +89,7 @@ vector<TableUnit*> TableData::FindList(string key, string value){
     }
     return vts;
 };
+
 vector<TableUnit*> TableData::GetData(){
     return Data;
 };
