@@ -1,7 +1,9 @@
 #include "TableData.h"
 
 // ========Contructor========
-TableData::TableData(){};
+TableData::TableData(TableUnit* ptU){
+    tableUnit = ptU;
+};
 TableData::TableData(string filePath, TableUnit* ptU){
     Size = 0;
     Data.resize(0);
@@ -10,7 +12,7 @@ TableData::TableData(string filePath, TableUnit* ptU){
     char buff[maxSize];
     while(inFile.getline(buff, maxSize))
     {
-        TableUnit* unit = ptU->ClonePtr();
+        TableUnit* unit = GetTableUnit();
         unit->FromStringDecode(buff);
         Data.push_back(unit);
     }
@@ -28,6 +30,9 @@ string TableData::ToString(){
     }
     return sOut;
 };
+TableUnit* TableData::GetTableUnit(){
+    return tableUnit;
+}
 int TableData::Push(TableUnit *unit){
     Data.push_back(unit);
     Size++;

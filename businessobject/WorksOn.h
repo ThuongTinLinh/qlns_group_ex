@@ -17,7 +17,6 @@ public:
     WorksOn(vector<string> vt);
     void FromMapMember() override;
     void ToMapMember() override;
-    TableUnit *ClonePtr() override;
     
 };
 #endif

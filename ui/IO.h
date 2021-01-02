@@ -13,7 +13,7 @@ class IO{
 protected:
 public:
     IO();
-    void DataIn(TableData*, TableUnit*);
+    void DataIn(TableData*);
     void DataOut(TableData*);
 };
 

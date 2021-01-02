@@ -17,6 +17,13 @@
 using namespace std;
 
 class Company{
+    Employee *employee;
+    Department *department;
+    Dependent *dependent;
+    DeptLocation *deptLocation;
+    Project *project;
+    WorksOn *worksOn;
+
     TableData *EmployeeData;
     TableData *DepartmentData;
     TableData *DependentData;

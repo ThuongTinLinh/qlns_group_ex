@@ -2,8 +2,8 @@
 
 IO::IO(){
 };
-void IO::DataIn(TableData* ptD, TableUnit* ptU){
-    TableUnit* unit = ptU->ClonePtr();
+void IO::DataIn(TableData* ptD){
+    TableUnit* unit = ptD->GetTableUnit();
     map<string, string> mapMember = unit->GetMapMember();
     map<string, string>::iterator it;
     for (it = mapMember.begin(); it != mapMember.end(); it++){

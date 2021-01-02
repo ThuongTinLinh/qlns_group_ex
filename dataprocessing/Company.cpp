@@ -2,12 +2,19 @@
 
 // ========Contructor========
 Company::Company(){
-    EmployeeData = new TableData();
-    DepartmentData = new TableData();
-    DependentData = new TableData();
-    DeptLocationData = new TableData();
-    ProjectData = new TableData();
-    WorksOnData = new TableData();
+    employee = new Employee();
+    department = new Department();
+    dependent = new Dependent();
+    deptLocation = new DeptLocation();
+    project = new Project();
+    worksOn = new WorksOn();
+
+    EmployeeData = new TableData(employee);
+    DepartmentData = new TableData(department);
+    DependentData = new TableData(dependent);
+    DeptLocationData = new TableData(deptLocation);
+    ProjectData = new TableData(project);
+    WorksOnData = new TableData(worksOn);
 };
 
 // Company::~Company(){
@@ -157,8 +164,7 @@ void Company::ShowAllData(){
 // void Q1_CRUD(TableData* ptD, TableUnit* ptU){
 void Company::Q1_CRUD(){
     IO myIO;
-    TableUnit* unit = new Employee();
-    myIO.DataIn(EmployeeData, unit);
+    myIO.DataIn(EmployeeData);
     myIO.DataOut(EmployeeData);
 
 }

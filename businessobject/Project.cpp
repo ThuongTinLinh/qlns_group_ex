@@ -27,7 +27,3 @@ void Project::ToMapMember(){
     Member["PLocation"] = PLocation;
     Member["DNum"] = to_string(DNum);
 }
-TableUnit *Project::ClonePtr(){
-    TableUnit *pU = new Project();
-    return pU;
-};

@@ -16,7 +16,6 @@ public:
     DeptLocation(vector<string> vt);
     void FromMapMember() override;
     void ToMapMember() override;
-    TableUnit *ClonePtr() override;
 };
 
 #endif // Project_businessobject_DeptLocation_h_

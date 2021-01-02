@@ -25,7 +25,3 @@ void WorksOn::ToMapMember(){
     Member["PNO"] = to_string(PNO);
     Member["Hours"] = to_string(Hours);
 }
-TableUnit *WorksOn::ClonePtr(){
-    TableUnit *pU = new WorksOn();
-    return pU;
-};

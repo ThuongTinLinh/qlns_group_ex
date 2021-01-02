@@ -15,7 +15,6 @@ public:
     TableUnit();
     virtual void ToMapMember() = 0;
     virtual void FromMapMember() = 0;
-    virtual TableUnit* ClonePtr() = 0;
 
     void SetMapMember(map<string, string> member);
     map<string, string> GetMapMember();

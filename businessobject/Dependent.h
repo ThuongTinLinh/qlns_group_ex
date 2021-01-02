@@ -19,6 +19,5 @@ public:
     Dependent(vector<string> vt);
     void FromMapMember() override;
     void ToMapMember() override;
-    TableUnit *ClonePtr() override;
 };
 #endif

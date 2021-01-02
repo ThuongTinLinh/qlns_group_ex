@@ -11,13 +11,15 @@ using namespace std;
 class TableData{
     vector<TableUnit*> Data;
     int Size;
+    TableUnit* tableUnit;
 public:
-    TableData();
+    TableData(TableUnit*);
+    //TableData();
     TableData(string filePath, TableUnit* ptU);
 
     int GetSize();
     string ToString();
-    int ToJson(string filePath);
+    TableUnit* GetTableUnit();
 
     int Push(TableUnit *ptU);
     int Change(int index, TableUnit *ptU);
