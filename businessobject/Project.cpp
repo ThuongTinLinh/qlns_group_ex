@@ -1,13 +1,13 @@
-#include <string>
+//#include <string>
 #include "Project.h"
 
 Project::Project(){};
 
 Project::Project(string pName, int pNumber, string PLocation, int dNum){
-    PName = pName;
-    PNumber = pNumber;
-    PLocation = PLocation;
-    DNum = dNum;
+    this->PName = pName;
+    this->PNumber = pNumber;
+    this->PLocation = PLocation;//undefined if don't have this pointer
+    this->DNum = dNum;
 };
 Project::Project(vector<string> vt){
     FromVt(vt);
