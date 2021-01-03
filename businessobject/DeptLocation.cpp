@@ -23,3 +23,7 @@ void DeptLocation::ToMapMember(){
     Member["DNumber"] = to_string(DNumber);
     Member["DLocation"] = DLocation;
 }
+TableUnit *DeptLocation::ClonePtr(){
+    TableUnit *pU = new DeptLocation();
+    return pU;
+}

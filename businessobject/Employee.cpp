@@ -44,3 +44,7 @@ void Employee::ToMapMember(){
     Member["SuperSSN"] = to_string(SuperSSN);
     Member["DNO"] = to_string(DNO);
 }
+TableUnit *Employee::ClonePtr(){
+    TableUnit *pU = new Employee();
+    return pU;
+}

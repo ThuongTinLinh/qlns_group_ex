@@ -31,3 +31,7 @@ void Dependent::ToMapMember(){
     Member["BDate"] = BDate;
     Member["Relationship"] = Relationship;
 }
+TableUnit *Dependent::ClonePtr(){
+    TableUnit *pU = new Dependent();
+    return pU;
+}

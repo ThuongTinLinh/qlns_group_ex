@@ -1,5 +1,4 @@
 #include "IO.h"
-#include <algorithm>
 
 IO::IO(){
 };
@@ -154,4 +153,29 @@ void IO::DataDeleteById(TableData* ptD){
     int select = 0; cin >> select; cin.ignore();
     if (select == 1) ptD->Delele(Id);
     DataOut(ptD);
+}
+int IO::SaveData(TableData* ptD, string filename){
+    ofstream outFile(filename);
+    if(!outFile) return 0;
+    for (auto tU: ptD->GetData()){
+        outFile << tU->ToStringEncode() << endl;
+    }
+    outFile.close();
+    return 1;
+}
+int IO::LoadData(TableData* ptD, string filename){
+    ptD->Resize(0);
+    ifstream inFile(filename);
+    const int maxSize = 255;
+    char buff[maxSize];
+    while(inFile.getline(buff, maxSize))
+    {
+        string s = buff;
+        TableUnit *ptU = ptD->GetTableUnit();
+        //TableUnit *ptU = new Employee();
+        ptU->FromStringDecode(s);
+        ptD->Push(ptU);
+    }
+    inFile.close();
+    return 1;
 }

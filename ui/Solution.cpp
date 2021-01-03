@@ -142,7 +142,7 @@ void EnterWorksOn(TableData *data){
 }
 
 void Solution::InitData(){
-    EnterEmployee(EmployeeData);
+    // EnterEmployee(EmployeeData);
     EnterDepartment(DepartmentData);
     EnterDependent(DependentData);
     EnterDeptLocation(DeptLocationData);
@@ -408,5 +408,53 @@ vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, s
     return eOut;
 }
 
-void Solution::Q10_BackupAndRestore(string folderPath){
+int Solution::Q10_Backup(int table, string folderPath){
+    IO myIO;
+    int result = 0;
+    switch (table){
+        case 1:
+            result = myIO.SaveData(EmployeeData, folderPath);
+            break;
+        case 2:
+            result = myIO.SaveData(DepartmentData, folderPath);
+            break;
+        case 3:
+            result = myIO.SaveData(DeptLocationData, folderPath);
+            break;
+        case 4:
+            result = myIO.SaveData(WorksOnData, folderPath);
+            break;
+        case 5:
+            result = myIO.SaveData(ProjectData, folderPath);
+            break;
+        case 6:
+            result = myIO.SaveData(DependentData, folderPath);
+            break;
+    }
+    return result;
+}
+int Solution::Q10_Restore(int table, string folderPath){
+    IO myIO;
+    int result = 0;
+    switch (table){
+        case 1:
+            result = myIO.LoadData(EmployeeData, folderPath);
+            break;
+        case 2:
+            result = myIO.LoadData(DepartmentData, folderPath);
+            break;
+        case 3:
+            result = myIO.LoadData(DeptLocationData, folderPath);
+            break;
+        case 4:
+            result = myIO.LoadData(WorksOnData, folderPath);
+            break;
+        case 5:
+            result = myIO.LoadData(ProjectData, folderPath);
+            break;
+        case 6:
+            result = myIO.LoadData(DependentData, folderPath);
+            break;
+    }
+    return result;
 }

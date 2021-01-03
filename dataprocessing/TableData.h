@@ -18,6 +18,7 @@ public:
     TableData(string filePath, TableUnit* ptU);
 
     int GetSize();
+    void Resize(int);
     string ToString();
     TableUnit* GetTableUnit();
 

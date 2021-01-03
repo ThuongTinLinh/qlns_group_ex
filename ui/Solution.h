@@ -49,7 +49,8 @@ public:
     long Q7_ShowSexAvgSalary(string sexInput);
     vector<vector<string>> Q8_ManagerNoDependent();
     vector<vector<string>> Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn);
-    void Q10_BackupAndRestore(string folderPath);
+    int Q10_Backup(int i, string folderPath);
+    int Q10_Restore(int i, string folderPath);
 };
 
 #endif // Project_dataprocessing_Company_h_

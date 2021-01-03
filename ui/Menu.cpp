@@ -107,7 +107,8 @@ void Menu::Mn1_CRUD(){
                     cout << "   Add to table : " << endl;
                     SelectTable();
                     cin >> Add_Select; cin.ignore();
-                    if (Add_Select < 0 || Add_Select > 6){
+                    if (Add_Select == 0) break;
+                    if (Add_Select < 1 || Add_Select > 6){
                         cout << "   Wrong Selection!" << endl;
                         continue;
                     }
@@ -121,6 +122,7 @@ void Menu::Mn1_CRUD(){
                     cout << "   Edit table : " << endl;
                     SelectTable();
                     cin >> Edit_Select; cin.ignore();
+                    if (Edit_Select == 0) break;
                     if (Edit_Select < 0 || Edit_Select > 6){
                         cout << "   Wrong Selection!" << endl;
                         continue;
@@ -135,6 +137,7 @@ void Menu::Mn1_CRUD(){
                     cout << "   Delete table : " << endl;
                     SelectTable();
                     cin >> Delete_Select; cin.ignore();
+                    if (Delete_Select == 0) break;
                     if (Delete_Select < 0 || Delete_Select > 6){
                         cout << "   Wrong Selection!" << endl;
                         continue;
@@ -149,6 +152,7 @@ void Menu::Mn1_CRUD(){
                     cout << "   Read table : " << endl;
                     SelectTable();
                     cin >> Read_Select; cin.ignore();
+                    if (Read_Select == 0) break;
                     if (Read_Select < 0 || Read_Select > 6){
                         cout << "   Wrong Selection!" << endl;
                         continue;
@@ -244,14 +248,65 @@ void Menu::Mn9_minTimeWorkOnAtDependent(){
     };
 };
 void Menu::Mn10_BackupAndRestore(){
-    int select;
-    cout << "Backup and restore" << endl;
-    cout << "   0. Quit." << endl;
-    cout << "   1. Backup." << endl;
-    cout << "   2. Restore." << endl;
-    cout << "Please chose : " << endl;
-    cin >> select;
-    if(select == 1){
+    int mn10_Select = 0;
+    do{
+        cout << "Backup and restore" << endl;
+        cout << "   0. Quit." << endl;
+        cout << "   1. Backup." << endl;
+        cout << "   2. Restore." << endl;
+        cout << "Please chose : " << endl;
+        cin >> mn10_Select; cin.ignore();
+        if (mn10_Select < 0 || mn10_Select > 2){
+            cout << "   Wrong Selection!" << endl;
+            continue;
+        }
+        if (mn10_Select == 1){
+            int backup_Select = 0;
+            int result = 0;
+            do{
+                cout << "   Back up table : " << endl;
+                SelectTable();
+                cin >> backup_Select; cin.ignore();
+                if (backup_Select == 0) break;
+                if (backup_Select < 1 || backup_Select > 6){
+                    cout << "   Wrong Selection!" << endl;
+                    continue;
+                }
+                cout << "   Enter Folder Path: ";
+                string folderPath = ""; getline(cin, folderPath);
+                if (folderPath == ""){
+                    cout << "   Wrong Folder Path!";
+                    continue;
+                }
+                result = SolutionData->Q10_Backup(backup_Select, folderPath);
+                if (result) cout << "   Back up to " << folderPath << " done!" <<endl;
+            }while(backup_Select != 0);
+        }
+        if (mn10_Select == 2){
+            int restore_Select = 0;
+            int result = 0;
+            do{
+                cout << "   Restore table : " << endl;
+                SelectTable();
+                cin >> restore_Select; cin.ignore();
+                if (restore_Select == 0) break;
+                if (restore_Select < 1 || restore_Select > 6){
+                    cout << "   Wrong Selection!" << endl;
+                    continue;
+                }
+                cout << "   Enter Folder Path: ";
+                string folderPath = ""; getline(cin, folderPath);
+                if (folderPath == ""){
+                    cout << "   Wrong Folder Path!";
+                    continue;
+                }
+                result = SolutionData->Q10_Restore(restore_Select, folderPath);
+                if (result) cout << "   Restore from " << folderPath << " done!" <<endl;
+            }while(restore_Select != 0);
+        }
+    }while(mn10_Select != 0);
+    
+    /*if(select == 1){
         //CompanyData->Q10_Backup();                                                    // todo
         cout << "   Done backup." << endl;
     } else if(select == 2){
@@ -269,6 +324,6 @@ void Menu::Mn10_BackupAndRestore(){
         cout << "   Done restore." << endl;
     } else {
         cout << "don't backup or restore " << endl;
-    }
+    }*/
     
-};
+}

@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include "..\businessobject\TableUnit.h"
+#include "..\businessobject\Employee.h"
 #include "..\dataprocessing\TableData.h"
 using namespace std;
 
@@ -20,6 +21,8 @@ public:
     void DataEditById(TableData*);
     void DataDelete(TableData*, string);
     void DataDeleteById(TableData*);
+    int SaveData(TableData*, string);
+    int LoadData(TableData*, string);
 };
 
 #endif // Project_ui_IO_h_

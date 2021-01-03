@@ -28,3 +28,7 @@ void Department::ToMapMember(){
     Member["MgrSSN"] = to_string(MgrSSN);
     Member["MgrStartDate"] = MgrStartDate;
 }
+TableUnit *Department::ClonePtr(){
+    TableUnit *pU = new Department();
+    return pU;
+}

@@ -17,27 +17,31 @@ TableData::TableData(string filePath, TableUnit* ptU){
         Data.push_back(unit);
     }
     inFile.close();
-};
+}
 
 // ========Ex========
 int TableData::GetSize(){
     return Size;
-};
+}
+void TableData::Resize(int n){
+    Data.resize(n);
+}
 string TableData::ToString(){
     string sOut("");
     for(TableUnit* unit:Data){
         sOut = sOut + unit->ToString() + "\n";
     }
     return sOut;
-};
+}
 TableUnit* TableData::GetTableUnit(){
-    return tableUnit;
+    TableUnit* ptU = tableUnit->ClonePtr();
+    return ptU;
 }
 int TableData::Push(TableUnit *unit){
     Data.push_back(unit);
     Size++;
     return Size;
-};
+}
 int TableData::Change(int index, TableUnit *unit){  
     if(index < Data.size()){
         Data[index] = unit;
