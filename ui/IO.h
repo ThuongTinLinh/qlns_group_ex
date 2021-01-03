@@ -16,6 +16,10 @@ public:
     IO();
     void DataIn(TableData*);
     void DataOut(TableData*);
+    void DataEdit(TableData*, string);
+    void DataEditById(TableData*);
+    void DataDelete(TableData*, string);
+    void DataDeleteById(TableData*);
 };
 
 #endif // Project_ui_IO_h_

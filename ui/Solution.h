@@ -1,5 +1,5 @@
-#ifndef Project_dataprocessing_Company_h_
-#define Project_dataprocessing_Company_h_
+#ifndef Project_ui_Solution_h_
+#define Project_ui_Solution_h_
 
 #include "..\businessobject\TableUnit.h"
 #include "..\businessobject\Employee.h"
@@ -9,14 +9,14 @@
 #include "..\businessobject\Project.h"
 #include "..\businessobject\WorksOn.h"
 #include "..\dataprocessing\TableData.h"
-#include "..\ui\IO.h"//
+#include "IO.h"
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
 
-class Company{
+class Solution{
     Employee *employee;
     Department *department;
     Dependent *dependent;
@@ -32,11 +32,14 @@ class Company{
     TableData *WorksOnData;
     
 public:
-    Company();
+    Solution();
     // ~Company();
     void InitData();
     void ShowAllData();
-    void Q1_CRUD();
+    void Q1_AddToTable(int);
+    void Q1_EditTable(int);
+    void Q1_DeleteInTable(int);
+    void Q1_ReadTable(int);
     //void Q1_CRUD(TableData*, TableUnit*);
     vector<vector<string>> Q2_ShowEmployeeOfManager(string mngNameInput);
     vector<vector<string>> Q3_ShowEmployeeHasDependent();

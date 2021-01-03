@@ -1,7 +1,7 @@
 #include "Menu.h"
 
-Menu::Menu(Company *companyData){
-    CompanyData = companyData;
+Menu::Menu(Solution *solutionData){
+    SolutionData = solutionData;
 };
 
 void Menu::Home(){
@@ -9,7 +9,7 @@ void Menu::Home(){
     do{
         cout << "Home" << endl;
         cout << "   0. Quit." << endl;
-        cout << "   1. Add, change, delete or read data." << endl;
+        cout << "   1. Add, edit, delete or read data." << endl;
         cout << "   2. Displays employees of manager." << endl;
         cout << "   3. Displays employees has daughter or son." << endl;
         cout << "   4. Displays time of project." << endl;
@@ -29,7 +29,7 @@ void Menu::Home(){
             cout << "   0. Quit." << endl;
             break;
         case 1:
-            cout << "   1. Add, change, delete or read data." << endl;
+            cout << "   1. Add, edit, delete or read data." << endl;
             Mn1_CRUD();
             break;
         case 2:
@@ -76,15 +76,99 @@ void Menu::Home(){
         system("pause");
     }while(select != 0);
 };
+void SelectTable(){
+    cout << "   0. Quit." << endl;
+    cout << "   1. EMPLOYEE." << endl;
+    cout << "   2. DEPARTMENT." << endl;
+    cout << "   3. DEPT LOCATION." << endl;
+    cout << "   4. WORKS ON." << endl;
+    cout << "   5. PROJECT." << endl;
+    cout << "   6. DEPENDENT." << endl;
+}
 void Menu::Mn1_CRUD(){
-    cout << "   Add, change, delete or read data."<< endl;
-    CompanyData->Q1_CRUD();                                        // todo
+    int Mn1_Select = 0;
+    do{
+        //cout << "   Add, Edit, delete or read data."<< endl;
+        cout << "   0. Quit." << endl;
+        cout << "   1. Add." << endl;
+        cout << "   2. Edit." << endl;
+        cout << "   3. Delete." << endl;
+        cout << "   4. Read." << endl;
+
+        cin >> Mn1_Select; cin.ignore();
+        if (Mn1_Select < 0 || Mn1_Select > 4){
+            cout << "   Wrong Selection!" << endl;
+            continue;
+        }
+        switch (Mn1_Select){
+            case 1:{         
+                int Add_Select = 0;
+                do{
+                    cout << "   Add to table : " << endl;
+                    SelectTable();
+                    cin >> Add_Select; cin.ignore();
+                    if (Add_Select < 0 || Add_Select > 6){
+                        cout << "   Wrong Selection!" << endl;
+                        continue;
+                    }
+                    SolutionData->Q1_AddToTable(Add_Select);
+                }while(Add_Select != 0);
+                break;
+            }
+            case 2:{
+                int Edit_Select = 0;
+                do{
+                    cout << "   Edit table : " << endl;
+                    SelectTable();
+                    cin >> Edit_Select; cin.ignore();
+                    if (Edit_Select < 0 || Edit_Select > 6){
+                        cout << "   Wrong Selection!" << endl;
+                        continue;
+                    }
+                    SolutionData->Q1_EditTable(Edit_Select);
+                }while(Edit_Select != 0);
+                break;
+            }
+            case 3:{
+                int Delete_Select = 0;
+                do{
+                    cout << "   Delete table : " << endl;
+                    SelectTable();
+                    cin >> Delete_Select; cin.ignore();
+                    if (Delete_Select < 0 || Delete_Select > 6){
+                        cout << "   Wrong Selection!" << endl;
+                        continue;
+                    }
+                    SolutionData->Q1_DeleteInTable(Delete_Select);
+                }while(Delete_Select != 0);
+                break;
+            }
+            case 4:{
+                int Read_Select = 0;
+                do{
+                    cout << "   Read table : " << endl;
+                    SelectTable();
+                    cin >> Read_Select; cin.ignore();
+                    if (Read_Select < 0 || Read_Select > 6){
+                        cout << "   Wrong Selection!" << endl;
+                        continue;
+                    }
+                    SolutionData->Q1_ReadTable(Read_Select);
+                }while(Read_Select != 0);
+                break;
+            }
+
+        }
+    }while(Mn1_Select != 0);
+    
+    
+    
 };
 void Menu::Mn2_ShowEmployeeOfManager(){
     string mngName;
     cout << "   Please enter Manager Name (ex: 'Franklin Wong') : ";
     getline(cin, mngName);    
-    vector<vector<string>> employees = CompanyData->Q2_ShowEmployeeOfManager(mngName);
+    vector<vector<string>> employees = SolutionData->Q2_ShowEmployeeOfManager(mngName);
     // Display data
     cout<<"*Employee list managed by " + mngName + " : " << endl;
     for(vector<string> vts : employees){
@@ -92,7 +176,7 @@ void Menu::Mn2_ShowEmployeeOfManager(){
     };
 };
 void Menu::Mn3_ShowEmployeeHasDependent(){
-    vector<vector<string>> employees = CompanyData->Q3_ShowEmployeeHasDependent();
+    vector<vector<string>> employees = SolutionData->Q3_ShowEmployeeHasDependent();
     // Display data
     cout<<"*List of employees without children:" << endl;
     for(vector<string> vts : employees){
@@ -100,7 +184,7 @@ void Menu::Mn3_ShowEmployeeHasDependent(){
     };
 };
 void Menu::Mn4_ShowProjecTime(){
-    vector<vector<string>> ptimes = CompanyData->Q4_ShowProjecTime();
+    vector<vector<string>> ptimes = SolutionData->Q4_ShowProjecTime();
     // Display data
     cout<<"*Project list :" << endl;
     for(vector<string> vts : ptimes){
@@ -108,7 +192,7 @@ void Menu::Mn4_ShowProjecTime(){
     };
 };
 void Menu::Mn5_ShowFreeEmployee(){    
-    vector<vector<string>> employees = CompanyData->Q5_ShowFreeEmployee();
+    vector<vector<string>> employees = SolutionData->Q5_ShowFreeEmployee();
     // Display data
     cout<<"*Employee list is free :" << endl;
     for(vector<string> vts : employees){
@@ -119,7 +203,7 @@ void Menu::Mn6_ShowDepartmentAvgSalary(){
     string dName;
     cout << "   Please enter department Name (ex: 'Research') : ";
     cin >> dName;
-    long dAvgSalarys = CompanyData->Q6_ShowDepartmentAvgSalary(dName);
+    long dAvgSalarys = SolutionData->Q6_ShowDepartmentAvgSalary(dName);
     // Display data
     cout <<"*" +dName + " has avg salary = " + to_string(dAvgSalarys) + "$" <<endl;
     
@@ -128,12 +212,12 @@ void Menu::Mn7_ShowSexAvgSalary(){
     string sex;
     cout << "   Please enter sex (ex: 'M') : ";
     cin >> sex;
-    long sexAvgSalary = CompanyData->Q7_ShowSexAvgSalary(sex);
+    long sexAvgSalary = SolutionData->Q7_ShowSexAvgSalary(sex);
     // Display data
     cout << "*'" + sex + "' sex has avg salary = " + to_string(sexAvgSalary) + "$" <<endl;
 };
 void Menu::Mn8_ManagerNoDependent(){
-    vector<vector<string>> mgrs = CompanyData->Q8_ManagerNoDependent();
+    vector<vector<string>> mgrs = SolutionData->Q8_ManagerNoDependent();
     // Display data
     cout<<"*Management list has no dependents :" << endl;
     for(vector<string> vts : mgrs){
@@ -151,7 +235,7 @@ void Menu::Mn9_minTimeWorkOnAtDependent(){
     cin >> pName;
     cout << "   Please enter minimum workon (ex: '10') : ";
     cin >> minTimeWorksOn;
-    vector<vector<string>> mgrs = CompanyData->Q9_minTimeWorkOnAtDependent(dNumber, pName, minTimeWorksOn);
+    vector<vector<string>> mgrs = SolutionData->Q9_minTimeWorkOnAtDependent(dNumber, pName, minTimeWorksOn);
     // Display data
     cout<<"*List of employees with working conditions in the department :" << endl;
     for(vector<string> vts : mgrs){

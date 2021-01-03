@@ -50,6 +50,9 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "iomanip": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xtr1common": "cpp"
     }
 }

@@ -1,7 +1,7 @@
-#include "Company.h"
+#include "Solution.h"
 
 // ========Contructor========
-Company::Company(){
+Solution::Solution(){
     employee = new Employee();
     department = new Department();
     dependent = new Dependent();
@@ -141,7 +141,7 @@ void EnterWorksOn(TableData *data){
     data->Push(tU16);
 }
 
-void Company::InitData(){
+void Solution::InitData(){
     EnterEmployee(EmployeeData);
     EnterDepartment(DepartmentData);
     EnterDependent(DependentData);
@@ -150,7 +150,7 @@ void Company::InitData(){
     EnterWorksOn(WorksOnData);
 }
 
-void Company::ShowAllData(){
+void Solution::ShowAllData(){
     IO myIO;
     myIO.DataOut(EmployeeData);
     myIO.DataOut(DepartmentData);
@@ -162,13 +162,99 @@ void Company::ShowAllData(){
 //********************************************************//
 
 // void Q1_CRUD(TableData* ptD, TableUnit* ptU){
-void Company::Q1_CRUD(){
+void Solution::Q1_AddToTable(int table){
     IO myIO;
-    myIO.DataIn(EmployeeData);
-    myIO.DataOut(EmployeeData);
-
+    switch (table){
+        case 1:
+            myIO.DataIn(EmployeeData);
+            break;
+        case 2:
+            myIO.DataIn(DepartmentData);
+            break;
+        case 3:
+            myIO.DataIn(DeptLocationData);
+            break;
+        case 4:
+            myIO.DataIn(WorksOnData);
+            break;
+        case 5:
+            myIO.DataIn(ProjectData);
+            break;
+        case 6:
+            myIO.DataIn(DependentData);
+            break;
+    }
 }
-vector<vector<string>> Company::Q2_ShowEmployeeOfManager(string mngNameInput){
+void Solution::Q1_EditTable(int table){
+    IO myIO;
+    switch (table){
+        case 1:
+            myIO.DataEdit(EmployeeData, "SSN");
+            break;
+        case 2:
+            myIO.DataEditById(DepartmentData);
+            break;
+        case 3:
+            myIO.DataEditById(DeptLocationData);
+            break;
+        case 4:
+            myIO.DataEditById(WorksOnData);
+            break;
+        case 5:
+            myIO.DataEditById(ProjectData);
+            break;
+        case 6:
+            myIO.DataEditById(DependentData);
+            break;
+    }
+}
+void Solution::Q1_DeleteInTable(int table){
+    IO myIO;
+    switch (table){
+        case 1:
+            myIO.DataDelete(EmployeeData, "SSN");
+            break;
+        case 2:
+            myIO.DataDeleteById(DepartmentData);
+            break;
+        case 3:
+            myIO.DataDeleteById(DeptLocationData);
+            break;
+        case 4:
+            myIO.DataDeleteById(WorksOnData);
+            break;
+        case 5:
+            myIO.DataDeleteById(ProjectData);
+            break;
+        case 6:
+            myIO.DataDeleteById(DependentData);
+            break;
+    }
+}
+void Solution::Q1_ReadTable(int table){
+    IO myIO;
+    switch (table){
+        case 1:
+            myIO.DataOut(EmployeeData);
+            break;
+        case 2:
+            myIO.DataOut(DepartmentData);
+            break;
+        case 3:
+            myIO.DataOut(DeptLocationData);
+            break;
+        case 4:
+            myIO.DataOut(WorksOnData);
+            break;
+        case 5:
+            myIO.DataOut(ProjectData);
+            break;
+        case 6:
+            myIO.DataOut(DependentData);
+            break;
+    }
+}
+vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
     vector<TableUnit*> employees = EmployeeData->GetData();
     for(TableUnit *tU1 : employees){
@@ -186,7 +272,7 @@ vector<vector<string>> Company::Q2_ShowEmployeeOfManager(string mngNameInput){
     }
     return eOut;
 }
-vector<vector<string>> Company::Q3_ShowEmployeeHasDependent(){
+vector<vector<string>> Solution::Q3_ShowEmployeeHasDependent(){
     vector<TableUnit*> dependents = DependentData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : dependents){
@@ -205,7 +291,7 @@ vector<vector<string>> Company::Q3_ShowEmployeeHasDependent(){
     }
     return eOut;
 }
-vector<vector<string>> Company::Q4_ShowProjecTime(){
+vector<vector<string>> Solution::Q4_ShowProjecTime(){
     vector<TableUnit*> projects = ProjectData->GetData();
     vector<TableUnit*> worksOns = WorksOnData->GetData();
     vector<vector<string>> eOut;
@@ -224,7 +310,7 @@ vector<vector<string>> Company::Q4_ShowProjecTime(){
     return eOut;
 }
 
-vector<vector<string>> Company::Q5_ShowFreeEmployee(){
+vector<vector<string>> Solution::Q5_ShowFreeEmployee(){
     vector<TableUnit*> employees = EmployeeData->GetData();
     vector<TableUnit*> worksOns = WorksOnData->GetData();
     vector<vector<string>> eOut;
@@ -246,7 +332,7 @@ vector<vector<string>> Company::Q5_ShowFreeEmployee(){
     return eOut;
 }
 
-long Company::Q6_ShowDepartmentAvgSalary(string dNameInput){
+long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
     vector<TableUnit*> employees = EmployeeData->GetData();
     vector<TableUnit*> departments = DepartmentData->GetData();
     long lOut = 0;
@@ -266,7 +352,7 @@ long Company::Q6_ShowDepartmentAvgSalary(string dNameInput){
     return lOut;
 }
 
-long Company::Q7_ShowSexAvgSalary(string sexInput){
+long Solution::Q7_ShowSexAvgSalary(string sexInput){
     vector<TableUnit*> employees = EmployeeData->GetData();
     long sumSalary = 0;
     int iEmployee = 0;
@@ -279,7 +365,7 @@ long Company::Q7_ShowSexAvgSalary(string sexInput){
     return long(sumSalary / iEmployee);
 }
 
-vector<vector<string>> Company::Q8_ManagerNoDependent(){
+vector<vector<string>> Solution::Q8_ManagerNoDependent(){
     vector<TableUnit*> departments = DepartmentData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : departments){
@@ -295,7 +381,7 @@ vector<vector<string>> Company::Q8_ManagerNoDependent(){
     return eOut;
 }
 
-vector<vector<string>> Company::Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn){
+vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn){
     vector<TableUnit*> employees = EmployeeData->GetData();
     vector<TableUnit*> worksOns = WorksOnData->GetData();
     vector<vector<string>> eOut;
@@ -322,5 +408,5 @@ vector<vector<string>> Company::Q9_minTimeWorkOnAtDependent(int dNumberInput, st
     return eOut;
 }
 
-void Company::Q10_BackupAndRestore(string folderPath){
+void Solution::Q10_BackupAndRestore(string folderPath){
 }

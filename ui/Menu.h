@@ -1,7 +1,8 @@
 #ifndef Project_ui_Menu_h_
 #define Project_ui_Menu_h_
 
-#include "..\dataprocessing\Company.h"
+#include "..\ui\Solution.h"
+#include "..\ui\IO.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -10,9 +11,9 @@ using namespace std;
 
 class Menu{
 protected:
-    Company *CompanyData;
+    Solution *SolutionData;
 public:
-    Menu(Company *companyData);
+    Menu(Solution *solutionData);
     void Home();
     void Mn1_CRUD();
     void Mn2_ShowEmployeeOfManager();
