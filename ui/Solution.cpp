@@ -142,7 +142,7 @@ void EnterWorksOn(TableData *data){
 }
 
 void Solution::InitData(){
-    // EnterEmployee(EmployeeData);
+    EnterEmployee(EmployeeData);
     EnterDepartment(DepartmentData);
     EnterDependent(DependentData);
     EnterDeptLocation(DeptLocationData);

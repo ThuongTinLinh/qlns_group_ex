@@ -16,7 +16,9 @@ protected:
 public:
     IO();
     void DataIn(TableData*);
+    void DataIn(TableUnit*);
     void DataOut(TableData*);
+    void DataOut(TableUnit*, int);
     void DataEdit(TableData*, string);
     void DataEditById(TableData*);
     void DataDelete(TableData*, string);

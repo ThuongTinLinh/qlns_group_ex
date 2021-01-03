@@ -1,45 +1,56 @@
 #include "IO.h"
+#include <iomanip>
+#include <ctime>
+#include <sstream>
 
-IO::IO(){
-};
-void IO::DataIn(TableData* ptD){
-    TableUnit* unit = ptD->GetTableUnit();
-    map<string, string> mapMember = unit->GetMapMember();
+IO::IO(){}
+string datetimeString();
+void IO::DataIn(TableUnit* ptU){
+    map<string, string> mapMember = ptU->GetMapMember();
     map<string, string>::iterator it;
     for (it = mapMember.begin(); it != mapMember.end(); it++){
         cout << "enter value for " << it->first << " = ";
         string s = ""; getline(cin, s);
-        unit->SetValue(it->first, s);
+        ptU->SetValue(it->first, s);
     }
+}
+void IO::DataIn(TableData* ptD){
+    TableUnit* unit = ptD->GetTableUnit();
+    DataIn(unit);
     ptD->Push(unit);
-    DataOut(ptD);
     cout << "-------------------------------------"<< endl;
 }
-vector<int> FindColumnWidth(TableData* ptD){
+vector<int> FindUnitColumnWidth(TableUnit* ptU){
+    vector<int> unitWidth;
+    unitWidth.resize(ptU->GetMapMember().size(), 0);
+
+    map<string, string>::iterator it;
+    map<string, string> mapMember = ptU->GetMapMember();
+    int i = 0;
+    for (it = mapMember.begin(); it != mapMember.end(); it++){
+        string name = it->first; string value = it->second;
+        unitWidth[i] = (value.length() > name.length()) ? value.length() : name.length();
+        i++;
+    }
+    return unitWidth;
+}
+vector<int> FindTableColumnWidth(TableData* ptD){
     vector<int> tableWidth;
     tableWidth.resize(ptD->GetTableUnit()->GetMapMember().size(), 0);
 
-    map<string, string>::iterator it;
     for(TableUnit* unit: ptD->GetData()){
         map<string, string> mapMember = unit->GetMapMember();
-        int i = 0;
-        for (it = mapMember.begin(); it != mapMember.end(); it++){
-            string name = it->first; string value = it->second;
-            if(value.length() > name.length() && value.length() > tableWidth[i]) {
-                tableWidth[i] = value.length();
-            }
-            else if (name.length() > tableWidth[i]){
-                tableWidth[i] = name.length();
-            }
-            i++;
-        }
+        vector<int> unitWidth = FindUnitColumnWidth(unit);
+        for (int i = 0; i < tableWidth.size(); i++)
+            if (tableWidth[i] < unitWidth[i]) tableWidth[i] = unitWidth[i];
     }
     return tableWidth;
-    
+        
+
 }
 void IO::DataOut(TableData* ptD){
     // if ptD = null, error because can't denifine TableUnit*. The same TableData/ToString
-    vector<int> tableWidth = FindColumnWidth(ptD);
+    vector<int> tableWidth = FindTableColumnWidth(ptD);
     int sumWidth = 0;
     for (int i: tableWidth) sumWidth += i + 2;
     map<string, string>::iterator it;
@@ -59,38 +70,50 @@ void IO::DataOut(TableData* ptD){
         int i = 0;
         cout << setw(5) << left << j+1;
         for (it = mapMember.begin(); it != mapMember.end(); it++){
-        //cout << "Value for " << it->first << " = "<< it->second << endl;
             cout << setw(tableWidth[i] + 2) << left << ((it->second == "-1") ? "null" : it->second);
             i++;
         }
         cout << endl << string(sumWidth + 5/*Id*/, '-') << endl;
         j++;
     }
-    cout << endl << endl;   
+    cout << endl << endl;
+    cout << datetimeString() <<endl;
     // cout << ptD -> ToString();
 }
+void IO::DataOut(TableUnit* ptU, int id){
+    vector<int> tableWidth = FindUnitColumnWidth(ptU);
+    int sumWidth = 0;
+    for (int i: tableWidth) sumWidth += i + 2;
+    map<string, string>::iterator it;
+    map<string, string> mapMember = ptU->GetMapMember();
+    cout << endl << string(sumWidth + 5/*Id*/, '-') << endl;
+    cout << setw(5) << left << "Id";
+    int i = 0; // iterator for headline
+    for (it = mapMember.begin(); it != mapMember.end(); it++){
+        cout << setw(tableWidth[i] + 2) << left << it->first;
+        i++;
+    }
+    cout << endl << string(sumWidth + 5/*Id*/, '=') << endl;
+    i = 0; // iterator for value
+    cout << setw(5) << left << id;
+    for (it = mapMember.begin(); it != mapMember.end(); it++){
+        cout << setw(tableWidth[i] + 2) << left << ((it->second == "-1") ? "null" : it->second);
+        i++;
+    }
+    cout << endl << string(sumWidth + 5/*Id*/, '-') << endl;
+}
+
 void IO::DataEdit(TableData* ptD, string idName){
     DataOut(ptD);
-    TableUnit* unit = ptD->GetTableUnit();
     vector<TableUnit*> vtU = ptD->GetData();
     
-    TableData* tDTemp = new TableData(unit);
     cout << "   Enter " << idName << ": ";
     string idValue = ""; getline(cin, idValue);
     for (int i = 0; i < vtU.size(); i++){
         TableUnit* tU = vtU[i];
         if (tU->GetValue(idName) == idValue){
-            tDTemp->Push(tU);
-            DataOut(tDTemp);
-
-            map<string, string> mapMember = unit->GetMapMember();
-            map<string, string>::iterator it;
-            for (it = mapMember.begin(); it != mapMember.end(); it++){
-                cout << "enter value for " << it->first << " = ";
-                string newValue = ""; getline(cin, newValue);
-                unit->SetValue(it->first, newValue);
-            }
-            ptD->Change(i, unit);
+            DataOut(tU, i + 1);
+            DataIn(tU);
             break;
         }
     }
@@ -102,32 +125,20 @@ void IO::DataEditById(TableData* ptD){
     int Id = 0; cin >> Id; cin.ignore();
     Id--;
     TableUnit* unit = ptD->GetPtr(Id);
-    TableData* tDTemp = new TableData(ptD->GetTableUnit());
-    tDTemp->Push(unit);
-    DataOut(tDTemp);
-    map<string, string> mapMember = unit->GetMapMember();
-    map<string, string>::iterator it;
-    for (it = mapMember.begin(); it != mapMember.end(); it++){
-        cout << "enter value for " << it->first << " = ";
-        string newValue = ""; getline(cin, newValue);
-        unit->SetValue(it->first, newValue);
-    }
-    ptD->Change(Id, unit);
+    DataOut(unit, Id + 1);
+    DataIn(unit);
     DataOut(ptD);
 }
 void IO::DataDelete(TableData* ptD, string idName){
     DataOut(ptD);
-    TableUnit* unit = ptD->GetTableUnit();
     vector<TableUnit*> vtU = ptD->GetData();
     
-    TableData* tDTemp = new TableData(unit);
     cout << "   Enter " << idName << ": ";
     string idValue = ""; getline(cin, idValue);
     for (int i = 0; i < vtU.size(); i++){
         TableUnit* tU = vtU[i];
         if (tU->GetValue(idName) == idValue){
-            tDTemp->Push(tU);
-            DataOut(tDTemp);
+            DataOut(tU, i + 1);
             cout << "   Delete this unit?" << endl;
             cout << "   1.Yes." << endl;
             cout << "   2.No."  << endl;
@@ -144,9 +155,7 @@ void IO::DataDeleteById(TableData* ptD){
     int Id = 0; cin >> Id; cin.ignore();
     Id--;
     TableUnit* unit = ptD->GetPtr(Id);
-    TableData* tDTemp = new TableData(ptD->GetTableUnit());
-    tDTemp->Push(unit);
-    DataOut(tDTemp);
+    DataOut(unit, Id + 1);
     cout << "   Delete this unit?" << endl;
     cout << "   1.Yes." << endl;
     cout << "   2.No."  << endl;
@@ -154,8 +163,19 @@ void IO::DataDeleteById(TableData* ptD){
     if (select == 1) ptD->Delele(Id);
     DataOut(ptD);
 }
+string datetimeString(){
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S");
+    auto str = oss.str();
+    return str;
+}
 int IO::SaveData(TableData* ptD, string filename){
-    ofstream outFile(filename);
+    string datetime = datetimeString();
+    string folderPath = "data/" + filename + "/" + datetime + ".data";
+    ofstream outFile(folderPath);
     if(!outFile) return 0;
     for (auto tU: ptD->GetData()){
         outFile << tU->ToStringEncode() << endl;
@@ -172,7 +192,6 @@ int IO::LoadData(TableData* ptD, string filename){
     {
         string s = buff;
         TableUnit *ptU = ptD->GetTableUnit();
-        //TableUnit *ptU = new Employee();
         ptU->FromStringDecode(s);
         ptD->Push(ptU);
     }
