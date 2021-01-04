@@ -2,29 +2,20 @@
 
 // ========Contructor========
 Solution::Solution(){
-    employee = new Employee();
-    department = new Department();
-    dependent = new Dependent();
-    deptLocation = new DeptLocation();
-    project = new Project();
-    worksOn = new WorksOn();
+    EmployeeData = new TableData(new Employee());
+    DepartmentData = new TableData(new Department());
+    DependentData = new TableData(new Dependent());
+    DeptLocationData = new TableData(new DeptLocation());
+    ProjectData = new TableData(new Project());
+    WorksOnData = new TableData(new WorksOn());
 
-    EmployeeData = new TableData(employee);
-    DepartmentData = new TableData(department);
-    DependentData = new TableData(dependent);
-    DeptLocationData = new TableData(deptLocation);
-    ProjectData = new TableData(project);
-    WorksOnData = new TableData(worksOn);
+    tableData.push_back(EmployeeData);
+    tableData.push_back(DepartmentData);
+    tableData.push_back(DependentData);
+    tableData.push_back(DeptLocationData);
+    tableData.push_back(ProjectData);
+    tableData.push_back(WorksOnData);
 };
-
-// Company::~Company(){
-//     delete EmployeeData;
-//     delete DepartmentData;
-//     delete DependentData;
-//     delete DeptLocationData;
-//     delete ProjectData;
-//     delete WorksOnData;
-// };
 
 void EnterEmployee(TableData *);
 void EnterDepartment(TableData *);
@@ -164,95 +155,19 @@ void Solution::ShowAllData(){
 // void Q1_CRUD(TableData* ptD, TableUnit* ptU){
 void Solution::Q1_AddToTable(int table){
     IO myIO;
-    switch (table){
-        case 1:
-            myIO.dataIn(EmployeeData);
-            break;
-        case 2:
-            myIO.dataIn(DepartmentData);
-            break;
-        case 3:
-            myIO.dataIn(DeptLocationData);
-            break;
-        case 4:
-            myIO.dataIn(WorksOnData);
-            break;
-        case 5:
-            myIO.dataIn(ProjectData);
-            break;
-        case 6:
-            myIO.dataIn(DependentData);
-            break;
-    }
+    myIO.dataIn(tableData[table-1]);
 }
 void Solution::Q1_EditTable(int table){
     IO myIO;
-    switch (table){
-        case 1:
-            myIO.dataEdit(EmployeeData, "SSN");
-            break;
-        case 2:
-            myIO.dataEditById(DepartmentData);
-            break;
-        case 3:
-            myIO.dataEditById(DeptLocationData);
-            break;
-        case 4:
-            myIO.dataEditById(WorksOnData);
-            break;
-        case 5:
-            myIO.dataEditById(ProjectData);
-            break;
-        case 6:
-            myIO.dataEditById(DependentData);
-            break;
-    }
+    myIO.dataEditById(tableData[table-1]);        
 }
 void Solution::Q1_DeleteInTable(int table){
     IO myIO;
-    switch (table){
-        case 1:
-            myIO.dataDelete(EmployeeData, "SSN");
-            break;
-        case 2:
-            myIO.dataDeleteById(DepartmentData);
-            break;
-        case 3:
-            myIO.dataDeleteById(DeptLocationData);
-            break;
-        case 4:
-            myIO.dataDeleteById(WorksOnData);
-            break;
-        case 5:
-            myIO.dataDeleteById(ProjectData);
-            break;
-        case 6:
-            myIO.dataDeleteById(DependentData);
-            break;
-    }
+    myIO.dataDeleteById(tableData[table-1]);
 }
 void Solution::Q1_ReadTable(int table){
     IO myIO;
-    switch (table){
-        case 1:
-            myIO.dataOut(EmployeeData);
-            break;
-        case 2:
-            myIO.dataOut(DepartmentData);
-            break;
-        case 3:
-            myIO.dataOut(DeptLocationData);
-            break;
-        case 4:
-            myIO.dataOut(WorksOnData);
-            break;
-        case 5:
-            myIO.dataOut(ProjectData);
-            break;
-        case 6:
-            myIO.dataOut(DependentData);
-            break;
-    }
+    myIO.dataOut(tableData[table-1]);
 }
 vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
@@ -413,50 +328,12 @@ vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, s
 int Solution::Q10_Backup(int table, string folderPath){
     IO myIO;
     int result = 0;
-    switch (table){
-        case 1:
-            result = myIO.saveData(EmployeeData, folderPath);
-            break;
-        case 2:
-            result = myIO.saveData(DepartmentData, folderPath);
-            break;
-        case 3:
-            result = myIO.saveData(DeptLocationData, folderPath);
-            break;
-        case 4:
-            result = myIO.saveData(WorksOnData, folderPath);
-            break;
-        case 5:
-            result = myIO.saveData(ProjectData, folderPath);
-            break;
-        case 6:
-            result = myIO.saveData(DependentData, folderPath);
-            break;
-    }
+    result = myIO.saveData(tableData[table-1], folderPath);
     return result;
 }
 int Solution::Q10_Restore(int table, string folderPath){
     IO myIO;
     int result = 0;
-    switch (table){
-        case 1:
-            result = myIO.loadData(EmployeeData, folderPath);
-            break;
-        case 2:
-            result = myIO.loadData(DepartmentData, folderPath);
-            break;
-        case 3:
-            result = myIO.loadData(DeptLocationData, folderPath);
-            break;
-        case 4:
-            result = myIO.loadData(WorksOnData, folderPath);
-            break;
-        case 5:
-            result = myIO.loadData(ProjectData, folderPath);
-            break;
-        case 6:
-            result = myIO.loadData(DependentData, folderPath);
-            break;
-    }
+    result = myIO.loadData(tableData[table-1], folderPath);
     return result;
 }
