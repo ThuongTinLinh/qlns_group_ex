@@ -25,7 +25,7 @@ void TableUnit::FromVt(vector<string> vt){
     FromMapMember();
 };
 void TableUnit::FromStringDecode(string sCode){    
-    vector<string> vt = Utility::FromString(sCode);
+    vector<string> vt = Utility::fromString(sCode);
     FromVt(vt);
 };
 
@@ -54,7 +54,7 @@ vector<string> TableUnit::ToVt(){
 
 string TableUnit::ToStringEncode(){
     ToMapMember();
-    string sFile = Utility::ToString(ToVt());
+    string sFile = Utility::toString(ToVt());
     return sFile;
 };
 

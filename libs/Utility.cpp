@@ -1,40 +1,48 @@
 #include "Utility.h"
 
-string Utility::SDecode(string s)
+string Utility::decodeString(string s)
 {
     for(int i = 0; i < s.size(); i ++)
         if (s[i] == '$')
             s[i] = ' ';
     return s;
 }
-string Utility::SEncode(string s)
+string Utility::encodeString(string s)
 {
     for(int i = 0; i < s.size(); i ++)
         if (s[i] == ' ')
             s[i] = '$';
     return s;
 }
-string Utility::ToString(vector<string> vs)
+string Utility::toString(vector<string> vs)
 {
     string s = "";
-    for(string si: vs) s = s + SEncode(si) + " ";
-    s[s.length()] = 0;
-    // s.erase(s.length(), 1);
+    for(string si: vs) s = s + encodeString(si) + " ";
+    s.erase(s.length(), 1); // erase the " " at the end of string.
     return s;
 }
-vector<string> Utility::FromString(string s)
+vector<string> Utility::fromString(string s)
 {
     vector<string> vs;
     string stemp = "";
     for(int i = 0; i < s.size(); i++){
         if(s[i] != ' ') {
-            stemp += s[i];
+            stemp += s[i]; // create elements of vector<string>.
         }
         else{
-            vs.push_back(SDecode(stemp));
+            vs.push_back(decodeString(stemp));
             stemp = "";
         }
     }
-    return vs;
-    
+    return vs;    
+}
+string Utility::getDatetimeString()
+{
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S");
+    auto str = oss.str();
+    return str;
 }

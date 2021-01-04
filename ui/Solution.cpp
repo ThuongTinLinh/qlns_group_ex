@@ -152,12 +152,12 @@ void Solution::InitData(){
 
 void Solution::ShowAllData(){
     IO myIO;
-    myIO.DataOut(EmployeeData);
-    myIO.DataOut(DepartmentData);
-    myIO.DataOut(DependentData);
-    myIO.DataOut(DeptLocationData);
-    myIO.DataOut(ProjectData);
-    myIO.DataOut(WorksOnData);
+    myIO.dataOut(EmployeeData);
+    myIO.dataOut(DepartmentData);
+    myIO.dataOut(DependentData);
+    myIO.dataOut(DeptLocationData);
+    myIO.dataOut(ProjectData);
+    myIO.dataOut(WorksOnData);
 }
 //********************************************************//
 
@@ -166,22 +166,22 @@ void Solution::Q1_AddToTable(int table){
     IO myIO;
     switch (table){
         case 1:
-            myIO.DataIn(EmployeeData);
+            myIO.dataIn(EmployeeData);
             break;
         case 2:
-            myIO.DataIn(DepartmentData);
+            myIO.dataIn(DepartmentData);
             break;
         case 3:
-            myIO.DataIn(DeptLocationData);
+            myIO.dataIn(DeptLocationData);
             break;
         case 4:
-            myIO.DataIn(WorksOnData);
+            myIO.dataIn(WorksOnData);
             break;
         case 5:
-            myIO.DataIn(ProjectData);
+            myIO.dataIn(ProjectData);
             break;
         case 6:
-            myIO.DataIn(DependentData);
+            myIO.dataIn(DependentData);
             break;
     }
 }
@@ -189,22 +189,22 @@ void Solution::Q1_EditTable(int table){
     IO myIO;
     switch (table){
         case 1:
-            myIO.DataEdit(EmployeeData, "SSN");
+            myIO.dataEdit(EmployeeData, "SSN");
             break;
         case 2:
-            myIO.DataEditById(DepartmentData);
+            myIO.dataEditById(DepartmentData);
             break;
         case 3:
-            myIO.DataEditById(DeptLocationData);
+            myIO.dataEditById(DeptLocationData);
             break;
         case 4:
-            myIO.DataEditById(WorksOnData);
+            myIO.dataEditById(WorksOnData);
             break;
         case 5:
-            myIO.DataEditById(ProjectData);
+            myIO.dataEditById(ProjectData);
             break;
         case 6:
-            myIO.DataEditById(DependentData);
+            myIO.dataEditById(DependentData);
             break;
     }
 }
@@ -212,22 +212,22 @@ void Solution::Q1_DeleteInTable(int table){
     IO myIO;
     switch (table){
         case 1:
-            myIO.DataDelete(EmployeeData, "SSN");
+            myIO.dataDelete(EmployeeData, "SSN");
             break;
         case 2:
-            myIO.DataDeleteById(DepartmentData);
+            myIO.dataDeleteById(DepartmentData);
             break;
         case 3:
-            myIO.DataDeleteById(DeptLocationData);
+            myIO.dataDeleteById(DeptLocationData);
             break;
         case 4:
-            myIO.DataDeleteById(WorksOnData);
+            myIO.dataDeleteById(WorksOnData);
             break;
         case 5:
-            myIO.DataDeleteById(ProjectData);
+            myIO.dataDeleteById(ProjectData);
             break;
         case 6:
-            myIO.DataDeleteById(DependentData);
+            myIO.dataDeleteById(DependentData);
             break;
     }
 }
@@ -235,22 +235,22 @@ void Solution::Q1_ReadTable(int table){
     IO myIO;
     switch (table){
         case 1:
-            myIO.DataOut(EmployeeData);
+            myIO.dataOut(EmployeeData);
             break;
         case 2:
-            myIO.DataOut(DepartmentData);
+            myIO.dataOut(DepartmentData);
             break;
         case 3:
-            myIO.DataOut(DeptLocationData);
+            myIO.dataOut(DeptLocationData);
             break;
         case 4:
-            myIO.DataOut(WorksOnData);
+            myIO.dataOut(WorksOnData);
             break;
         case 5:
-            myIO.DataOut(ProjectData);
+            myIO.dataOut(ProjectData);
             break;
         case 6:
-            myIO.DataOut(DependentData);
+            myIO.dataOut(DependentData);
             break;
     }
 }
@@ -413,22 +413,22 @@ int Solution::Q10_Backup(int table, string folderPath){
     int result = 0;
     switch (table){
         case 1:
-            result = myIO.SaveData(EmployeeData, folderPath);
+            result = myIO.saveData(EmployeeData, folderPath);
             break;
         case 2:
-            result = myIO.SaveData(DepartmentData, folderPath);
+            result = myIO.saveData(DepartmentData, folderPath);
             break;
         case 3:
-            result = myIO.SaveData(DeptLocationData, folderPath);
+            result = myIO.saveData(DeptLocationData, folderPath);
             break;
         case 4:
-            result = myIO.SaveData(WorksOnData, folderPath);
+            result = myIO.saveData(WorksOnData, folderPath);
             break;
         case 5:
-            result = myIO.SaveData(ProjectData, folderPath);
+            result = myIO.saveData(ProjectData, folderPath);
             break;
         case 6:
-            result = myIO.SaveData(DependentData, folderPath);
+            result = myIO.saveData(DependentData, folderPath);
             break;
     }
     return result;
@@ -438,22 +438,22 @@ int Solution::Q10_Restore(int table, string folderPath){
     int result = 0;
     switch (table){
         case 1:
-            result = myIO.LoadData(EmployeeData, folderPath);
+            result = myIO.loadData(EmployeeData, folderPath);
             break;
         case 2:
-            result = myIO.LoadData(DepartmentData, folderPath);
+            result = myIO.loadData(DepartmentData, folderPath);
             break;
         case 3:
-            result = myIO.LoadData(DeptLocationData, folderPath);
+            result = myIO.loadData(DeptLocationData, folderPath);
             break;
         case 4:
-            result = myIO.LoadData(WorksOnData, folderPath);
+            result = myIO.loadData(WorksOnData, folderPath);
             break;
         case 5:
-            result = myIO.LoadData(ProjectData, folderPath);
+            result = myIO.loadData(ProjectData, folderPath);
             break;
         case 6:
-            result = myIO.LoadData(DependentData, folderPath);
+            result = myIO.loadData(DependentData, folderPath);
             break;
     }
     return result;
