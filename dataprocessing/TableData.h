@@ -18,10 +18,29 @@ public:
     TableData(string filePath, TableUnit* ptU);
 
     int GetSize();
+
+    /** @brief Function resize vector.
+     *  
+     *  Function resize vector.
+     *  @return not return
+    */
     void Resize(int);
+
+      /** @brief Function add reference object to list of employees
+     *  
+     *  Function add an employee object to list of employees
+     *  @return return employee id
+     *  if fail, return -1;
+    */
     string ToString();
     TableUnit* GetTableUnit();
 
+    /** @brief Function add reference object to list of object
+     *  
+     *  Function add an employee object to list of object
+     *  @return return size()
+     *  
+    */
     int Push(TableUnit *ptU);
     int Change(int index, TableUnit *ptU);
     int Delele(int index);
