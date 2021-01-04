@@ -109,7 +109,7 @@ void IO::dataOut(TableUnit* pTU, int id){
     i = 0; // iterator for value
     cout << setw(5) << left << id;
     for (it = mapMember.begin(); it != mapMember.end(); it++){
-        cout << setw(tableWidth[i] + 2) << left << ((it->second == "-1") ? "null" : it->second);
+        cout << setw(tableWidth[i] + 2) << left << it->second;
         i++;
     }
     cout << endl << string(sumWidth + 5/*Id*/, '-') << endl;

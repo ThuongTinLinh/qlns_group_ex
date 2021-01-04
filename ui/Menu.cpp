@@ -101,34 +101,32 @@ void Menu::Mn1_CRUD(){
             continue;
         }        
         
-        int Add_Select = 0;
+        int select = 0;
         SelectTable();        
-        cin >> Add_Select; cin.ignore();
-        if (Add_Select == 0) break;
-        if (Add_Select < 1 || Add_Select > 6){
+        cin >> select; cin.ignore();
+        if (select == 0) break;
+        if (select < 1 || select > 6){
             cout << "   Wrong Selection!" << endl;
             continue;
         }
-        SolutionData->Q1_AddToTable(Add_Select);
 
         switch (Mn1_Select){
             case 1:{
-                SolutionData->Q1_AddToTable(Add_Select);
+                SolutionData->Q1_AddToTable(select);
                 break;
             }
             case 2:{
-                SolutionData->Q1_EditTable(Edit_Select);
+                SolutionData->Q1_EditTable(select);
                 break;
             }
             case 3:{
-                SolutionData->Q1_DeleteInTable(Delete_Select);
+                SolutionData->Q1_DeleteInTable(select);
                 break;
             }
             case 4:{
-                SolutionData->Q1_ReadTable(Read_Select);
+                SolutionData->Q1_ReadTable(select);
                 break;
             }
-
         }
     }while(Mn1_Select != 0);
     
@@ -272,25 +270,5 @@ void Menu::Mn10_BackupAndRestore(){
             }while(restore_Select != 0);
         }
     }while(mn10_Select != 0);
-    
-    /*if(select == 1){
-        //CompanyData->Q10_Backup();                                                    // todo
-        cout << "   Done backup." << endl;
-    } else if(select == 2){
-        // vector<string> listVer = CompanyData->Q10_GetListVerRestore();               // todo
-        // for(int i; i < listVer.size(); i++){
-        //     cout << "   " + to_string(i) + ". ver " + listVer[0] << endl;
-        // }
-        // cout << "Please chose : " << endl;
-        // cin >> select;
-        // if(select >= listVer.size()) {
-        //     select = 0;
-        // }
-        // string selectVer = listVer[select];
-        // CompanyData->Q10_Restore(selectVer);                                         // todo
-        cout << "   Done restore." << endl;
-    } else {
-        cout << "don't backup or restore " << endl;
-    }*/
     
 }
