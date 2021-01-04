@@ -342,8 +342,10 @@ long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
             long sumSalary = 0;
             int iEmployee = 0;
             for(TableUnit *tU2 : employees){
-                sumSalary += stoi(tU2->GetValue("Salary"));
-                iEmployee++;
+                if(tU2->GetValue("DNO") == dNo){
+                    sumSalary += stoi(tU2->GetValue("Salary"));
+                    iEmployee++;
+                }
             }
             lOut = long(sumSalary / iEmployee);
             break;
