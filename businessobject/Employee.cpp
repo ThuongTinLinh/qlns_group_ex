@@ -29,7 +29,11 @@ void Employee::FromMapMember(){
     Address = Member["Address"];
     Sex = Member["Sex"];
     Salary = stoi(Member["Salary"]);
-    SuperSSN = stol(Member["SuperSSN"]);
+    if(Member["SuperSSN"] == "null"){
+        SuperSSN = -1;
+    } else {
+        SuperSSN = stol(Member["SuperSSN"]);
+    }
     DNO = stoi(Member["DNO"]);
 }
 void Employee::ToMapMember(){
@@ -41,7 +45,11 @@ void Employee::ToMapMember(){
     Member["Address"] = Address;
     Member["Sex"] = Sex;
     Member["Salary"] = to_string(Salary);
-    Member["SuperSSN"] = to_string(SuperSSN);
+    if(SuperSSN == -1){
+        Member["SuperSSN"] = "null";
+    } else {
+        Member["SuperSSN"] = to_string(SuperSSN);
+    }
     Member["DNO"] = to_string(DNO);
 }
 TableUnit *Employee::ClonePtr(){

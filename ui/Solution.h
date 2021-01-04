@@ -17,12 +17,7 @@
 using namespace std;
 
 class Solution{
-    Employee *employee;
-    Department *department;
-    Dependent *dependent;
-    DeptLocation *deptLocation;
-    Project *project;
-    WorksOn *worksOn;
+    vector<TableData*> tableData;
 
     TableData *EmployeeData;
     TableData *DepartmentData;
