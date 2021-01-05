@@ -14,15 +14,15 @@ void TableUnit::setMapMember(map<string, string> member){
     _member = member;
     fromMapMember();
 }
-int TableUnit::fromVt(vector<string> vt){
+void TableUnit::fromVt(vector<string> vt){
     toMapMember();
     map<string, string>::iterator it;
     int i=0;
     for (it = _member.begin(); it != _member.end(); it++)
     {   
-            _member[it->first] = vt[i++];
+        _member[it->first] = vt[i++];
     }
-    int check = fromMapMember();
+    fromMapMember();
 }
 void TableUnit::fromStringDecode(string sCode){    
     vector<string> vt = Utility::fromString(sCode);
@@ -66,17 +66,7 @@ void TableUnit::setValue(string key, string value){
 
 string TableUnit::getValue(string key){
     toMapMember();
-    // return Member[key];
-    // for test
-    auto it = _member.find(key);
-    string value("");
-    if(it == _member.end()){
-        value = "N/A";
-        cout << "dclmm deo tim thay " << key <<endl;
-    } else {
-        value = it->second;
-    }
-    return value;
+    return Member[key];
 }
 
 bool TableUnit::checkValue(string key, string value){
