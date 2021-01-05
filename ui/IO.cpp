@@ -4,6 +4,7 @@ IO::IO(){}
 void IO::dataIn(TableUnit* pTU){
     map<string, string> mapMember = pTU->getMapMember(); // Get the map<string, string> store data of TableUnit.
     map<string, string>::iterator it;
+    cin.ignore();
     for (it = mapMember.begin(); it != mapMember.end(); it++){
         cout << "enter value for " << it->first << " = ";
         string s = ""; getline(cin, s);
@@ -124,7 +125,7 @@ void IO::dataEdit(TableData* pTD, string idName){
     vector<TableUnit*> vTU = pTD->getData();
     
     cout << "   Enter " << idName << ": ";
-    string idValue = ""; getline(cin, idValue);
+    string idValue = ""; getline(cin, idValue);cin.ignore();
     for (int i = 0; i < vTU.size(); i++){
         TableUnit* pTU = vTU[i];
         if (pTU->getValue(idName) == idValue){
@@ -132,18 +133,20 @@ void IO::dataEdit(TableData* pTD, string idName){
             dataIn(pTU);
             break;
         }
-    }
-    dataOut(pTD);    
+    }  
 }
 void IO::dataEditById(TableData* pTD){
     dataOut(pTD);
     cout << "   Enter Id: ";
-    int id = 0; cin >> id; cin.ignore();
+    int id = 0; cin >> id;
     id--;
     TableUnit* pTU = pTD->getPtr(id);
+    if (pTD == nullptr){
+        cout << "   Id not found!" <<endl;
+        return;
+    }
     dataOut(pTU, id + 1);
     dataIn(pTU);
-    dataOut(pTD);
 }
 void IO::dataDelete(TableData* pTD, string idName){
     dataOut(pTD);
@@ -163,7 +166,6 @@ void IO::dataDelete(TableData* pTD, string idName){
             break;
         }
     }
-    dataOut(pTD);  
 }
 void IO::dataDeleteById(TableData* pTD){
     dataOut(pTD);
@@ -171,13 +173,16 @@ void IO::dataDeleteById(TableData* pTD){
     int id = 0; cin >> id; cin.ignore();
     id--;
     TableUnit* unit = pTD->getPtr(id);
+    if (pTD == nullptr){
+        cout << "   Id not found!" <<endl;
+        return;
+    }
     dataOut(unit, id + 1);
     cout << "   Delete this unit?" << endl;
     cout << "   1.Yes." << endl;
     cout << "   2.No."  << endl;
     int select = 0; cin >> select; cin.ignore();
     if (select == 1) pTD->delele(id);
-    dataOut(pTD);
 }
 int IO::saveData(TableData* pTD, string filepath){
     string datetime = Utility::getDatetimeString();

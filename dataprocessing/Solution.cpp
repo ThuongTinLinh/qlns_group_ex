@@ -165,16 +165,19 @@ void Solution::showAllData(){
 void Solution::q1_AddToTable(int table){
     IO myIO;
     myIO.dataIn(_tableData[table-1]);
+    myIO.dataOut(_tableData[table-1]);
 }
 
 void Solution::q1_EditTable(int table){
     IO myIO;
-    myIO.dataEditById(_tableData[table-1]);        
+    myIO.dataEditById(_tableData[table-1]);  
+    myIO.dataOut(_tableData[table-1]);      
 }
 
 void Solution::q1_DeleteInTable(int table){
     IO myIO;
     myIO.dataDeleteById(_tableData[table-1]);
+    myIO.dataOut(_tableData[table-1]);
 }
 
 void Solution::q1_ReadTable(int table){
@@ -221,13 +224,13 @@ vector<vector<string>> Solution::q3_ShowEmployeeHasDependent(){
     return eOut;
 }
 
-vector<vector<string>> Solution::q4_ShowProjecTime(){
+vector<vector<string>> Solution::q4_ShowProjecTime(string pName){
     vector<TableUnit*> projects = _projectData->getData();
     vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
-    for(TableUnit *tU1 : projects){
+    TableUnit *tU1 = _projectData->find("PName", pName);
+    if(tU1 != nullptr){
         string pNo = tU1->getValue("PNumber");
-        string pName = tU1->getValue("PName");
         double workTime = 0;
         for(TableUnit *tU2 : worksOns){
             if(tU2->getValue("PNO") == pNo ){                                       // check project number

@@ -42,7 +42,7 @@ public:
      * @param pTD a pointer point to a TableData. 
     */
     void dataOut(TableData* pTD);
-
+    
     /** @brief Function that find and edit data in a TableData.
      * 
      * @details find data in a TableData by its value and name, then edit it by user.

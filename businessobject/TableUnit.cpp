@@ -66,10 +66,10 @@ void TableUnit::setValue(string key, string value){
 
 string TableUnit::getValue(string key){
     toMapMember();
-    return _memmber[key];
+    return _member[key];
 }
 
 bool TableUnit::checkValue(string key, string value){
     toMapMember();
-    return _memmber[key] == value;
+    return _member[key] == value;
 }
