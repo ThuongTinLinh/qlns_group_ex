@@ -340,16 +340,16 @@ vector<vector<string>> Solution::q9_minTimeWorkOnAtDependent(int dNumberInput, s
     return eOut;
 }
 
-int Solution::q10_Backup(int table, string folderPath){
+int Solution::q10_Backup(int table){
     IO myIO;
     int result = 0;
-    result = myIO.saveData(_tableData[table-1], folderPath);
+    result = myIO.saveData(_tableData[table-1], "data\\" + to_string(table) + ".data");
     return result;
 }
 
-int Solution::q10_Restore(int table, string folderPath){
+int Solution::q10_Restore(int table){
     IO myIO;
     int result = 0;
-    result = myIO.loadData(_tableData[table-1], folderPath);
+    result = myIO.loadData(_tableData[table-1], "data\\" + to_string(table) + ".data");
     return result;
 }

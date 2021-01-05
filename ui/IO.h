@@ -78,10 +78,10 @@ public:
      * @details save a TableData as a encoded string at a .data file,
      * the file name has information of the save time.
      * @param pTD a pointer point to a TableData.
-     * @param filename name of the folder.
+     * @param filepath filepath to .data file.
      * 
     */
-    int saveData(TableData* pTD, string filename);
+    int saveData(TableData* pTD, string filepath);
 
     /** @brief Function that load a TableData from a .data file.
      * 

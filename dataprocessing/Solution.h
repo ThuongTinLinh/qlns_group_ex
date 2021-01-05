@@ -119,21 +119,19 @@ public:
 
     /** @brief Function backup select data to folder.
      *
-     * @param i no select table
-     * @param folderPath path to save
+     * @param i No select table
      * @return successed return to 1
      *         fail return to 0
     */
-    int q10_Backup(int i, string folderPath);
+    int q10_Backup(int i);
 
     /** @brief Function restore select data to folder.
      *
-     * @param i no select table
-     * @param folderPath path to save
+     * @param i No select table
      * @return successed return to 1
      *         fail return to 0
     */
-    int q10_Restore(int i, string folderPath);
+    int q10_Restore(int i);
 };
 
 #endif // Project_dataprocessing_Company_h_

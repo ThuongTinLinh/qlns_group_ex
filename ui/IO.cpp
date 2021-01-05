@@ -179,10 +179,9 @@ void IO::dataDeleteById(TableData* pTD){
     if (select == 1) pTD->delele(id);
     dataOut(pTD);
 }
-int IO::saveData(TableData* pTD, string filename){
+int IO::saveData(TableData* pTD, string filepath){
     string datetime = Utility::getDatetimeString();
-    string folderPath = "data/" + filename + "/" + datetime + ".data";
-    ofstream outFile(folderPath);
+    ofstream outFile(filepath);
     if(!outFile) return 0;
     for (auto pTU: pTD->getData()){
         outFile << pTU->toStringEncode() << endl;
@@ -193,6 +192,7 @@ int IO::saveData(TableData* pTD, string filename){
 int IO::loadData(TableData* pTD, string filepath){
     pTD->deleleAll();
     ifstream inFile(filepath);
+    if(!inFile) return 0;
     const int maxSize = 255;
     char buff[maxSize];
     while(inFile.getline(buff, maxSize))
