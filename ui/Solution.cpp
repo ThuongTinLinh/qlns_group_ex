@@ -1,26 +1,27 @@
 #include "Solution.h"
 
-// ========Contructor========
-
-/** @brief Contructor for Solution.
+/**
+ * contructor
 */
 Solution::Solution(){
-    EmployeeData = new TableData(new Employee());
-    DepartmentData = new TableData(new Department());
-    DependentData = new TableData(new Dependent());
-    DeptLocationData = new TableData(new DeptLocation());
-    ProjectData = new TableData(new Project());
-    WorksOnData = new TableData(new WorksOn());
+    _employeeData = new TableData(new Employee());
+    _departmentData = new TableData(new Department());
+    _dependentData = new TableData(new Dependent());
+    _deptLocationData = new TableData(new DeptLocation());
+    _projectData = new TableData(new Project());
+    _worksOnData = new TableData(new WorksOn());
 
-    tableData.push_back(EmployeeData);
-    tableData.push_back(DepartmentData);
-    tableData.push_back(DependentData);
-    tableData.push_back(DeptLocationData);
-    tableData.push_back(ProjectData);
-    tableData.push_back(WorksOnData);
+    _tableData.push_back(_employeeData);
+    _tableData.push_back(_departmentData);
+    _tableData.push_back(_dependentData);
+    _tableData.push_back(_deptLocationData);
+    _tableData.push_back(_projectData);
+    _tableData.push_back(_worksOnData);
 };
 
-
+/**
+ * local function for initial data
+*/
 void EnterEmployee(TableData *);
 void EnterDepartment(TableData *);
 void EnterDependent(TableData *);
@@ -28,11 +29,6 @@ void EnterDeptLocation(TableData *);
 void EnterProject(TableData *);
 void EnterWorksOn(TableData *);
 
-/** @brief Function init data for Employee.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterEmployee(TableData *data){
     Employee* tU1 = new Employee("John", "B", "Smith", 123456789, "1965-01-09", "731 Fondren, Houston, TX", "M", 30000, 333445555, 5);
     Employee* tU2 = new Employee("Franklin", "T", "Wong", 333445555, "1955-12-08", "638 Voss, Houston, TX", "M", 40000, 888665555, 5);
@@ -52,11 +48,6 @@ void EnterEmployee(TableData *data){
     data->Push(tU8);
 }
 
-/** @brief Function init data for Department.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterDepartment(TableData *data){
     Department* tU1 = new Department("Research", 5, 333445555, "1988-05-22");
     Department* tU2 = new Department("Admrstration", 4, 987654321, "1995-01-01");
@@ -66,11 +57,6 @@ void EnterDepartment(TableData *data){
     data->Push(tU3);
 }
 
-/** @brief Function init data for Dependent.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterDependent(TableData *data){
     Dependent* tU1 = new Dependent(333445555, "Alice", "F", "1986-04-05", "DAUGHTER");
     Dependent* tU2 = new Dependent(333445555, "Theodore", "M", "1983-10-25", "SON");
@@ -88,11 +74,6 @@ void EnterDependent(TableData *data){
     data->Push(tU7);
 }
 
-/** @brief Function init data for Project.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterProject(TableData *data){
     Project* tU1 = new Project("ProductX", 1, "Bellaire", 5);
     Project* tU2 = new Project("ProductY", 2, "Sugarland", 5);
@@ -108,11 +89,6 @@ void EnterProject(TableData *data){
     data->Push(tU6);
 }
 
-/** @brief Function init data for DeptLocation.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterDeptLocation(TableData *data){
     DeptLocation* tU1 = new DeptLocation(1, "Houston");
     DeptLocation* tU2 = new DeptLocation(4, "Stafford");
@@ -126,11 +102,6 @@ void EnterDeptLocation(TableData *data){
     data->Push(tU5);
 }
 
-/** @brief Function init data for WorksOn.
- * 
- * @details init data in to table
- * @param data apointer point to a TableData.
-*/
 void EnterWorksOn(TableData *data){
     WorksOn* tU1 = new WorksOn(123456789, 1, 32.5);
     WorksOn* tU2 = new WorksOn(123456789, 2, 7.5);
@@ -166,91 +137,62 @@ void EnterWorksOn(TableData *data){
     data->Push(tU16);
 }
 
-/** @brief Function init data for all data.
- * 
- * @details init data in to table
-*/
 void Solution::InitData(){
-    EnterEmployee(EmployeeData);
-    EnterDepartment(DepartmentData);
-    EnterDependent(DependentData);
-    EnterDeptLocation(DeptLocationData);
-    EnterProject(ProjectData);
-    EnterWorksOn(WorksOnData);
+    EnterEmployee(_employeeData);
+    EnterDepartment(_departmentData);
+    EnterDependent(_dependentData);
+    EnterDeptLocation(_deptLocationData);
+    EnterProject(_projectData);
+    EnterWorksOn(_worksOnData);
 }
 
-/** @brief Function display data for all table.
- * 
- * @details display data of table
+/**
+ * display data
 */
 void Solution::ShowAllData(){
     IO myIO;
-    myIO.dataOut(EmployeeData);
-    myIO.dataOut(DepartmentData);
-    myIO.dataOut(DependentData);
-    myIO.dataOut(DeptLocationData);
-    myIO.dataOut(ProjectData);
-    myIO.dataOut(WorksOnData);
+    myIO.dataOut(_employeeData);
+    myIO.dataOut(_departmentData);
+    myIO.dataOut(_dependentData);
+    myIO.dataOut(_deptLocationData);
+    myIO.dataOut(_projectData);
+    myIO.dataOut(_worksOnData);
 }
-//********************************************************//
 
-/** @brief Function add data in to table.
- * 
- * @details display data of table
- * @param table index of table
+/**
+ * For question
 */
 void Solution::Q1_AddToTable(int table){
     IO myIO;
-    myIO.dataIn(tableData[table-1]);
+    myIO.dataIn(_tableData[table-1]);
 }
 
-/** @brief Function edit data in to table.
- * 
- * @details edit data of table
- * @param table index of table
-*/
 void Solution::Q1_EditTable(int table){
     IO myIO;
-    myIO.dataEditById(tableData[table-1]);        
+    myIO.dataEditById(_tableData[table-1]);        
 }
 
-/** @brief Function delete data in to table.
- * 
- * @details delete data of table
- * @param table index of table
-*/
 void Solution::Q1_DeleteInTable(int table){
     IO myIO;
-    myIO.dataDeleteById(tableData[table-1]);
+    myIO.dataDeleteById(_tableData[table-1]);
 }
 
-/** @brief Function read data in to table.
- * 
- * @details read data of table
- * @param table index of table
-*/
 void Solution::Q1_ReadTable(int table){
     IO myIO;
-    myIO.dataOut(tableData[table-1]);
+    myIO.dataOut(_tableData[table-1]);
 }
 
-
-/** @brief Function display list employee of manager.
- * 
- * @details Function display list employee of manager
- * @param mngNameInput name of manager
-*/
 vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
-    vector<TableUnit*> employees = EmployeeData->GetData();
+    vector<TableUnit*> employees = _employeeData->GetData();
     for(TableUnit *tU1 : employees){
-        if(tU1->GetValue("FName") +  " " + tU1->GetValue("LName") == mngNameInput ){
+        if(tU1->GetValue("FName") +  " " + tU1->GetValue("LName") == mngNameInput ){            // check name of manager
             string mngSSN = tU1->GetValue("SSN");
             for(TableUnit *tU2 : employees){
-                if(tU2->GetValue("SuperSSN") == mngSSN ){
+                if(tU2->GetValue("SuperSSN") == mngSSN ){                                       // check emplyees of manager
                     string eName = tU2->GetValue("FName") + " " + tU2->GetValue("LName");
                     string eSSN = tU2->GetValue("SSN");
-                    vector<string> e = {eName, eSSN};
+                    vector<string> e = {eName, eSSN};                                           // information of employee
                     eOut.push_back(e);
                 }
             }
@@ -259,20 +201,16 @@ vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
     return eOut;
 }
 
-/** @brief Function display list employee at Dependent.
- * 
- * @details Function display list employee at Dependent.
-*/
 vector<vector<string>> Solution::Q3_ShowEmployeeHasDependent(){
-    vector<TableUnit*> dependents = DependentData->GetData();
+    vector<TableUnit*> dependents = _dependentData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : dependents){
         string relationship = tU1->GetValue("Relationship");
-        if(relationship == "DAUGHTER" || relationship == "SON" ){
+        if(relationship == "DAUGHTER" || relationship == "SON" ){                               // check relationship of employee
             string rName = tU1->GetValue("DependentName");
             string eSSN = tU1->GetValue("ESSN");
-            TableUnit* employee = EmployeeData->Find("SSN", eSSN);
-            if(employee != nullptr ){
+            TableUnit* employee = _employeeData->Find("SSN", eSSN);
+            if(employee != nullptr ){                                                           // check dependent
                 string eName = employee->GetValue("FName") + " " + employee->GetValue("LName");
                 string eSSN = employee->GetValue("SSN");
                 vector<string> e = {eName, eSSN, rName, relationship};
@@ -283,20 +221,16 @@ vector<vector<string>> Solution::Q3_ShowEmployeeHasDependent(){
     return eOut;
 }
 
-/** @brief Function display list Project and time of project.
- * 
- * @details Function display list Project and time of project.
-*/
 vector<vector<string>> Solution::Q4_ShowProjecTime(){
-    vector<TableUnit*> projects = ProjectData->GetData();
-    vector<TableUnit*> worksOns = WorksOnData->GetData();
+    vector<TableUnit*> projects = _projectData->GetData();
+    vector<TableUnit*> worksOns = _worksOnData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : projects){
         string pNo = tU1->GetValue("PNumber");
         string pName = tU1->GetValue("PName");
         double workTime = 0;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->GetValue("PNO") == pNo ){
+            if(tU2->GetValue("PNO") == pNo ){                                       // check project number
                 workTime += stod(tU2->GetValue("Hours"));
             }
         }
@@ -306,20 +240,16 @@ vector<vector<string>> Solution::Q4_ShowProjecTime(){
     return eOut;
 }
 
-/** @brief Function display list free Employee.
- * 
- * @details Function display list free Employee.
-*/
 vector<vector<string>> Solution::Q5_ShowFreeEmployee(){
-    vector<TableUnit*> employees = EmployeeData->GetData();
-    vector<TableUnit*> worksOns = WorksOnData->GetData();
+    vector<TableUnit*> employees = _employeeData->GetData();
+    vector<TableUnit*> worksOns = _worksOnData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : employees){
         string eNo = tU1->GetValue("SSN");
         string eName = tU1->GetValue("FName") + " " + tU1->GetValue("MInit") + " " + tU1->GetValue("LName");
         bool work = false;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->GetValue("ESSN") == eNo && stod(tU2->GetValue("Hours")) > 0){
+            if(tU2->GetValue("ESSN") == eNo && stod(tU2->GetValue("Hours")) > 0){   // check working time of employees
                 work = true;
                 break;
             }
@@ -332,22 +262,17 @@ vector<vector<string>> Solution::Q5_ShowFreeEmployee(){
     return eOut;
 }
 
-/** @brief Function show average salary in department.
- * 
- * @details Function show average salary in department
- * @param dNameInput name of Departement
-*/
 long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
-    vector<TableUnit*> employees = EmployeeData->GetData();
-    vector<TableUnit*> departments = DepartmentData->GetData();
+    vector<TableUnit*> employees = _employeeData->GetData();
+    vector<TableUnit*> departments = _departmentData->GetData();
     long lOut = 0;
     for(TableUnit *tU1 : departments){
         string dNo = tU1->GetValue("DNumber");
-        if(tU1->GetValue("DName") == dNameInput){
+        if(tU1->GetValue("DName") == dNameInput){                                   // check name of dapartment
             long sumSalary = 0;
             int iEmployee = 0;
             for(TableUnit *tU2 : employees){
-                if(tU2->GetValue("DNO") == dNo){
+                if(tU2->GetValue("DNO") == dNo){                                    // check dapartment number of employees
                     sumSalary += stoi(tU2->GetValue("Salary"));
                     iEmployee++;
                 }
@@ -359,17 +284,12 @@ long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
     return lOut;
 }
 
-/** @brief Function show average salary with sex.
- * 
- * @details Function show average salary with sex
- * @param sexInput char of sex
-*/
 long Solution::Q7_ShowSexAvgSalary(string sexInput){
-    vector<TableUnit*> employees = EmployeeData->GetData();
+    vector<TableUnit*> employees = _employeeData->GetData();
     long sumSalary = 0;
     int iEmployee = 0;
     for(TableUnit *tU1 : employees){
-        if(tU1->GetValue("Sex") == sexInput){
+        if(tU1->GetValue("Sex") == sexInput){                                       // check sex of employees
             sumSalary += stoi(tU1->GetValue("Salary"));
             iEmployee++;
         }        
@@ -377,17 +297,13 @@ long Solution::Q7_ShowSexAvgSalary(string sexInput){
     return long(sumSalary / iEmployee);
 }
 
-/** @brief Function show Manager has't dependent.
- * 
- * @details Function show Manager has't dependent
-*/
 vector<vector<string>> Solution::Q8_ManagerNoDependent(){
-    vector<TableUnit*> departments = DepartmentData->GetData();
+    vector<TableUnit*> departments = _departmentData->GetData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : departments){
         string mgrSSN = tU1->GetValue("MgrSSN");
-        if(DependentData->Find("ESSN", mgrSSN) == nullptr){
-            TableUnit *eMgr = EmployeeData->Find("SSN", mgrSSN);
+        if(_dependentData->Find("ESSN", mgrSSN) == nullptr){                        // check ssn of department
+            TableUnit *eMgr = _employeeData->Find("SSN", mgrSSN);
             string mName = eMgr->GetValue("LName");
             vector<string> e = {mName, mgrSSN};
             eOut.push_back(e);
@@ -397,31 +313,24 @@ vector<vector<string>> Solution::Q8_ManagerNoDependent(){
     return eOut;
 }
 
-/** @brief Function display all employee woking at dependent with workon.
- * 
- * @details Function display all employee woking at dependent with workon
- * @param dNumberInput department number
- * @param pNameInput naem project
- * @param minTimeWorksOn min time of work
-*/
 vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn){
-    vector<TableUnit*> employees = EmployeeData->GetData();
-    vector<TableUnit*> worksOns = WorksOnData->GetData();
+    vector<TableUnit*> employees = _employeeData->GetData();
+    vector<TableUnit*> worksOns = _worksOnData->GetData();
     vector<vector<string>> eOut;
-    TableUnit *project = ProjectData->Find("PName", pNameInput);
+    TableUnit *project = _projectData->Find("PName", pNameInput);
     if(project != nullptr){
         string pNo = project->GetValue("PNumber");
         for(TableUnit *tU1 : employees){
-            if(tU1->GetValue("DNO") == to_string(dNumberInput)){
+            if(tU1->GetValue("DNO") == to_string(dNumberInput)){                            // check department number of employees
                 string eSSN = tU1->GetValue("SSN");
                 string fullName = tU1->GetValue("FName") + " " + tU1->GetValue("LName");
                 double sumTime = 0;
                 for(TableUnit *tU2 : worksOns){
-                    if(tU2->GetValue("PNO") == pNo && tU2->GetValue("ESSN") == eSSN){
+                    if(tU2->GetValue("PNO") == pNo && tU2->GetValue("ESSN") == eSSN){       // check project number and SSN of Workons
                         sumTime += stod(tU2->GetValue("Hours"));
                     }
                 }
-                if(sumTime >= minTimeWorksOn ){
+                if(sumTime >= minTimeWorksOn ){                                             // check min time of employees
                     vector<string> e = {fullName, eSSN, to_string(sumTime)};
                     eOut.push_back(e);
                 }
@@ -431,28 +340,16 @@ vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, s
     return eOut;
 }
 
-/** @brief Function backup data.
- * 
- * @details Function backup data
- * @param table table backup
- * @param folderPath path to save
-*/
 int Solution::Q10_Backup(int table, string folderPath){
     IO myIO;
     int result = 0;
-    result = myIO.saveData(tableData[table-1], folderPath);
+    result = myIO.saveData(_tableData[table-1], folderPath);
     return result;
 }
 
-/** @brief Function restore data.
- * 
- * @details Function restore data
- * @param table table resotre
- * @param folderPath path to load
-*/
 int Solution::Q10_Restore(int table, string folderPath){
     IO myIO;
     int result = 0;
-    result = myIO.loadData(tableData[table-1], folderPath);
+    result = myIO.loadData(_tableData[table-1], folderPath);
     return result;
 }
