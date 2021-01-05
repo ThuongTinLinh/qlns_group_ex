@@ -38,23 +38,23 @@ void enterEmployee(TableData *data){
     Employee* tU6 = new Employee("Joyce", "A", "English", 453453453, "1972-07-31", "5631 Ric, Houston, TX", "F", 25000, 333445555, 5);
     Employee* tU7 = new Employee("Ahmad", "V", "Jabbar", 987987987, "1969-03-29", "980 Dallas, Houston, TX", "M", 25000, 987654321, 4);
     Employee* tU8 = new Employee("James", "E", "Borg", 888665555, "1937-11-10", "450 Stone, Houston, TX", "M", 55000, -1, 1);
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
-    data->Push(tU4);
-    data->Push(tU5);
-    data->Push(tU6);
-    data->Push(tU7);
-    data->Push(tU8);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
+    data->push(tU4);
+    data->push(tU5);
+    data->push(tU6);
+    data->push(tU7);
+    data->push(tU8);
 }
 
 void enterDepartment(TableData *data){
     Department* tU1 = new Department("Research", 5, 333445555, "1988-05-22");
     Department* tU2 = new Department("Admrstration", 4, 987654321, "1995-01-01");
     Department* tU3 = new Department("Headquarters", 1, 888665555, "1981-06-19");
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
 }
 
 void enterDependent(TableData *data){
@@ -65,13 +65,13 @@ void enterDependent(TableData *data){
     Dependent* tU5 = new Dependent(123456789, "Michael", "M", "1988-01-04", "SON");
     Dependent* tU6 = new Dependent(123456789, "Alice", "F", "1988-12-30", "DAUGHTER");
     Dependent* tU7 = new Dependent(123456789, "Elizabeth", "F", "1967-05-05", "SPOUSE");
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
-    data->Push(tU4);
-    data->Push(tU5);
-    data->Push(tU6);
-    data->Push(tU7);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
+    data->push(tU4);
+    data->push(tU5);
+    data->push(tU6);
+    data->push(tU7);
 }
 
 void enterProject(TableData *data){
@@ -81,12 +81,12 @@ void enterProject(TableData *data){
     Project* tU4 = new Project("Computerization", 10, "Stafford", 4);
     Project* tU5 = new Project("Reorganization", 20, "Houston", 1);
     Project* tU6 = new Project("Newbenefits", 30, "Stafford", 4);
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
-    data->Push(tU4);
-    data->Push(tU5);
-    data->Push(tU6);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
+    data->push(tU4);
+    data->push(tU5);
+    data->push(tU6);
 }
 
 void enterDeptLocation(TableData *data){
@@ -95,11 +95,11 @@ void enterDeptLocation(TableData *data){
     DeptLocation* tU3 = new DeptLocation(5, "Bellaire");
     DeptLocation* tU4 = new DeptLocation(5, "Sugarland");
     DeptLocation* tU5 = new DeptLocation(5, "Houston");
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
-    data->Push(tU4);
-    data->Push(tU5);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
+    data->push(tU4);
+    data->push(tU5);
 }
 
 void enterWorksOn(TableData *data){
@@ -119,22 +119,22 @@ void enterWorksOn(TableData *data){
     WorksOn* tU14 = new WorksOn(987654321, 30, 20.0);
     WorksOn* tU15 = new WorksOn(987654321, 20, 15.0);
     WorksOn* tU16 = new WorksOn(888665555, 20, 0);
-    data->Push(tU1);
-    data->Push(tU2);
-    data->Push(tU3);
-    data->Push(tU4);
-    data->Push(tU5);
-    data->Push(tU6);
-    data->Push(tU7);
-    data->Push(tU8);
-    data->Push(tU9);
-    data->Push(tU10);
-    data->Push(tU11);
-    data->Push(tU12);
-    data->Push(tU13);
-    data->Push(tU14);
-    data->Push(tU15);
-    data->Push(tU16);
+    data->push(tU1);
+    data->push(tU2);
+    data->push(tU3);
+    data->push(tU4);
+    data->push(tU5);
+    data->push(tU6);
+    data->push(tU7);
+    data->push(tU8);
+    data->push(tU9);
+    data->push(tU10);
+    data->push(tU11);
+    data->push(tU12);
+    data->push(tU13);
+    data->push(tU14);
+    data->push(tU15);
+    data->push(tU16);
 }
 
 void Solution::initData(){
