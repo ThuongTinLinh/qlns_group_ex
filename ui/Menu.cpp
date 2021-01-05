@@ -105,7 +105,8 @@ void Menu::mn1_CRUD(){
         cout << "Please chose : " << endl;
         
         cin >> mn1_Select;cin.ignore(); 
-        if (mn1_Select < 0 || mn1_Select > 4){
+        if (mn1_Select == 0) break;
+        if (mn1_Select < 1 || mn1_Select > 4){
             cout << "   Wrong Selection!" << endl;
             break;
         }        
