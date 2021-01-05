@@ -16,7 +16,18 @@ class Dependent : public TableUnit{
 public:
     Dependent();
     Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship);
+    /** @brief Function update attribute to the array _member
+     *  
+     *@details  Function update attribute to the array _member
+    */
     void fromMapMember() override;
+
+
+    /** @brief Function save attribute in array member
+     * 
+     *@details Function save attribute in array member
+     *
+    */
     void toMapMember() override;
     TableUnit *clonePtr() override;
 };
