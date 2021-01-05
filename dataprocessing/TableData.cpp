@@ -2,73 +2,73 @@
 
 // ========Contructor========
 TableData::TableData(TableUnit* ptU){
-    tableUnit = ptU;
+    _tableUnit = ptU;
 };
 TableData::TableData(string filePath, TableUnit* ptU){
-    Size = 0;
-    Data.resize(0);
+    _size = 0;
+    _data.resize(0);
     ifstream inFile(filePath);
     const int maxSize = 255;
     char buff[maxSize];
     while(inFile.getline(buff, maxSize))
     {
-        TableUnit* unit = GetTableUnit();
-        unit->FromStringDecode(buff);
-        Data.push_back(unit);
+        TableUnit* unit = getTableUnit();
+        unit->fromStringDecode(buff);
+    _data.push_back(unit);
     }
     inFile.close();
 }
 
 // ========Ex========
-int TableData::GetSize(){
-    return Size;
+int TableData::getSize(){
+    return _size;
 }
-void TableData::Resize(int n){
-    Data.resize(n);
+void TableData::resize(int n){
+    _data.resize(n);
 }
-string TableData::ToString(){
+string TableData::toString(){
     string sOut("");
-    for(TableUnit* unit:Data){
+    for(TableUnit* unit:_data){
         sOut = sOut + unit->ToString() + "\n";
     }
     return sOut;
 }
-TableUnit* TableData::GetTableUnit(){
-    TableUnit* ptU = tableUnit->ClonePtr();
+TableUnit* TableData::getTableUnit(){
+    TableUnit* ptU = _tableUnit->ClonePtr();
     return ptU;
 }
-int TableData::Push(TableUnit *unit){
-    Data.push_back(unit);
-    Size++;
-    return Size;
+int TableData::push(TableUnit *unit){
+    _data.push_back(unit);
+    _size++;
+    return _ssize;
 }
-int TableData::Change(int index, TableUnit *unit){  
-    if(index < Data.size()){
-        Data[index] = unit;
+int TableData::change(int index, TableUnit *unit){  
+    if(index <_data.size()){
+        _data[index] = unit;
     } else {
         index = -1;
     };    
     return index;
 };
-int TableData::Delele(int index){
-    if(index < Data.size()){
-        Data.erase(Data.begin() + index);
+int TableData::delele(int index){
+    if(index <_data.size()){
+        _data.erase_data.begin() + index);
     } else {
         index = -1;
     };
     return index;
 };
 
-TableUnit* TableData::GetPtr(int index){
+TableUnit* TableData::getPtr(int index){
     TableUnit *ptr = nullptr;    
-    if(index < Data.size()){
-        ptr = Data[index];
+    if(index <_data.size()){
+        ptr = _data[index];
     };
     return ptr;
 };
 
-TableUnit* TableData::Find(string key, string value){
-    for(TableUnit* unit:Data){
+TableUnit* TableData::find(string key, string value){
+    for(TableUnit* unit:_data){
         if(unit->CheckValue(key, value)){
             return unit;
             break;
@@ -77,9 +77,9 @@ TableUnit* TableData::Find(string key, string value){
     return nullptr;
 };
 
-vector<TableUnit*> TableData::FindList(string key, string value){
+vector<TableUnit*> TableData::findList(string key, string value){
     vector<TableUnit*> vts;
-    for(TableUnit* unit:Data){
+    for(TableUnit* unit:_data){
         if(unit->CheckValue(key, value)){
             vts.push_back(unit);
         }
@@ -87,6 +87,6 @@ vector<TableUnit*> TableData::FindList(string key, string value){
     return vts;
 };
 
-vector<TableUnit*> TableData::GetData(){
-    return Data;
+vector<TableUnit*> TableData::getData(){
+    return _data;
 };
