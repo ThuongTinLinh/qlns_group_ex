@@ -1,6 +1,6 @@
 #include "Employee.h"
 
-Employee::Employee(){};
+Employee::Employee(){}
 
 Employee::Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno){
     _fName = fName;
@@ -13,11 +13,7 @@ Employee::Employee(string fName, string mInit, string lName, long ssn, string bD
     _salary = salary;
     _superSSN = superSSN;
     _dno = dno;
-};
-
-// Employee::Employee(vector<string> vt){
-//     fromVt(vt);
-// };
+}
 
 // ========Override========
 void Employee::fromMapMember(){

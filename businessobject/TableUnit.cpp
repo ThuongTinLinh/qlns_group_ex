@@ -2,7 +2,7 @@
 
 TableUnit::TableUnit(){
     _member.clear();
-};
+}
 
 map<string, string> TableUnit::getMapMember(){
     toMapMember();
@@ -13,21 +13,21 @@ void TableUnit::setMapMember(map<string, string> member){
     _member.clear();
     _member = member;
     fromMapMember();
-};
-void TableUnit::fromVt(vector<string> vt){
+}
+int TableUnit::fromVt(vector<string> vt){
     toMapMember();
     map<string, string>::iterator it;
     int i=0;
     for (it = _member.begin(); it != _member.end(); it++)
-    {
-        _member[it->first] = vt[i++];
-    };
-    fromMapMember();
-};
+    {   
+            _member[it->first] = vt[i++];
+    }
+    int check = fromMapMember();
+}
 void TableUnit::fromStringDecode(string sCode){    
     vector<string> vt = Utility::fromString(sCode);
     fromVt(vt);
-};
+}
 
 string TableUnit::toString(){
     toMapMember();
@@ -36,11 +36,11 @@ string TableUnit::toString(){
     for (it = _member.begin(); it != _member.end(); it++)
     {
         s += it->second + ", ";
-    };
+    }
     s.resize(s.size() - 2);
     s = "{" + s +"}";
     return s;
-};
+}
 vector<string> TableUnit::toVt(){
     toMapMember();
     map<string, string>::iterator it;
@@ -48,21 +48,21 @@ vector<string> TableUnit::toVt(){
     for (it = _member.begin(); it != _member.end(); it++)
     {
         vtOut.push_back(it->second);
-    };
+    }
     return vtOut;
-};
+}
 
 string TableUnit::toStringEncode(){
     toMapMember();
     string sFile = Utility::toString(toVt());
     return sFile;
-};
+}
 
 void TableUnit::setValue(string key, string value){
     toMapMember();
     _member[key] = value;
     fromMapMember();
-};
+}
 
 string TableUnit::getValue(string key){
     toMapMember();
@@ -77,9 +77,9 @@ string TableUnit::getValue(string key){
         value = it->second;
     }
     return value;
-};
+}
 
 bool TableUnit::checkValue(string key, string value){
     toMapMember();
     return _member[key] == value;
-};
+}

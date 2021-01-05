@@ -1,7 +1,7 @@
 #include "Dependent.h"
 #include <string>
 
-Dependent::Dependent(){};
+Dependent::Dependent(){}
 
 Dependent::Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship)
 {
@@ -10,11 +10,7 @@ Dependent::Dependent(long eSSN, string dependentName, string sex, string bDate, 
     _sex = sex;
     _bDate = bDate;
     _relationship = relationship;
-};
-// Dependent::Dependent(vector<string> vt){
-//     FromVt(vt);
-// };
-
+}
 // ========Override========
 
 void Dependent::fromMapMember(){

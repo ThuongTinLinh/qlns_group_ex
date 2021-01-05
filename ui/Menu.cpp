@@ -2,7 +2,7 @@
 
 Menu::Menu(Solution *solutionData){
     _solutionData = solutionData;
-};
+}
 
 void Menu::home(){
     int select;
@@ -75,7 +75,7 @@ void Menu::home(){
         }
         system("pause");
     }while(select != 0);
-};
+}
 void SelectTable(){
     cout << "   0. Quit." << endl;
     cout << "   1. EMPLOYEE." << endl;
@@ -133,7 +133,7 @@ void Menu::mn1_CRUD(){
     
     
     
-};
+}
 void Menu::mn2_ShowEmployeeOfManager(){
     string mngName;
     cout << "   Please enter Manager Name (ex: 'Franklin Wong') : ";
@@ -143,32 +143,32 @@ void Menu::mn2_ShowEmployeeOfManager(){
     cout<<"*Employee list managed by " + mngName + " : " << endl;
     for(vector<string> vts : employees){
         cout <<  "    " + vts[0] + "(" + vts[1] + ")" <<endl;
-    };
-};
+    }
+}
 void Menu::mn3_ShowEmployeeHasDependent(){
     vector<vector<string>> employees = _solutionData->q3_ShowEmployeeHasDependent();
     // Display data
     cout<<"*List of employees without children:" << endl;
     for(vector<string> vts : employees){
         cout <<  "    " + vts[0] + "(" + vts[1] + ") has " + vts[2] + " is " + vts[3] <<endl;
-    };
-};
+    }
+}
 void Menu::mn4_ShowProjecTime(){
     vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime();
     // Display data
     cout<<"*Project list :" << endl;
     for(vector<string> vts : ptimes){
         cout <<  "    Project " + vts[0] +  " (PNO:" + vts[1] + ") has total time is " + vts[2] + "h" <<endl;
-    };
-};
+    }
+}
 void Menu::mn5_ShowFreeEmployee(){    
     vector<vector<string>> employees = _solutionData->q5_ShowFreeEmployee();
     // Display data
     cout<<"*Employee list is free :" << endl;
     for(vector<string> vts : employees){
             cout << "    " + vts[0] +  " (PNO:" + vts[1] + ") is free" <<endl;
-    };
-};
+    }
+}
 void Menu::mn6_ShowDepartmentAvgSalary(){
     string dName;
     cout << "   Please enter department Name (ex: 'Research') : ";
@@ -177,7 +177,7 @@ void Menu::mn6_ShowDepartmentAvgSalary(){
     // Display data
     cout <<"*" +dName + " has avg salary = " + to_string(dAvgSalarys) + "$" <<endl;
     
-};
+}
 void Menu::mn7_ShowSexAvgSalary(){
     string sex;
     cout << "   Please enter sex (ex: 'M') : ";
@@ -185,15 +185,15 @@ void Menu::mn7_ShowSexAvgSalary(){
     long sexAvgSalary = _solutionData->q7_ShowSexAvgSalary(sex);
     // Display data
     cout << "*'" + sex + "' sex has avg salary = " + to_string(sexAvgSalary) + "$" <<endl;
-};
+}
 void Menu::mn8_ManagerNoDependent(){
     vector<vector<string>> mgrs = _solutionData->q8_ManagerNoDependent();
     // Display data
     cout<<"*Management list has no dependents :" << endl;
     for(vector<string> vts : mgrs){
         cout << "    Manager " + vts[0] + " (" + vts[1] + ") has't dependent " <<endl;
-    };
-};
+    }
+}
 void Menu::mn9_minTimeWorkOnAtDependent(){
     int dNumber;
     string pName;
@@ -211,8 +211,8 @@ void Menu::mn9_minTimeWorkOnAtDependent(){
     for(vector<string> vts : mgrs){
         cout << "    " + vts[0] + " (SSN : " + vts[1] + ") project " + pName + " in department " + to_string(dNumber)
                     + " is workon " +  vts[2] + " >= " + to_string(minTimeWorksOn)  + "h" <<endl;
-    };
-};
+    }
+}
 void Menu::mn10_BackupAndRestore(){
     int mn10_Select = 0;
     do{

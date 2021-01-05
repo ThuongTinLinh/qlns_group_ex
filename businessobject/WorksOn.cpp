@@ -1,17 +1,14 @@
 #include "WorksOn.h"
 #include <string>
 
-WorksOn::WorksOn(){};
+WorksOn::WorksOn(){}
 
 WorksOn::WorksOn(long eSSN, int pno, double hours)
 {
     _eSSN = eSSN;
     _pno= pno;
     _hours= hours;
-};
-// WorksOn::WorksOn(vector<string> vt){
-//     FromVt(vt);
-// };
+}
 
 // ========Override========
 

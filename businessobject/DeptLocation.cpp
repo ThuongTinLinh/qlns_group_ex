@@ -4,14 +4,11 @@
 DeptLocation::DeptLocation(){
     _dNumber = 0;
     _dLocation = "";
-};
+}
 DeptLocation::DeptLocation(const int dNumber, const string dLocation){
      _dNumber = dNumber;
     _dLocation = dLocation;
-};
-// DeptLocation::DeptLocation(vector<string> vt){
-//     FromVt(vt);
-// };
+}
 
 // ========Override========
 

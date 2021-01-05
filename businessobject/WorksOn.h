@@ -13,8 +13,7 @@ class WorksOn : public TableUnit{
     double _hours;
 public:
     WorksOn();
-    WorksOn(long eSSN, int pno, double hours); 
-    // WorksOn(vector<string> vt);
+    WorksOn(long eSSN, int pno, double hours);
     void fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;

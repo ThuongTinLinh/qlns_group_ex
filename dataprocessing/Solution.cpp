@@ -17,7 +17,7 @@ Solution::Solution(){
     _tableData.push_back(_deptLocationData);
     _tableData.push_back(_projectData);
     _tableData.push_back(_worksOnData);
-};
+}
 
 /**
  * local function for initial data

@@ -13,7 +13,6 @@ class DeptLocation : public TableUnit{
 public:
     DeptLocation();
     DeptLocation(int dNumber, string dLocation);
-    // DeptLocation(vector<string> vt);
     void fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;

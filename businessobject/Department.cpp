@@ -1,6 +1,6 @@
 #include "Department.h"
 
-Department::Department(){};
+Department::Department(){}
 // input parameters
 Department::Department(string dName, int dNumber, long mgrSSN, string mgrStartDate)
 {
@@ -8,12 +8,7 @@ Department::Department(string dName, int dNumber, long mgrSSN, string mgrStartDa
     _dNumber = dNumber;              // Number of department
     _mgrSSN = mgrSSN;                // Social security of manafer
     _mgrStartDate = mgrStartDate;    // Start date of manager 
-};
-
-// Department::Department(vector<string> vt){
-//     fromVt(vt);
-// };
-
+}
 // ========Override========
 
 void Department::fromMapMember(){

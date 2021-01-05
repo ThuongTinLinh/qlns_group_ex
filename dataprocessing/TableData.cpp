@@ -3,12 +3,12 @@
 // ========Contructor========
 TableData::TableData(TableUnit* ptU){
     _tableUnit = ptU;
-};
+}
 
 TableData::~TableData(){
     deleleAll();
     delete(_tableUnit);
-};
+}
 
 TableData::TableData(string filePath, TableUnit* ptU){
     _data.resize(0);
@@ -50,9 +50,9 @@ int TableData::change(int index, TableUnit *unit){
         _data[index] = unit;
     } else {
         index = -1;
-    };    
+    }    
     return index;
-};
+}
 
 int TableData::delele(int index){
     if(index <_data.size()){
@@ -60,24 +60,24 @@ int TableData::delele(int index){
         _data.erase(_data.begin() + index);
     } else {
         index = -1;
-    };
+    }
     return index;
-};
+}
 
 void TableData::deleleAll(){
     for(TableUnit *unit:_data){
         delete(unit);
     }
     _data.resize(0);
-};
+}
 
 TableUnit* TableData::getPtr(int index){
     TableUnit *ptr = nullptr;    
     if(index <_data.size()){
         ptr = _data[index];
-    };
+    }
     return ptr;
-};
+}
 
 TableUnit* TableData::find(string key, string value){
     for(TableUnit* unit:_data){
@@ -87,7 +87,7 @@ TableUnit* TableData::find(string key, string value){
         }
     }
     return nullptr;
-};
+}
 
 vector<TableUnit*> TableData::findList(string key, string value){
     vector<TableUnit*> vts;
@@ -97,8 +97,8 @@ vector<TableUnit*> TableData::findList(string key, string value){
         }
     }
     return vts;
-};
+}
 
 vector<TableUnit*> TableData::getData(){
     return _data;
-};
+}
