@@ -8,17 +8,17 @@
 using namespace std;
 
 class Dependent : public TableUnit{
-    long ESSN;
-    string DependentName;
-    string Sex;
-    string BDate;
-    string Relationship;
+    long _eSSN;
+    string _dependentName;
+    string _sex;
+    string _bDate;
+    string _relationship;
 public:
     Dependent();
     Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship);
     Dependent(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
+    void fromMapMember() override;
+    void toMapMember() override;
     TableUnit *ClonePtr() override;
 };
 #endif

@@ -3,13 +3,13 @@
 Employee::Employee(){};
 
 Employee::Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno){
-    FName = fName;
-    MInit = mInit;
-    LName = lName;
+    _fName = fName;
+    _mInit = mInit;
+    _lName = lName;
     SSN = ssn;
-    BDate = bDate;
-    Address = address;
-    Sex = sex;
+    _bDate = bDate;
+    _address= address;
+    _sex = sex;
     Salary = salary;
     SuperSSN = superSSN;
     DNO = dno;
@@ -20,37 +20,37 @@ Employee::Employee(vector<string> vt){
 };
 
 // ========Override========
-void Employee::FromMapMember(){
-    FName = Member["FName"];
-    MInit = Member["MInit"];
-    LName = Member["LName"];
-    SSN = stol(Member["SSN"]);
-    BDate = Member["BDate"];
-    Address = Member["Address"];
-    Sex = Member["Sex"];
-    Salary = stoi(Member["Salary"]);
+void Employee::fromMapMember(){
+    _fName = Member["FName"];
+    _mInit = Member["MInit"];
+    _lName = Member["LName"];
+    _ssn= stol(Member["SSN"]);
+    _bDate = Member["BDate"];
+    _address = Member["Address"];
+    _sex= Member["Sex"];
+    _salary = stoi(Member["Salary"]);
     if(Member["SuperSSN"] == "null"){
-        SuperSSN = -1;
+        _superSSN = -1;
     } else {
-        SuperSSN = stol(Member["SuperSSN"]);
+        _superSSN = stol(Member["SuperSSN"]);
     }
-    DNO = stoi(Member["DNO"]);
+    _dno = stoi(Member["DNO"]);
 }
-void Employee::ToMapMember(){
-    Member["FName"] = FName;
-    Member["MInit"] = MInit;
-    Member["LName"] = LName;
-    Member["SSN"] = to_string(SSN);
-    Member["BDate"] = BDate;
-    Member["Address"] = Address;
-    Member["Sex"] = Sex;
-    Member["Salary"] = to_string(Salary);
-    if(SuperSSN == -1){
+void Employee::toMapMember(){
+    Member["FName"] = _fName;
+    Member["MInit"] = _mInit;
+    Member["LName"] = _lName;
+    Member["SSN"] = to_string(_ssn);
+    Member["BDate"] =_bDate;
+    Member["Address"] = _address;
+    Member["Sex"] = _sex;
+    Member["Salary"] = to_string(_salary);
+    if(_superSSN == -1){
         Member["SuperSSN"] = "null";
     } else {
-        Member["SuperSSN"] = to_string(SuperSSN);
+        Member["SuperSSN"] = to_string(_superSSN);
     }
-    Member["DNO"] = to_string(DNO);
+    Member["DNO"] = to_string(_dno);
 }
 TableUnit *Employee::ClonePtr(){
     TableUnit *pU = new Employee();

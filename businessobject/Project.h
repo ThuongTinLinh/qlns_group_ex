@@ -8,16 +8,16 @@
 using namespace std;
 
 class Project : public TableUnit{
-    string PName;       // Name of Project
-    int PNumber;        // number of Project
-    string PLocation;   // Project location
-    int DNum;           // dept Location number
+    string _pName;       // Name of Project
+    int _pNumber;        // number of Project
+    string _pLocation;   // Project location
+    int _dNum;           // dept Location number
 public:
     Project();
     Project(string pName, int pNumber, string pLocation, int dNum);
     Project(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
+    void fromMapMember() override;
+    void toMapMember() override;
     TableUnit *ClonePtr() override;
 };
 

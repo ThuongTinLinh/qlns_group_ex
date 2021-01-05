@@ -4,10 +4,10 @@
 Project::Project(){};
 
 Project::Project(string pName, int pNumber, string PLocation, int dNum){
-    this->PName = pName;
-    this->PNumber = pNumber;
-    this->PLocation = PLocation;//undefined if don't have this pointer
-    this->DNum = dNum;
+    this->_pName = pName;
+    this->_pNumber= pNumber;
+    this->_pLocation = PLocation;//undefined if don't have this pointer
+    this->_dNum = dNum;
 };
 Project::Project(vector<string> vt){
     FromVt(vt);
@@ -15,17 +15,17 @@ Project::Project(vector<string> vt){
 
 // ========Override========
 
-void Project::FromMapMember(){
-    PName = Member["PName"];
-    PNumber = stoi(Member["PNumber"]);
-    PLocation = Member["PLocation"];
-    DNum = stoi(Member["DNum"]);
+void Project::fromMapMember(){
+    _pName = Member["PName"];
+    _pNumber = stoi(Member["PNumber"]);
+    _pLocation = Member["PLocation"];
+    _dNum= stoi(Member["DNum"]);
 }
-void Project::ToMapMember(){
-    Member["PName"] = PName;
-    Member["PNumber"] = to_string(PNumber);
-    Member["PLocation"] = PLocation;
-    Member["DNum"] = to_string(DNum);
+void Project::toMapMember(){
+    Member["PName"] = _pName;
+    Member["PNumber"] = to_string(_pNumber);
+    Member["PLocation"] = _pLocation;
+    Member["DNum"] = to_string(_dNum);
 }
 TableUnit *Project::ClonePtr(){
     TableUnit *pU = new Project();

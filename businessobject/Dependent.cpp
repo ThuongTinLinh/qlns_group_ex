@@ -5,11 +5,11 @@ Dependent::Dependent(){};
 
 Dependent::Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship)
 {
-    ESSN = eSSN;
-    DependentName = dependentName;
-    Sex = sex;
-    BDate = bDate;
-    Relationship = relationship;
+    _eSSN = eSSN;
+    _dependentName = dependentName;
+    _sex = sex;
+    _bDate = bDate;
+    _relationship = relationship;
 };
 Dependent::Dependent(vector<string> vt){
     FromVt(vt);
@@ -17,19 +17,19 @@ Dependent::Dependent(vector<string> vt){
 
 // ========Override========
 
-void Dependent::FromMapMember(){
-    ESSN = stol(Member["ESSN"]);
-    DependentName = Member["DependentName"];
-    Sex = Member["Sex"];
-    BDate = Member["BDate"];
-    Relationship = Member["Relationship"];
+void Dependent::fromMapMember(){
+    _eSSN = stol(Member["ESSN"]);
+    _dependentName = Member["DependentName"];
+    _sex = Member["Sex"];
+     _bDate = Member["BDate"];
+   _relationship = Member["Relationship"];
 }
-void Dependent::ToMapMember(){
-    Member["ESSN"] = to_string(ESSN);
-    Member["DependentName"] = DependentName;
-    Member["Sex"] = Sex;
-    Member["BDate"] = BDate;
-    Member["Relationship"] = Relationship;
+void Dependent::toMapMember(){
+    Member["ESSN"] = to_string(_eSSN);
+    Member["DependentName"] = _dependentName;
+    Member["Sex"] = _sex;
+    Member["BDate"] = _bDate;
+    Member["Relationship"] =_relationship;
 }
 TableUnit *Dependent::ClonePtr(){
     TableUnit *pU = new Dependent();

@@ -8,16 +8,16 @@
 using namespace std;
 
 class WorksOn : public TableUnit{
-    long ESSN;
-    int PNO;
-    double Hours;
+    long _eSSN;
+    int _pno;
+    double _hours;
 public:
     WorksOn();
     WorksOn(long eSSN, int pno, double hours); 
     WorksOn(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
-    TableUnit *ClonePtr() override;
+    void fromMapMember() override;
+    void toMapMember() override;
+    TableUnit *clonePtr() override;
     
 };
 #endif

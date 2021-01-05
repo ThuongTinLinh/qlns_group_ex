@@ -8,14 +8,14 @@
 using namespace std;
 
 class DeptLocation : public TableUnit{
-    int DNumber;        // number of location
-    string DLocation;   // location name
+    int _dNumber;        // number of location
+    string _dLocation;   // location name
 public:
     DeptLocation();
     DeptLocation(int dNumber, string dLocation);
     DeptLocation(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
+    void fromMapMember() override;
+    void toMapMember() override;
     TableUnit *ClonePtr() override;
 };
 

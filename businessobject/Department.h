@@ -9,16 +9,16 @@ using namespace std;
 
 class Department : public TableUnit{
 private:
-    string DName;
-    int DNumber;
-    long MgrSSN;
-    string MgrStartDate;
+    string _dName;
+    int _dNumber;
+    long _mgrSSN;
+    string _mgrStartDate;
 public :
     Department();
     Department(string dName, int dNumber, long mgrSSN, string mgrStartDate);
     Department(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
+    void fromMapMember() override;
+    void toMapMember() override;
     TableUnit *ClonePtr() override;
 };
 #endif

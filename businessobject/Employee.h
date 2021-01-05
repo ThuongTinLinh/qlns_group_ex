@@ -8,22 +8,22 @@
 using namespace std;
 
 class Employee : public TableUnit{
-    string FName;
-    string MInit;
-    string LName;
-    long SSN;
-    string BDate;
-    string Address;
-    string Sex;
-    int Salary;
-    long SuperSSN;
-    int DNO;
+    string _fName;
+    string _mInit;
+    string _lName;
+    long _ssn;
+    string _bDate;
+    string _address;
+    string _sex;
+    int _salary;
+    long _superSSN;
+    int _dno;
 public:
     Employee();
     Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);  
     Employee(vector<string> vt);
-    void FromMapMember() override;
-    void ToMapMember() override;
+    void fromMapMember() override;
+    void toMapMember() override;
     TableUnit *ClonePtr() override;
 };
 
