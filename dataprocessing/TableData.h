@@ -10,10 +10,10 @@ using namespace std;
 
 class TableData{
     vector<TableUnit*> _data;
-    int _size;
     TableUnit* _tableUnit;
 public:
     TableData(TableUnit*);
+    ~TableData();
 
     /** @brief Function read file, push data in vector
      *  
@@ -22,13 +22,6 @@ public:
      *@param ptU pointer to point TableUnit)
     */
     TableData(string filePath, TableUnit* ptU);
-
-     /** @brief Function get size vector.
-     *  
-     *@details Function get size vector data 
-     *@return return size of vector
-    */
-    int getSize();
 
     /** @brief Function resize vector.
      *  
@@ -79,6 +72,13 @@ public:
     */
     int delele(int index);
     
+    /** @brief Function delete all value an object
+     *  
+     * @details Function change value an object
+     * @param  value index 
+    */
+    void deleleAll();
+
     /** @brief Function find return value from two input :key and value 
      *  
      * @details Function find
