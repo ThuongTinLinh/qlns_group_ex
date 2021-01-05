@@ -9,6 +9,7 @@ void Menu::home(){
     system("pause");
     do{
         system("CLS");
+        select = 0;
         cout << "Home" << endl;
         cout << "   0. Quit." << endl;
         cout << "   1. Add, edit, delete or read data." << endl;
@@ -90,9 +91,11 @@ void SelectTable(){
     cout << "Please chose : " << endl;
 }
 void Menu::mn1_CRUD(){
-    int mn1_Select = 0;
+    
+    int mn1_Select;
     do{
         system("CLS");
+        mn1_Select = 0;
         cout << "   Add, edit, delete or read data." << endl;
         cout << "   0. Quit." << endl;
         cout << "   1. Add." << endl;
@@ -100,12 +103,11 @@ void Menu::mn1_CRUD(){
         cout << "   3. Delete." << endl;
         cout << "   4. Read." << endl;
         cout << "Please chose : " << endl;
-
         
         cin >> mn1_Select;cin.ignore(); 
         if (mn1_Select < 0 || mn1_Select > 4){
             cout << "   Wrong Selection!" << endl;
-            continue;
+            break;
         }        
         
         int select = 0;
@@ -114,7 +116,7 @@ void Menu::mn1_CRUD(){
         if (select == 0) break;
         if (select < 1 || select > 6){
             cout << "   Wrong Selection!" << endl;
-            continue;
+            break;
         }
 
         switch (mn1_Select){
@@ -224,9 +226,11 @@ void Menu::mn9_minTimeWorkOnAtDependent(){
     }
 }
 void Menu::mn10_BackupAndRestore(){
-    int mn10_Select = 0;
+    int mn10_Select;
     do{
+        mn10_Select = 0;
         system("CLS");
+        cin.ignore();
         cout << "Backup and restore" << endl;
         cout << "   0. Quit." << endl;
         cout << "   1. Backup." << endl;
