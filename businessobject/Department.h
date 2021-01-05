@@ -16,9 +16,9 @@ private:
 public :
     Department();
     Department(string dName, int dNumber, long mgrSSN, string mgrStartDate);
-    Department(vector<string> vt);
+    // Department(vector<string> vt);
     void fromMapMember() override;
     void toMapMember() override;
-    TableUnit *ClonePtr() override;
+    TableUnit *clonePtr() override;
 };
 #endif

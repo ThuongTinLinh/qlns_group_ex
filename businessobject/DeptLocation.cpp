@@ -9,9 +9,9 @@ DeptLocation::DeptLocation(const int dNumber, const string dLocation){
      _dNumber = dNumber;
     _dLocation = dLocation;
 };
-DeptLocation::DeptLocation(vector<string> vt){
-    FromVt(vt);
-};
+// DeptLocation::DeptLocation(vector<string> vt){
+//     FromVt(vt);
+// };
 
 // ========Override========
 
@@ -23,7 +23,7 @@ void DeptLocation::toMapMember(){
     Member["DNumber"] = to_string( _dNumber);
     Member["DLocation"] = _dLocation;
 }
-TableUnit *DeptLocation::ClonePtr(){
+TableUnit *DeptLocation::clonePtr(){
     TableUnit *pU = new DeptLocation();
     return pU;
 }

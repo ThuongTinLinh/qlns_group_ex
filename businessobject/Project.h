@@ -18,7 +18,7 @@ public:
     Project(vector<string> vt);
     void fromMapMember() override;
     void toMapMember() override;
-    TableUnit *ClonePtr() override;
+    TableUnit *clonePtr() override;
 };
 
 #endif // Project_businessobject_Project_h_

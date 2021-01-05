@@ -6,18 +6,18 @@ Employee::Employee(string fName, string mInit, string lName, long ssn, string bD
     _fName = fName;
     _mInit = mInit;
     _lName = lName;
-    SSN = ssn;
+    _ssn = ssn;
     _bDate = bDate;
     _address= address;
     _sex = sex;
-    Salary = salary;
-    SuperSSN = superSSN;
-    DNO = dno;
+    _salary = salary;
+    _superSSN = superSSN;
+    _dno = dno;
 };
 
-Employee::Employee(vector<string> vt){
-    FromVt(vt);
-};
+// Employee::Employee(vector<string> vt){
+//     fromVt(vt);
+// };
 
 // ========Override========
 void Employee::fromMapMember(){
@@ -52,7 +52,7 @@ void Employee::toMapMember(){
     }
     Member["DNO"] = to_string(_dno);
 }
-TableUnit *Employee::ClonePtr(){
+TableUnit *Employee::clonePtr(){
     TableUnit *pU = new Employee();
     return pU;
 }

@@ -9,9 +9,9 @@ Project::Project(string pName, int pNumber, string PLocation, int dNum){
     this->_pLocation = PLocation;//undefined if don't have this pointer
     this->_dNum = dNum;
 };
-Project::Project(vector<string> vt){
-    FromVt(vt);
-};
+// Project::Project(vector<string> vt){
+//     fromVt(vt);
+// };
 
 // ========Override========
 
@@ -27,7 +27,7 @@ void Project::toMapMember(){
     Member["PLocation"] = _pLocation;
     Member["DNum"] = to_string(_dNum);
 }
-TableUnit *Project::ClonePtr(){
+TableUnit *Project::clonePtr(){
     TableUnit *pU = new Project();
     return pU;
 }

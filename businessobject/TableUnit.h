@@ -15,62 +15,62 @@ public:
     TableUnit();
     virtual void toMapMember() = 0;
     virtual void fromMapMember() = 0;
-    virtual TableUnit* ClonePtr() = 0;
+    virtual TableUnit* clonePtr() = 0;
     
     /** @brief Function get from map 
      *  
      *  Function get value from map 
     */
-    void SetMapMember(map<string, string> member);
+    void setMapMember(map<string, string> member);
 
     /** @brief Function get value from map
      *  
      *  Function get value from map, 
      *  @return return Member
     */
-    map<string, string> GetMapMember();
+    map<string, string> getMapMember();
 
     /** @brief Function convert value of string to value Member[key]
      *  
      *  Function convert value of string to value Member[key]
      * @param vector type string
      */
-    void FromVt(vector<string>);
+    void fromVt(vector<string>);
 
     /** @brief Function covert value of string to type vector
      *  
      *  Function covert value of string to type vector
      *  @return return vector
      */
-    void FromStringDecode(string);
+    void fromStringDecode(string);
 
     /** @brief Function get value of map put in vector  
      *  
      *  Function get value of map put in vector
      *  @return return vector 
      */
-    vector<string> ToVt();
+    vector<string> toVt();
 
     /** @brief Function convert value of map to vector
      *  
      *  Function convert value of map to vector
      *  @return return string
      */
-    string ToString();
+    string toString();
 
      /** @brief Function get value from map, add string
      *  
      *  Function get value from map, add string
      *  @return return string
      */
-    string ToStringEncode();
+    string toStringEncode();
 
     /** @brief  Fuction convert object to encoded string 
      *  
      *@details  Fuction convert object to encoded string 
      * @return return value type string
      */
-    string GetValue(string key);
+    string getValue(string key);
 
     /** @brief Fuction set value use add value for Member[key]
      *  
@@ -78,14 +78,14 @@ public:
      * @param key string
      * @param value string 
      */
-    void SetValue(string key, string value);
+    void setValue(string key, string value);
 
      /** @brief Function checkValue 
      *  
      *  @details Function get value from map, add string
      *  @return true if value of Member[key] equal to value
      */
-    bool CheckValue(string key, string value); 
+    bool checkValue(string key, string value); 
 };
 
 #endif

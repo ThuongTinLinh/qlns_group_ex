@@ -4,17 +4,17 @@ TableUnit::TableUnit(){
     Member.clear();
 };
 
-map<string, string> TableUnit::GetMapMember(){
+map<string, string> TableUnit::getMapMember(){
     toMapMember();// Tin xoa
     return Member;
 }
 
-void TableUnit::SetMapMember(map<string, string> member){
+void TableUnit::setMapMember(map<string, string> member){
     Member.clear();
     Member = member;
     fromMapMember();
 };
-void TableUnit::FromVt(vector<string> vt){
+void TableUnit::fromVt(vector<string> vt){
     toMapMember();
     map<string, string>::iterator it;
     int i=0;
@@ -24,12 +24,12 @@ void TableUnit::FromVt(vector<string> vt){
     };
     fromMapMember();
 };
-void TableUnit::FromStringDecode(string sCode){    
+void TableUnit::fromStringDecode(string sCode){    
     vector<string> vt = Utility::fromString(sCode);
-    FromVt(vt);
+    fromVt(vt);
 };
 
-string TableUnit::ToString(){
+string TableUnit::toString(){
     toMapMember();
     map<string, string>::iterator it;
     string s("");
@@ -41,7 +41,7 @@ string TableUnit::ToString(){
     s = "{" + s +"}";
     return s;
 };
-vector<string> TableUnit::ToVt(){
+vector<string> TableUnit::toVt(){
     toMapMember();
     map<string, string>::iterator it;
     vector<string> vtOut;
@@ -52,19 +52,19 @@ vector<string> TableUnit::ToVt(){
     return vtOut;
 };
 
-string TableUnit::ToStringEncode(){
+string TableUnit::toStringEncode(){
     toMapMember();
-    string sFile = Utility::toString(ToVt());
+    string sFile = Utility::toString(toVt());
     return sFile;
 };
 
-void TableUnit::SetValue(string key, string value){
+void TableUnit::setValue(string key, string value){
     toMapMember();
     Member[key] = value;
     fromMapMember();
 };
 
-string TableUnit::GetValue(string key){
+string TableUnit::getValue(string key){
     toMapMember();
     // return Member[key];
     // for test
@@ -79,7 +79,7 @@ string TableUnit::GetValue(string key){
     return value;
 };
 
-bool TableUnit::CheckValue(string key, string value){
+bool TableUnit::checkValue(string key, string value){
     toMapMember();
     return Member[key] == value;
 };

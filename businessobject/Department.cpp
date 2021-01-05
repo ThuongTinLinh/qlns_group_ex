@@ -4,15 +4,15 @@ Department::Department(){};
 // input parameters
 Department::Department(string dName, int dNumber, long mgrSSN, string mgrStartDate)
 {
-    DName = dName;                  // Name of department
-    DNumber = dNumber;              // Number of department
-    MgrSSN = mgrSSN;                // Social security of manafer
-    MgrStartDate = mgrStartDate;    // Start date of manager 
+    _dName = dName;                  // Name of department
+    _dNumber = dNumber;              // Number of department
+    _mgrSSN = mgrSSN;                // Social security of manafer
+    _mgrStartDate = mgrStartDate;    // Start date of manager 
 };
 
-Department::Department(vector<string> vt){
-    FromVt(vt);
-};
+// Department::Department(vector<string> vt){
+//     fromVt(vt);
+// };
 
 // ========Override========
 
@@ -28,7 +28,7 @@ void Department::toMapMember(){
     Member["MgrSSN"] = to_string(_mgrSSN);
     Member["MgrStartDate"] = _mgrStartDate;
 }
-TableUnit *Department::ClonePtr(){
+TableUnit *Department::clonePtr(){
     TableUnit *pU = new Department();
     return pU;
 }

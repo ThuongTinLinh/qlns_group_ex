@@ -20,11 +20,12 @@ class Employee : public TableUnit{
     int _dno;
 public:
     Employee();
-    Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);  
-    Employee(vector<string> vt);
+    Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);
+      
+    // Employee(vector<string> vt);
     void fromMapMember() override;
     void toMapMember() override;
-    TableUnit *ClonePtr() override;
+    TableUnit *clonePtr() override;
 };
 
 #endif

@@ -11,9 +11,9 @@ Dependent::Dependent(long eSSN, string dependentName, string sex, string bDate, 
     _bDate = bDate;
     _relationship = relationship;
 };
-Dependent::Dependent(vector<string> vt){
-    FromVt(vt);
-};
+// Dependent::Dependent(vector<string> vt){
+//     FromVt(vt);
+// };
 
 // ========Override========
 
@@ -31,7 +31,7 @@ void Dependent::toMapMember(){
     Member["BDate"] = _bDate;
     Member["Relationship"] =_relationship;
 }
-TableUnit *Dependent::ClonePtr(){
+TableUnit *Dependent::clonePtr(){
     TableUnit *pU = new Dependent();
     return pU;
 }

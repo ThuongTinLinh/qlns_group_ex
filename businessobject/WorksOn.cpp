@@ -9,9 +9,9 @@ WorksOn::WorksOn(long eSSN, int pno, double hours)
     _pno= pno;
     _hours= hours;
 };
-WorksOn::WorksOn(vector<string> vt){
-    FromVt(vt);
-};
+// WorksOn::WorksOn(vector<string> vt){
+//     FromVt(vt);
+// };
 
 // ========Override========
 
