@@ -9,9 +9,9 @@
 using namespace std;
 
 class TableData{
-    vector<TableUnit*> Data;
-    int Size;
-    TableUnit* tableUnit;
+    vector<TableUnit*> _data;
+    int _size;
+    TableUnit* _tableUnit;
 public:
     TableData(TableUnit*);
 
@@ -28,21 +28,21 @@ public:
      *@details Function get size vector data 
      *@return return size of vector
     */
-    int GetSize();
+    int getSize();
 
     /** @brief Function resize vector.
      *  
      * @details Function resize vector data 
      * @param n size of vector
     */
-    void Resize(int n);
+    void resize(int n);
 
     /** @brief Function add reference object 
      *  
      * @details Function add an object in list string
      * @return return string data.
     */
-    string ToString();
+    string toString();
 
     
     /** @brief Function 
@@ -50,7 +50,7 @@ public:
      * @details Function 
      * @return return string data.
     */
-    TableUnit* GetTableUnit();
+    TableUnit* getTableUnit();
 
     /** @brief Function add reference object to list of object
      *  
@@ -58,7 +58,7 @@ public:
      *@param ptU pointer point to TableUnit
      *@return return size of vector.
     */
-    int Push(TableUnit *ptU);
+    int push(TableUnit *ptU);
 
   /** @brief Function change value an object
      *  
@@ -68,7 +68,7 @@ public:
      * @return return size of vector.
      * return -1 if not true 
     */
-    int Change(int index, TableUnit *ptU);
+    int change(int index, TableUnit *ptU);
 
     /** @brief Function change value an object
      *  
@@ -77,7 +77,7 @@ public:
      * @return return index
      * return -1 if not true 
     */
-    int Delele(int index);
+    int delele(int index);
     
     /** @brief Function find return value from two input :key and value 
      *  
@@ -87,7 +87,7 @@ public:
      * @return return unit
      * return nullptr if not true.
     */
-    TableUnit* Find(string key, string value);
+    TableUnit* find(string key, string value);
 
       /** @brief Function find list data true with input
      *  
@@ -96,7 +96,7 @@ public:
      * @param  value string 
      * @return return vector vts
     */
-    vector<TableUnit*> FindList(string key, string value);
+    vector<TableUnit*> findList(string key, string value);
 
      /** @brief Function check input have value in Data
      *  
@@ -104,14 +104,14 @@ public:
      * @param  index int
      * @return return ptr
     */
-    TableUnit* GetPtr(int index);
+    TableUnit* getPtr(int index);
 
     /** @brief Function get data from vector TableData
      *  
      * @details Function get data from vector TableData
      * @return return data
     */
-    vector<TableUnit*> GetData();
+    vector<TableUnit*> getData();
 };
 
 #endif // Project_dataprocessing_TableData_h_
