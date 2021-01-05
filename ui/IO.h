@@ -47,7 +47,7 @@ public:
      * 
      * @details find data in a TableData by its value and name, then edit it by user.
      * @param pTD a pointer point to a TableData.
-     * @param idName name of the attribute in TableData.
+     * @param idName name of the attribute to find data in TableData.
     */
     void dataEdit(TableData* pTD, string idName);
 
@@ -62,7 +62,7 @@ public:
      * 
      * @details find data in a TableData by its value and name, the delete it with users permission.
      * @param pTD a pointer point to a TableData.
-     * @param idName name of the attribute in TableData.
+     * @param idName name of the attribute to find data in TableData.
     */
     void dataDelete(TableData* pTD, string idName);
 

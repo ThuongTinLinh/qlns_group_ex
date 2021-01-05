@@ -4,8 +4,13 @@
 TableData::TableData(TableUnit* ptU){
     _tableUnit = ptU;
 };
+
+TableData::~TableData(){
+    deleleAll();
+    delete(_tableUnit);
+};
+
 TableData::TableData(string filePath, TableUnit* ptU){
-    _size = 0;
     _data.resize(0);
     ifstream inFile(filePath);
     const int maxSize = 255;
@@ -20,9 +25,6 @@ TableData::TableData(string filePath, TableUnit* ptU){
 }
 
 // ========Ex========
-int TableData::getSize(){
-    return _size;
-}
 void TableData::resize(int n){
     _data.resize(n);
 }
@@ -37,11 +39,12 @@ TableUnit* TableData::getTableUnit(){
     TableUnit* ptU = _tableUnit->clonePtr();
     return ptU;
 }
+
 int TableData::push(TableUnit *unit){
     _data.push_back(unit);
-    _size++;
-    return _size;
+    return 1;
 }
+
 int TableData::change(int index, TableUnit *unit){  
     if(index <_data.size()){
         _data[index] = unit;
@@ -50,13 +53,22 @@ int TableData::change(int index, TableUnit *unit){
     };    
     return index;
 };
+
 int TableData::delele(int index){
     if(index <_data.size()){
+        delete(_data[index]);
         _data.erase(_data.begin() + index);
     } else {
         index = -1;
     };
     return index;
+};
+
+void TableData::deleleAll(){
+    for(TableUnit *unit:_data){
+        delete(unit);
+    }
+    _data.resize(0);
 };
 
 TableUnit* TableData::getPtr(int index){

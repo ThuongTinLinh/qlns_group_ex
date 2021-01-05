@@ -11,20 +11,20 @@ using namespace std;
 
 class Menu{
 protected:
-    Solution *SolutionData;
+    Solution *_solutionData;
 public:
     Menu(Solution *solutionData);
-    void Home();
-    void Mn1_CRUD();
-    void Mn2_ShowEmployeeOfManager();
-    void Mn3_ShowEmployeeHasDependent();
-    void Mn4_ShowProjecTime();
-    void Mn5_ShowFreeEmployee();
-    void Mn6_ShowDepartmentAvgSalary();
-    void Mn7_ShowSexAvgSalary();
-    void Mn8_ManagerNoDependent();
-    void Mn9_minTimeWorkOnAtDependent();
-    void Mn10_BackupAndRestore();
+    void home();
+    void mn1_CRUD();
+    void mn2_ShowEmployeeOfManager();
+    void mn3_ShowEmployeeHasDependent();
+    void mn4_ShowProjecTime();
+    void mn5_ShowFreeEmployee();
+    void mn6_ShowDepartmentAvgSalary();
+    void mn7_ShowSexAvgSalary();
+    void mn8_ManagerNoDependent();
+    void mn9_minTimeWorkOnAtDependent();
+    void mn10_BackupAndRestore();
 };
 
 #endif // Project_ui_Menu_h_
