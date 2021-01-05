@@ -22,14 +22,14 @@ Solution::Solution(){
 /**
  * local function for initial data
 */
-void EnterEmployee(TableData *);
-void EnterDepartment(TableData *);
-void EnterDependent(TableData *);
-void EnterDeptLocation(TableData *);
-void EnterProject(TableData *);
-void EnterWorksOn(TableData *);
+void enterEmployee(TableData *);
+void enterDepartment(TableData *);
+void enterDependent(TableData *);
+void enterDeptLocation(TableData *);
+void enterProject(TableData *);
+void enterWorksOn(TableData *);
 
-void EnterEmployee(TableData *data){
+void enterEmployee(TableData *data){
     Employee* tU1 = new Employee("John", "B", "Smith", 123456789, "1965-01-09", "731 Fondren, Houston, TX", "M", 30000, 333445555, 5);
     Employee* tU2 = new Employee("Franklin", "T", "Wong", 333445555, "1955-12-08", "638 Voss, Houston, TX", "M", 40000, 888665555, 5);
     Employee* tU3 = new Employee("Alicia", "J", "Zelaya", 999887777, "1968-07-19", "3321 Castle, Spring, TX", "F", 25000, 987654321, 4);
@@ -48,7 +48,7 @@ void EnterEmployee(TableData *data){
     data->Push(tU8);
 }
 
-void EnterDepartment(TableData *data){
+void enterDepartment(TableData *data){
     Department* tU1 = new Department("Research", 5, 333445555, "1988-05-22");
     Department* tU2 = new Department("Admrstration", 4, 987654321, "1995-01-01");
     Department* tU3 = new Department("Headquarters", 1, 888665555, "1981-06-19");
@@ -57,7 +57,7 @@ void EnterDepartment(TableData *data){
     data->Push(tU3);
 }
 
-void EnterDependent(TableData *data){
+void enterDependent(TableData *data){
     Dependent* tU1 = new Dependent(333445555, "Alice", "F", "1986-04-05", "DAUGHTER");
     Dependent* tU2 = new Dependent(333445555, "Theodore", "M", "1983-10-25", "SON");
     Dependent* tU3 = new Dependent(333445555, "Joy", "F", "1958-05-03", "SPOUSE");
@@ -74,7 +74,7 @@ void EnterDependent(TableData *data){
     data->Push(tU7);
 }
 
-void EnterProject(TableData *data){
+void enterProject(TableData *data){
     Project* tU1 = new Project("ProductX", 1, "Bellaire", 5);
     Project* tU2 = new Project("ProductY", 2, "Sugarland", 5);
     Project* tU3 = new Project("ProductZ", 3, "Houston", 5);
@@ -89,7 +89,7 @@ void EnterProject(TableData *data){
     data->Push(tU6);
 }
 
-void EnterDeptLocation(TableData *data){
+void enterDeptLocation(TableData *data){
     DeptLocation* tU1 = new DeptLocation(1, "Houston");
     DeptLocation* tU2 = new DeptLocation(4, "Stafford");
     DeptLocation* tU3 = new DeptLocation(5, "Bellaire");
@@ -102,7 +102,7 @@ void EnterDeptLocation(TableData *data){
     data->Push(tU5);
 }
 
-void EnterWorksOn(TableData *data){
+void enterWorksOn(TableData *data){
     WorksOn* tU1 = new WorksOn(123456789, 1, 32.5);
     WorksOn* tU2 = new WorksOn(123456789, 2, 7.5);
     WorksOn* tU3 = new WorksOn(666884444, 3, 40.0);
@@ -137,19 +137,19 @@ void EnterWorksOn(TableData *data){
     data->Push(tU16);
 }
 
-void Solution::InitData(){
-    EnterEmployee(_employeeData);
-    EnterDepartment(_departmentData);
-    EnterDependent(_dependentData);
-    EnterDeptLocation(_deptLocationData);
-    EnterProject(_projectData);
-    EnterWorksOn(_worksOnData);
+void Solution::initData(){
+    enterEmployee(_employeeData);
+    enterDepartment(_departmentData);
+    enterDependent(_dependentData);
+    enterDeptLocation(_deptLocationData);
+    enterProject(_projectData);
+    enterWorksOn(_worksOnData);
 }
 
 /**
  * display data
 */
-void Solution::ShowAllData(){
+void Solution::showAllData(){
     IO myIO;
     myIO.dataOut(_employeeData);
     myIO.dataOut(_departmentData);
@@ -162,36 +162,36 @@ void Solution::ShowAllData(){
 /**
  * For question
 */
-void Solution::Q1_AddToTable(int table){
+void Solution::q1_AddToTable(int table){
     IO myIO;
     myIO.dataIn(_tableData[table-1]);
 }
 
-void Solution::Q1_EditTable(int table){
+void Solution::q1_EditTable(int table){
     IO myIO;
     myIO.dataEditById(_tableData[table-1]);        
 }
 
-void Solution::Q1_DeleteInTable(int table){
+void Solution::q1_DeleteInTable(int table){
     IO myIO;
     myIO.dataDeleteById(_tableData[table-1]);
 }
 
-void Solution::Q1_ReadTable(int table){
+void Solution::q1_ReadTable(int table){
     IO myIO;
     myIO.dataOut(_tableData[table-1]);
 }
 
-vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
+vector<vector<string>> Solution::q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
-    vector<TableUnit*> employees = _employeeData->GetData();
+    vector<TableUnit*> employees = _employeeData->getData();
     for(TableUnit *tU1 : employees){
-        if(tU1->GetValue("FName") +  " " + tU1->GetValue("LName") == mngNameInput ){            // check name of manager
-            string mngSSN = tU1->GetValue("SSN");
+        if(tU1->getValue("FName") +  " " + tU1->getValue("LName") == mngNameInput ){            // check name of manager
+            string mngSSN = tU1->getValue("SSN");
             for(TableUnit *tU2 : employees){
-                if(tU2->GetValue("SuperSSN") == mngSSN ){                                       // check emplyees of manager
-                    string eName = tU2->GetValue("FName") + " " + tU2->GetValue("LName");
-                    string eSSN = tU2->GetValue("SSN");
+                if(tU2->getValue("SuperSSN") == mngSSN ){                                       // check emplyees of manager
+                    string eName = tU2->getValue("FName") + " " + tU2->getValue("LName");
+                    string eSSN = tU2->getValue("SSN");
                     vector<string> e = {eName, eSSN};                                           // information of employee
                     eOut.push_back(e);
                 }
@@ -201,18 +201,18 @@ vector<vector<string>> Solution::Q2_ShowEmployeeOfManager(string mngNameInput){
     return eOut;
 }
 
-vector<vector<string>> Solution::Q3_ShowEmployeeHasDependent(){
-    vector<TableUnit*> dependents = _dependentData->GetData();
+vector<vector<string>> Solution::q3_ShowEmployeeHasDependent(){
+    vector<TableUnit*> dependents = _dependentData->getData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : dependents){
-        string relationship = tU1->GetValue("Relationship");
+        string relationship = tU1->getValue("Relationship");
         if(relationship == "DAUGHTER" || relationship == "SON" ){                               // check relationship of employee
-            string rName = tU1->GetValue("DependentName");
-            string eSSN = tU1->GetValue("ESSN");
-            TableUnit* employee = _employeeData->Find("SSN", eSSN);
+            string rName = tU1->getValue("DependentName");
+            string eSSN = tU1->getValue("ESSN");
+            TableUnit* employee = _employeeData->find("SSN", eSSN);
             if(employee != nullptr ){                                                           // check dependent
-                string eName = employee->GetValue("FName") + " " + employee->GetValue("LName");
-                string eSSN = employee->GetValue("SSN");
+                string eName = employee->getValue("FName") + " " + employee->getValue("LName");
+                string eSSN = employee->getValue("SSN");
                 vector<string> e = {eName, eSSN, rName, relationship};
                 eOut.push_back(e);
             }
@@ -221,17 +221,17 @@ vector<vector<string>> Solution::Q3_ShowEmployeeHasDependent(){
     return eOut;
 }
 
-vector<vector<string>> Solution::Q4_ShowProjecTime(){
-    vector<TableUnit*> projects = _projectData->GetData();
-    vector<TableUnit*> worksOns = _worksOnData->GetData();
+vector<vector<string>> Solution::q4_ShowProjecTime(){
+    vector<TableUnit*> projects = _projectData->getData();
+    vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : projects){
-        string pNo = tU1->GetValue("PNumber");
-        string pName = tU1->GetValue("PName");
+        string pNo = tU1->getValue("PNumber");
+        string pName = tU1->getValue("PName");
         double workTime = 0;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->GetValue("PNO") == pNo ){                                       // check project number
-                workTime += stod(tU2->GetValue("Hours"));
+            if(tU2->getValue("PNO") == pNo ){                                       // check project number
+                workTime += stod(tU2->getValue("Hours"));
             }
         }
         vector<string> e = {pName, pNo, to_string(workTime)};
@@ -240,16 +240,16 @@ vector<vector<string>> Solution::Q4_ShowProjecTime(){
     return eOut;
 }
 
-vector<vector<string>> Solution::Q5_ShowFreeEmployee(){
-    vector<TableUnit*> employees = _employeeData->GetData();
-    vector<TableUnit*> worksOns = _worksOnData->GetData();
+vector<vector<string>> Solution::q5_ShowFreeEmployee(){
+    vector<TableUnit*> employees = _employeeData->getData();
+    vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : employees){
-        string eNo = tU1->GetValue("SSN");
-        string eName = tU1->GetValue("FName") + " " + tU1->GetValue("MInit") + " " + tU1->GetValue("LName");
+        string eNo = tU1->getValue("SSN");
+        string eName = tU1->getValue("FName") + " " + tU1->getValue("MInit") + " " + tU1->getValue("LName");
         bool work = false;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->GetValue("ESSN") == eNo && stod(tU2->GetValue("Hours")) > 0){   // check working time of employees
+            if(tU2->getValue("ESSN") == eNo && stod(tU2->getValue("Hours")) > 0){   // check working time of employees
                 work = true;
                 break;
             }
@@ -262,18 +262,18 @@ vector<vector<string>> Solution::Q5_ShowFreeEmployee(){
     return eOut;
 }
 
-long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
-    vector<TableUnit*> employees = _employeeData->GetData();
-    vector<TableUnit*> departments = _departmentData->GetData();
+long Solution::q6_ShowDepartmentAvgSalary(string dNameInput){
+    vector<TableUnit*> employees = _employeeData->getData();
+    vector<TableUnit*> departments = _departmentData->getData();
     long lOut = 0;
     for(TableUnit *tU1 : departments){
-        string dNo = tU1->GetValue("DNumber");
-        if(tU1->GetValue("DName") == dNameInput){                                   // check name of dapartment
+        string dNo = tU1->getValue("DNumber");
+        if(tU1->getValue("DName") == dNameInput){                                   // check name of dapartment
             long sumSalary = 0;
             int iEmployee = 0;
             for(TableUnit *tU2 : employees){
-                if(tU2->GetValue("DNO") == dNo){                                    // check dapartment number of employees
-                    sumSalary += stoi(tU2->GetValue("Salary"));
+                if(tU2->getValue("DNO") == dNo){                                    // check dapartment number of employees
+                    sumSalary += stoi(tU2->getValue("Salary"));
                     iEmployee++;
                 }
             }
@@ -284,27 +284,27 @@ long Solution::Q6_ShowDepartmentAvgSalary(string dNameInput){
     return lOut;
 }
 
-long Solution::Q7_ShowSexAvgSalary(string sexInput){
-    vector<TableUnit*> employees = _employeeData->GetData();
+long Solution::q7_ShowSexAvgSalary(string sexInput){
+    vector<TableUnit*> employees = _employeeData->getData();
     long sumSalary = 0;
     int iEmployee = 0;
     for(TableUnit *tU1 : employees){
-        if(tU1->GetValue("Sex") == sexInput){                                       // check sex of employees
-            sumSalary += stoi(tU1->GetValue("Salary"));
+        if(tU1->getValue("Sex") == sexInput){                                       // check sex of employees
+            sumSalary += stoi(tU1->getValue("Salary"));
             iEmployee++;
         }        
     }
     return long(sumSalary / iEmployee);
 }
 
-vector<vector<string>> Solution::Q8_ManagerNoDependent(){
-    vector<TableUnit*> departments = _departmentData->GetData();
+vector<vector<string>> Solution::q8_ManagerNoDependent(){
+    vector<TableUnit*> departments = _departmentData->getData();
     vector<vector<string>> eOut;
     for(TableUnit *tU1 : departments){
-        string mgrSSN = tU1->GetValue("MgrSSN");
-        if(_dependentData->Find("ESSN", mgrSSN) == nullptr){                        // check ssn of department
-            TableUnit *eMgr = _employeeData->Find("SSN", mgrSSN);
-            string mName = eMgr->GetValue("LName");
+        string mgrSSN = tU1->getValue("MgrSSN");
+        if(_dependentData->find("ESSN", mgrSSN) == nullptr){                        // check ssn of department
+            TableUnit *eMgr = _employeeData->find("SSN", mgrSSN);
+            string mName = eMgr->getValue("LName");
             vector<string> e = {mName, mgrSSN};
             eOut.push_back(e);
             break;
@@ -313,21 +313,21 @@ vector<vector<string>> Solution::Q8_ManagerNoDependent(){
     return eOut;
 }
 
-vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn){
-    vector<TableUnit*> employees = _employeeData->GetData();
-    vector<TableUnit*> worksOns = _worksOnData->GetData();
+vector<vector<string>> Solution::q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn){
+    vector<TableUnit*> employees = _employeeData->getData();
+    vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
-    TableUnit *project = _projectData->Find("PName", pNameInput);
+    TableUnit *project = _projectData->find("PName", pNameInput);
     if(project != nullptr){
-        string pNo = project->GetValue("PNumber");
+        string pNo = project->getValue("PNumber");
         for(TableUnit *tU1 : employees){
-            if(tU1->GetValue("DNO") == to_string(dNumberInput)){                            // check department number of employees
-                string eSSN = tU1->GetValue("SSN");
-                string fullName = tU1->GetValue("FName") + " " + tU1->GetValue("LName");
+            if(tU1->getValue("DNO") == to_string(dNumberInput)){                            // check department number of employees
+                string eSSN = tU1->getValue("SSN");
+                string fullName = tU1->getValue("FName") + " " + tU1->getValue("LName");
                 double sumTime = 0;
                 for(TableUnit *tU2 : worksOns){
-                    if(tU2->GetValue("PNO") == pNo && tU2->GetValue("ESSN") == eSSN){       // check project number and SSN of Workons
-                        sumTime += stod(tU2->GetValue("Hours"));
+                    if(tU2->getValue("PNO") == pNo && tU2->getValue("ESSN") == eSSN){       // check project number and SSN of Workons
+                        sumTime += stod(tU2->getValue("Hours"));
                     }
                 }
                 if(sumTime >= minTimeWorksOn ){                                             // check min time of employees
@@ -340,14 +340,14 @@ vector<vector<string>> Solution::Q9_minTimeWorkOnAtDependent(int dNumberInput, s
     return eOut;
 }
 
-int Solution::Q10_Backup(int table, string folderPath){
+int Solution::q10_Backup(int table, string folderPath){
     IO myIO;
     int result = 0;
     result = myIO.saveData(_tableData[table-1], folderPath);
     return result;
 }
 
-int Solution::Q10_Restore(int table, string folderPath){
+int Solution::q10_Restore(int table, string folderPath){
     IO myIO;
     int result = 0;
     result = myIO.loadData(_tableData[table-1], folderPath);

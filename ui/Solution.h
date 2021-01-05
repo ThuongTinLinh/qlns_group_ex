@@ -33,80 +33,80 @@ public:
 
     /** @brief init all data table
     */
-    void InitData();
+    void initData();
 
     /** @brief display all data table
     */
-    void ShowAllData();
+    void showAllData();
 
     /** @brief Question 1 add element into select table
      * 
      * @param select No of table is select
     */
-    void Q1_AddToTable(int select);
+    void q1_AddToTable(int select);
 
     /** @brief Question 1 edit element of select table
      * 
      * @param select No of table is select
     */
-    void Q1_EditTable(int select);
+    void q1_EditTable(int select);
 
     /** @brief Question 1 delete element of select table
      * 
      * @param select No of table is select
     */
-    void Q1_DeleteInTable(int select);
+    void q1_DeleteInTable(int select);
 
     /** @brief Question 1 read element of select table
      * 
      * @param select No of table is select
     */
-    void Q1_ReadTable(int select);
+    void q1_ReadTable(int select);
 
     /** @brief Function of displaying list of employees managed by input name.
      * 
      * @param mngNameInput Name of the manager
      * @return list information of employees
     */
-    vector<vector<string>> Q2_ShowEmployeeOfManager(string mngNameInput);
+    vector<vector<string>> q2_ShowEmployeeOfManager(string mngNameInput);
 
     /** @brief Function of displaying list of employees has daughter or son.
      *
      * @return list information of employees
     */
-    vector<vector<string>> Q3_ShowEmployeeHasDependent();
+    vector<vector<string>> q3_ShowEmployeeHasDependent();
     
     /** @brief Function of displaying list of project information.
      *
      * @return list information of project
     */
-    vector<vector<string>> Q4_ShowProjecTime();
+    vector<vector<string>> q4_ShowProjecTime();
 
     /** @brief Function of displaying list of employees is free.
      *
      * @return list information of employees
     */
-    vector<vector<string>> Q5_ShowFreeEmployee();
+    vector<vector<string>> q5_ShowFreeEmployee();
 
     /** @brief Function get average salary of the department.
      *
      * @param dNameInput name of the department
      * @return average salary
     */
-    long Q6_ShowDepartmentAvgSalary(string dNameInput);
+    long q6_ShowDepartmentAvgSalary(string dNameInput);
 
     /** @brief Function get average salary of the sex.
      *
      * @param dNameInput type of sex
      * @return average salary
     */
-    long Q7_ShowSexAvgSalary(string sexInput);
+    long q7_ShowSexAvgSalary(string sexInput);
 
     /** @brief Function get list manager has't dependent.
      *
      * @return list information of manager
     */
-    vector<vector<string>> Q8_ManagerNoDependent();
+    vector<vector<string>> q8_ManagerNoDependent();
 
     /** @brief Function get list employees working more than time input of the department.
      *
@@ -115,7 +115,7 @@ public:
      * @param minTimeWorksOn min work time 
      * @return list information of employees
     */
-    vector<vector<string>> Q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn);
+    vector<vector<string>> q9_minTimeWorkOnAtDependent(int dNumberInput, string pNameInput, double minTimeWorksOn);
 
     /** @brief Function backup select data to folder.
      *
@@ -124,7 +124,7 @@ public:
      * @return successed return to 1
      *         fail return to 0
     */
-    int Q10_Backup(int i, string folderPath);
+    int q10_Backup(int i, string folderPath);
 
     /** @brief Function restore select data to folder.
      *
@@ -133,7 +133,7 @@ public:
      * @return successed return to 1
      *         fail return to 0
     */
-    int Q10_Restore(int i, string folderPath);
+    int q10_Restore(int i, string folderPath);
 };
 
 #endif // Project_dataprocessing_Company_h_
