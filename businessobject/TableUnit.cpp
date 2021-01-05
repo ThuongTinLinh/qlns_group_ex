@@ -1,26 +1,26 @@
 #include "TableUnit.h"
 
 TableUnit::TableUnit(){
-    Member.clear();
+    _member.clear();
 };
 
 map<string, string> TableUnit::getMapMember(){
-    toMapMember();// Tin xoa
-    return Member;
+    toMapMember();
+    return _member;
 }
 
 void TableUnit::setMapMember(map<string, string> member){
-    Member.clear();
-    Member = member;
+    _member.clear();
+    _member = member;
     fromMapMember();
 };
 void TableUnit::fromVt(vector<string> vt){
     toMapMember();
     map<string, string>::iterator it;
     int i=0;
-    for (it = Member.begin(); it != Member.end(); it++)
+    for (it = _member.begin(); it != _member.end(); it++)
     {
-        Member[it->first] = vt[i++];
+        _member[it->first] = vt[i++];
     };
     fromMapMember();
 };
@@ -33,7 +33,7 @@ string TableUnit::toString(){
     toMapMember();
     map<string, string>::iterator it;
     string s("");
-    for (it = Member.begin(); it != Member.end(); it++)
+    for (it = _member.begin(); it != _member.end(); it++)
     {
         s += it->second + ", ";
     };
@@ -45,7 +45,7 @@ vector<string> TableUnit::toVt(){
     toMapMember();
     map<string, string>::iterator it;
     vector<string> vtOut;
-    for (it = Member.begin(); it != Member.end(); it++)
+    for (it = _member.begin(); it != _member.end(); it++)
     {
         vtOut.push_back(it->second);
     };
@@ -60,7 +60,7 @@ string TableUnit::toStringEncode(){
 
 void TableUnit::setValue(string key, string value){
     toMapMember();
-    Member[key] = value;
+    _member[key] = value;
     fromMapMember();
 };
 
@@ -68,9 +68,9 @@ string TableUnit::getValue(string key){
     toMapMember();
     // return Member[key];
     // for test
-    auto it = Member.find(key);
+    auto it = _member.find(key);
     string value("");
-    if(it == Member.end()){
+    if(it == _member.end()){
         value = "N/A";
         cout << "dclmm deo tim thay " << key <<endl;
     } else {
@@ -81,5 +81,5 @@ string TableUnit::getValue(string key){
 
 bool TableUnit::checkValue(string key, string value){
     toMapMember();
-    return Member[key] == value;
+    return _member[key] == value;
 };

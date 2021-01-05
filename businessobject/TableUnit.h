@@ -10,7 +10,7 @@ using namespace std;
 
 class TableUnit{
 protected:
-    map<string, string> Member;
+    map<string, string> _member;
 public:
     TableUnit();
     virtual void toMapMember() = 0;
@@ -65,10 +65,11 @@ public:
      */
     string toStringEncode();
 
-    /** @brief  Fuction convert object to encoded string 
+    /** @brief  Fuction get  return value search in map 
      *  
-     *@details  Fuction convert object to encoded string 
-     * @return return value type string
+     *@details Fuction get  return value search in map 
+     * @return  value of key 
+     * 
      */
     string getValue(string key);
 
