@@ -17,16 +17,16 @@ Department::Department(string dName, int dNumber, long mgrSSN, string mgrStartDa
 // ========Override========
 
 void Department::fromMapMember(){
-    _dName = Member["DName"];
-    _dNumber = stoi(Member["DNumber"]);
-    _mgrSSN =stol(Member["MgrSSN"]);
-    _mgrStartDate = Member["MgrStartDate"];
+    _dName = _member["DName"];
+    _dNumber = stoi(_member["DNumber"]);
+    _mgrSSN =stol(_member["MgrSSN"]);
+    _mgrStartDate = _member["MgrStartDate"];
 }
 void Department::toMapMember(){
-    Member["DName"] = _dName;
-    Member["DNumber"] = to_string(_dNumber);
-    Member["MgrSSN"] = to_string(_mgrSSN);
-    Member["MgrStartDate"] = _mgrStartDate;
+    _member["DName"] = _dName;
+    _member["DNumber"] = to_string(_dNumber);
+    _member["MgrSSN"] = to_string(_mgrSSN);
+    _member["MgrStartDate"] = _mgrStartDate;
 }
 TableUnit *Department::clonePtr(){
     TableUnit *pU = new Department();

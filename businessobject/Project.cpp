@@ -16,16 +16,16 @@ Project::Project(string pName, int pNumber, string PLocation, int dNum){
 // ========Override========
 
 void Project::fromMapMember(){
-    _pName = Member["PName"];
-    _pNumber = stoi(Member["PNumber"]);
-    _pLocation = Member["PLocation"];
-    _dNum= stoi(Member["DNum"]);
+    _pName = _member["PName"];
+    _pNumber = stoi(_member["PNumber"]);
+    _pLocation = _member["PLocation"];
+    _dNum= stoi(_member["DNum"]);
 }
 void Project::toMapMember(){
-    Member["PName"] = _pName;
-    Member["PNumber"] = to_string(_pNumber);
-    Member["PLocation"] = _pLocation;
-    Member["DNum"] = to_string(_dNum);
+    _member["PName"] = _pName;
+    _member["PNumber"] = to_string(_pNumber);
+    _member["PLocation"] = _pLocation;
+    _member["DNum"] = to_string(_dNum);
 }
 TableUnit *Project::clonePtr(){
     TableUnit *pU = new Project();

@@ -16,12 +16,12 @@ DeptLocation::DeptLocation(const int dNumber, const string dLocation){
 // ========Override========
 
 void DeptLocation::fromMapMember(){
-     _dNumber = stoi(Member["DNumber"]);
-    _dLocation = Member["DLocation"];
+     _dNumber = stoi(_member["DNumber"]);
+    _dLocation = _member["DLocation"];
 }
 void DeptLocation::toMapMember(){
-    Member["DNumber"] = to_string( _dNumber);
-    Member["DLocation"] = _dLocation;
+    _member["DNumber"] = to_string( _dNumber);
+    _member["DLocation"] = _dLocation;
 }
 TableUnit *DeptLocation::clonePtr(){
     TableUnit *pU = new DeptLocation();

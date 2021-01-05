@@ -16,14 +16,14 @@ WorksOn::WorksOn(long eSSN, int pno, double hours)
 // ========Override========
 
 void WorksOn::fromMapMember(){
-    _eSSN = stol(Member["ESSN"]);
-    _pno = stoi(Member["PNO"]);
-    _hours = stod(Member["Hours"]);
+    _eSSN = stol(_member["ESSN"]);
+    _pno = stoi(_member["PNO"]);
+    _hours = stod(_member["Hours"]);
 }
 void WorksOn::toMapMember(){
-    Member["ESSN"] = to_string(_eSSN);
-    Member["PNO"] = to_string(_pno);
-    Member["Hours"] = to_string(_hours);
+    _member["ESSN"] = to_string(_eSSN);
+    _member["PNO"] = to_string(_pno);
+    _member["Hours"] = to_string(_hours);
 }
 TableUnit *WorksOn::clonePtr(){
     TableUnit *pU = new WorksOn();

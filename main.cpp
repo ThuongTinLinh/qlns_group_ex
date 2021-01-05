@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ui\Solution.h"
+#include "dataprocessing\Solution.h"
 #include "ui\Menu.h"
 using namespace std;
 

@@ -21,36 +21,36 @@ Employee::Employee(string fName, string mInit, string lName, long ssn, string bD
 
 // ========Override========
 void Employee::fromMapMember(){
-    _fName = Member["FName"];
-    _mInit = Member["MInit"];
-    _lName = Member["LName"];
-    _ssn= stol(Member["SSN"]);
-    _bDate = Member["BDate"];
-    _address = Member["Address"];
-    _sex= Member["Sex"];
-    _salary = stoi(Member["Salary"]);
-    if(Member["SuperSSN"] == "null"){
+    _fName = _member["FName"];
+    _mInit = _member["MInit"];
+    _lName = _member["LName"];
+    _ssn= stol(_member["SSN"]);
+    _bDate = _member["BDate"];
+    _address = _member["Address"];
+    _sex= _member["Sex"];
+    _salary = stoi(_member["Salary"]);
+    if(_member["SuperSSN"] == "null"){
         _superSSN = -1;
     } else {
-        _superSSN = stol(Member["SuperSSN"]);
+        _superSSN = stol(_member["SuperSSN"]);
     }
-    _dno = stoi(Member["DNO"]);
+    _dno = stoi(_member["DNO"]);
 }
 void Employee::toMapMember(){
-    Member["FName"] = _fName;
-    Member["MInit"] = _mInit;
-    Member["LName"] = _lName;
-    Member["SSN"] = to_string(_ssn);
-    Member["BDate"] =_bDate;
-    Member["Address"] = _address;
-    Member["Sex"] = _sex;
-    Member["Salary"] = to_string(_salary);
+    _member["FName"] = _fName;
+    _member["MInit"] = _mInit;
+    _member["LName"] = _lName;
+    _member["SSN"] = to_string(_ssn);
+    _member["BDate"] =_bDate;
+    _member["Address"] = _address;
+    _member["Sex"] = _sex;
+    _member["Salary"] = to_string(_salary);
     if(_superSSN == -1){
-        Member["SuperSSN"] = "null";
+        _member["SuperSSN"] = "null";
     } else {
-        Member["SuperSSN"] = to_string(_superSSN);
+        _member["SuperSSN"] = to_string(_superSSN);
     }
-    Member["DNO"] = to_string(_dno);
+    _member["DNO"] = to_string(_dno);
 }
 TableUnit *Employee::clonePtr(){
     TableUnit *pU = new Employee();

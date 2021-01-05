@@ -1,7 +1,7 @@
 #ifndef Project_ui_Menu_h_
 #define Project_ui_Menu_h_
 
-#include "..\ui\Solution.h"
+#include "..\dataprocessing\Solution.h"
 #include "..\ui\IO.h"
 #include <iostream>
 #include <vector>

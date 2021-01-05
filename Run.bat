@@ -3,7 +3,6 @@ g++ ^
 main.cpp ^
 libs\Utility.cpp ^
 ui\IO.cpp ^
-ui\Solution.cpp ^
 ui\Menu.cpp ^
 businessobject\Employee.cpp ^
 businessobject\Department.cpp ^
@@ -13,6 +12,7 @@ businessobject\WorksOn.cpp ^
 businessobject\Dependent.cpp ^
 businessobject\TableUnit.cpp ^
 dataprocessing\TableData.cpp ^
+dataprocessing\Solution.cpp ^
 -o ^
 main.exe
 
