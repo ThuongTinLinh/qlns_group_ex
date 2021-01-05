@@ -29,18 +29,18 @@ void TableData::resize(int n){
 string TableData::toString(){
     string sOut("");
     for(TableUnit* unit:_data){
-        sOut = sOut + unit->ToString() + "\n";
+        sOut = sOut + unit->toString() + "\n";
     }
     return sOut;
 }
 TableUnit* TableData::getTableUnit(){
-    TableUnit* ptU = _tableUnit->ClonePtr();
+    TableUnit* ptU = _tableUnit->clonePtr();
     return ptU;
 }
 int TableData::push(TableUnit *unit){
     _data.push_back(unit);
     _size++;
-    return _ssize;
+    return _size;
 }
 int TableData::change(int index, TableUnit *unit){  
     if(index <_data.size()){
@@ -52,7 +52,7 @@ int TableData::change(int index, TableUnit *unit){
 };
 int TableData::delele(int index){
     if(index <_data.size()){
-        _data.erase_data.begin() + index);
+        _data.erase(_data.begin() + index);
     } else {
         index = -1;
     };
@@ -69,7 +69,7 @@ TableUnit* TableData::getPtr(int index){
 
 TableUnit* TableData::find(string key, string value){
     for(TableUnit* unit:_data){
-        if(unit->CheckValue(key, value)){
+        if(unit->checkValue(key, value)){
             return unit;
             break;
         }
@@ -80,7 +80,7 @@ TableUnit* TableData::find(string key, string value){
 vector<TableUnit*> TableData::findList(string key, string value){
     vector<TableUnit*> vts;
     for(TableUnit* unit:_data){
-        if(unit->CheckValue(key, value)){
+        if(unit->checkValue(key, value)){
             vts.push_back(unit);
         }
     }
