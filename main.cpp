@@ -9,12 +9,12 @@ int main(){
     cout << "-- QLNS Group Linh Thuong Tin --" << endl;
     cout << "----------------Init infor---------------------"<< endl;
     Solution solution;
-    solution.InitData();    
+    solution.initData();    
     cout << "----------------Show all infor---------------------"<< endl;
-    solution.ShowAllData();        
+    solution.showAllData();        
     cout << "----------------Question---------------------"<< endl;
     Menu menu(&solution);
-    menu.Home();
+    menu.home();
     cout << "----------------end---------------------"<< endl;
     return 0;
 }
