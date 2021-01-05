@@ -23,8 +23,7 @@ void Menu::home(){
         cout << "   9. Displays hard working employees in department project." << endl;
         cout << "  10. Backup and Restore data." << endl;
         cout << "Please enter number of task: ";
-        cin >> select;
-        cin.ignore(); 
+        cin >> select; cin.ignore(); 
         cout << endl;
         switch (select)
         {
@@ -84,18 +83,26 @@ void SelectTable(){
     cout << "   0. Quit." << endl;
     cout << "   1. EMPLOYEE." << endl;
     cout << "   2. DEPARTMENT." << endl;
-    cout << "   3. DEPT LOCATION." << endl;
-    cout << "   4. WORKS ON." << endl;
+    cout << "   3. DEPENDENT." << endl;
+    cout << "   4. DEPT LOCATION." << endl;
     cout << "   5. PROJECT." << endl;
-    cout << "   6. DEPENDENT." << endl;
+    cout << "   6. WORKS ON." << endl;
     cout << "Please chose : " << endl;
 }
 void Menu::mn1_CRUD(){
     
-    int mn1_Select;
     do{
         system("CLS");
-        mn1_Select = 0;
+        int tableSelect = 0;
+        SelectTable();   
+        cin >> tableSelect; cin.ignore(); 
+        if (tableSelect == 0) break;
+        if (tableSelect < 1 || tableSelect > 6){
+            cout << "   Wrong Selection!" << endl;
+            break;
+        }
+
+        int mn1_Select = 0;
         cout << "   Add, edit, delete or read data." << endl;
         cout << "   0. Quit." << endl;
         cout << "   1. Add." << endl;
@@ -104,42 +111,34 @@ void Menu::mn1_CRUD(){
         cout << "   4. Read." << endl;
         cout << "Please chose : " << endl;
         
-        cin >> mn1_Select;cin.ignore(); 
+        cin >> mn1_Select; cin.ignore(); 
         if (mn1_Select == 0) break;
         if (mn1_Select < 1 || mn1_Select > 4){
             cout << "   Wrong Selection!" << endl;
             break;
         }        
         
-        int select = 0;
-        SelectTable();        
-        cin >> select; cin.ignore(); 
-        if (select == 0) break;
-        if (select < 1 || select > 6){
-            cout << "   Wrong Selection!" << endl;
-            break;
-        }
 
         switch (mn1_Select){
             case 1:{
-                _solutionData->q1_AddToTable(select);
+                _solutionData->q1_AddToTable(tableSelect);
                 break;
             }
             case 2:{
-                _solutionData->q1_EditTable(select);
+                _solutionData->q1_EditTable(tableSelect);
                 break;
             }
             case 3:{
-                _solutionData->q1_DeleteInTable(select);
+                _solutionData->q1_DeleteInTable(tableSelect);
                 break;
             }
             case 4:{
-                _solutionData->q1_ReadTable(select);
+                _solutionData->q1_ReadTable(tableSelect);
                 break;
             }
         }
         system("pause");
-    }while(mn1_Select != 0);
+    }while(true);
     
     
     
@@ -147,8 +146,12 @@ void Menu::mn1_CRUD(){
 void Menu::mn2_ShowEmployeeOfManager(){
     string mngName;
     cout << "   Please enter Manager Name (ex: 'Franklin Wong') : ";
-    getline(cin, mngName);    
+    getline(cin, mngName); //cin.ignore();   
     vector<vector<string>> employees = _solutionData->q2_ShowEmployeeOfManager(mngName);
+    if(employees.size() == 0){
+        cout<<"* not found employee has manager by " << mngName << endl;
+        return;
+    }
     // Display data
     cout<<"*Employee list managed by " + mngName + " : " << endl;
     for(vector<string> vts : employees){
@@ -156,7 +159,11 @@ void Menu::mn2_ShowEmployeeOfManager(){
     }
 }
 void Menu::mn3_ShowEmployeeHasDependent(){
-    vector<vector<string>> employees = _solutionData->q3_ShowEmployeeHasDependent();
+    vector<vector<string>> employees = _solutionData->q3_ShowEmployeeHasDependent();   
+    if(employees.size() == 0){
+        cout<<"* not found employee has son or daughter" << endl;
+        return;
+    }
     // Display data
     cout<<"*List of employees without children:" << endl;
     for(vector<string> vts : employees){
@@ -166,16 +173,23 @@ void Menu::mn3_ShowEmployeeHasDependent(){
 void Menu::mn4_ShowProjecTime(){
     string pName;
     cout << "   Please enter Project Name (ex: 'ProductX') : ";
-    getline(cin, pName);
-    vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime(pName);
+    getline(cin, pName); //cin.ignore();   
+    vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime(pName);   
+    if(ptimes.size() == 0){
+        cout<<"* not found Project" << pName << endl;
+        return;
+    }
     // Display data
-    cout<<"*Project list :" << endl;
     for(vector<string> vts : ptimes){
-        cout <<  "    Project " + vts[0] +  " (PNO:" + vts[1] + ") has total time is " + vts[2] + "h" <<endl;
+        cout <<  "*Project " + vts[0] +  " (PNO:" + vts[1] + ") has total time is " + vts[2] + "h" <<endl;
     }
 }
 void Menu::mn5_ShowFreeEmployee(){    
-    vector<vector<string>> employees = _solutionData->q5_ShowFreeEmployee();
+    vector<vector<string>> employees = _solutionData->q5_ShowFreeEmployee();   
+    if(employees.size() == 0){
+        cout<<"* not found free employee"  << endl;
+        return;
+    }
     // Display data
     cout<<"*Employee list is free :" << endl;
     for(vector<string> vts : employees){
@@ -185,8 +199,12 @@ void Menu::mn5_ShowFreeEmployee(){
 void Menu::mn6_ShowDepartmentAvgSalary(){
     string dName;
     cout << "   Please enter department Name (ex: 'Research') : ";
-    cin >> dName;
-    long dAvgSalarys = _solutionData->q6_ShowDepartmentAvgSalary(dName);
+    cin >> dName; cin.ignore();   
+    long dAvgSalarys = _solutionData->q6_ShowDepartmentAvgSalary(dName);    
+    if(dAvgSalarys == -1){
+        cout<<"* not found employee int department " << dName << endl;
+        return;
+    }
     // Display data
     cout <<"*" +dName + " has avg salary = " + to_string(dAvgSalarys) + "$" <<endl;
     
@@ -194,13 +212,22 @@ void Menu::mn6_ShowDepartmentAvgSalary(){
 void Menu::mn7_ShowSexAvgSalary(){
     string sex;
     cout << "   Please enter sex (ex: 'M') : ";
-    cin >> sex;
+    cin >> sex; cin.ignore();   
     long sexAvgSalary = _solutionData->q7_ShowSexAvgSalary(sex);
+    
+    if(sexAvgSalary == -1){
+        cout<<"* not found employee has sex " << sex << endl;
+        return;
+    }
     // Display data
     cout << "*'" + sex + "' sex has avg salary = " + to_string(sexAvgSalary) + "$" <<endl;
 }
 void Menu::mn8_ManagerNoDependent(){
     vector<vector<string>> mgrs = _solutionData->q8_ManagerNoDependent();
+    if(mgrs.size() == 0){
+        cout<<"* not found Management has no dependents" << endl;
+        return;
+    }
     // Display data
     cout<<"*Management list has no dependents :" << endl;
     for(vector<string> vts : mgrs){
@@ -213,12 +240,16 @@ void Menu::mn9_minTimeWorkOnAtDependent(){
     double minTimeWorksOn;
     cout << "Enter department number, project name, min time works on" << endl;;
     cout << "   Please enter department number (ex: '5') : ";
-    cin >> dNumber;
+    cin >> dNumber; cin.ignore();   
     cout << "   Please enter project name (ex: 'ProductX') : ";
-    cin >> pName;
+    cin >> pName; cin.ignore();   
     cout << "   Please enter minimum workon (ex: '10') : ";
-    cin >> minTimeWorksOn;
+    cin >> minTimeWorksOn; cin.ignore();   
     vector<vector<string>> mgrs = _solutionData->q9_minTimeWorkOnAtDependent(dNumber, pName, minTimeWorksOn);
+    if(mgrs.size() == 0){
+        cout<<"* not found data" << endl;
+        return;
+    }
     // Display data
     cout<<"*List of employees with working conditions in the department :" << endl;
     for(vector<string> vts : mgrs){
@@ -227,44 +258,43 @@ void Menu::mn9_minTimeWorkOnAtDependent(){
     }
 }
 void Menu::mn10_BackupAndRestore(){
-    int mn10_Select;
     do{
-        mn10_Select = 0;
         system("CLS");
-        cin.ignore();
         cout << "Backup and restore" << endl;
+        SelectTable();
+        int tableSelect = 0;
+        cin >> tableSelect; cin.ignore(); 
+        if (tableSelect == 0) break;
+        if (tableSelect < 1 || tableSelect > 6){
+            cout << "   Wrong Selection!" << endl;
+            continue;
+        }
+        
+        int mn10_Select = 0;
+        cout << "   Select Backup and restore" << endl;
         cout << "   0. Quit." << endl;
         cout << "   1. Backup." << endl;
         cout << "   2. Restore." << endl;
-        cout << "Please chose : " << endl;
+        cout << "Please chose : " ;
         cin >> mn10_Select; cin.ignore(); 
         if (mn10_Select < 0 || mn10_Select > 2){
             cout << "   Wrong Selection!" << endl;
             continue;
         }
 
-        cout << "   Back up table : " << endl;
-        SelectTable();
-        int select = 0;
-        cin >> select; cin.ignore(); 
-        if (select == 0) break;
-        if (select < 1 || select > 6){
-            cout << "   Wrong Selection!" << endl;
-            continue;
-        }
 
         if (mn10_Select == 1){
             cout << "   Back up ... " << endl;
-            int result = _solutionData->q10_Backup(select);
+            int result = _solutionData->q10_Backup(tableSelect);
             if (result) cout << "   Backup done! " <<endl;
         }
         if (mn10_Select == 2){
             cout << "   Restore ... " << endl;
-            int result = _solutionData->q10_Restore(select);
+            int result = _solutionData->q10_Restore(tableSelect);
             if (result) {cout << "   Restore  done!" <<endl;}
-            else {cout << "   Backup notfound!" <<endl;}
+            else {cout << "   data Backup notfound!" <<endl;}
         }
         system("pause");
-    }while(mn10_Select != 0);
+    }while(true);
     
 }

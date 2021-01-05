@@ -72,8 +72,8 @@ void TableData::deleleAll(){
 }
 
 TableUnit* TableData::getPtr(int index){
-    TableUnit *ptr = nullptr;    
-    if(index <_data.size()){
+    TableUnit *ptr = nullptr;
+    if(index <_data.size() && index >= 0){
         ptr = _data[index];
     }
     return ptr;

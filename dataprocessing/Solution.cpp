@@ -269,11 +269,12 @@ long Solution::q6_ShowDepartmentAvgSalary(string dNameInput){
     vector<TableUnit*> employees = _employeeData->getData();
     vector<TableUnit*> departments = _departmentData->getData();
     long lOut = 0;
+    int iEmployee = 0;
     for(TableUnit *tU1 : departments){
         string dNo = tU1->getValue("DNumber");
         if(tU1->getValue("DName") == dNameInput){                                   // check name of dapartment
             long sumSalary = 0;
-            int iEmployee = 0;
+            iEmployee = 0;
             for(TableUnit *tU2 : employees){
                 if(tU2->getValue("DNO") == dNo){                                    // check dapartment number of employees
                     sumSalary += stoi(tU2->getValue("Salary"));
@@ -283,6 +284,9 @@ long Solution::q6_ShowDepartmentAvgSalary(string dNameInput){
             lOut = long(sumSalary / iEmployee);
             break;
         }        
+    }
+    if(iEmployee == 0){
+        return -1;
     }
     return lOut;
 }
@@ -296,6 +300,9 @@ long Solution::q7_ShowSexAvgSalary(string sexInput){
             sumSalary += stoi(tU1->getValue("Salary"));
             iEmployee++;
         }        
+    }
+    if(iEmployee == 0){
+        return -1;
     }
     return long(sumSalary / iEmployee);
 }

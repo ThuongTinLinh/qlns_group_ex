@@ -4,10 +4,10 @@ IO::IO(){}
 void IO::dataIn(TableUnit* pTU){
     map<string, string> mapMember = pTU->getMapMember(); // Get the map<string, string> store data of TableUnit.
     map<string, string>::iterator it;
-    cin.ignore();
+    
     for (it = mapMember.begin(); it != mapMember.end(); it++){
         cout << "enter value for " << it->first << " = ";
-        string s = ""; getline(cin, s);
+        string s = ""; getline(cin, s); //cin.ignore();
         pTU->setValue(it->first, s);
     }
 }
@@ -123,7 +123,6 @@ void IO::dataOut(TableUnit* pTU, int id){
 void IO::dataEdit(TableData* pTD, string idName){
     dataOut(pTD); // print data in TableData
     vector<TableUnit*> vTU = pTD->getData();
-    
     cout << "   Enter " << idName << ": ";
     string idValue = ""; getline(cin, idValue);cin.ignore();
     for (int i = 0; i < vTU.size(); i++){
@@ -138,10 +137,10 @@ void IO::dataEdit(TableData* pTD, string idName){
 void IO::dataEditById(TableData* pTD){
     dataOut(pTD);
     cout << "   Enter Id: ";
-    int id = 0; cin >> id;
+    int id = 0; cin >> id; cin.ignore();
     id--;
     TableUnit* pTU = pTD->getPtr(id);
-    if (pTD == nullptr){
+    if (pTU == nullptr){
         cout << "   Id not found!" <<endl;
         return;
     }
@@ -151,9 +150,8 @@ void IO::dataEditById(TableData* pTD){
 void IO::dataDelete(TableData* pTD, string idName){
     dataOut(pTD);
     vector<TableUnit*> vTU = pTD->getData();
-    
     cout << "   Enter " << idName << ": ";
-    string idValue = ""; getline(cin, idValue);
+    string idValue = ""; getline(cin, idValue); //cin.ignore();   
     for (int i = 0; i < vTU.size(); i++){
         TableUnit* pTU = vTU[i];
         if (pTU->getValue(idName) == idValue){
@@ -173,7 +171,7 @@ void IO::dataDeleteById(TableData* pTD){
     int id = 0; cin >> id; cin.ignore();
     id--;
     TableUnit* unit = pTD->getPtr(id);
-    if (pTD == nullptr){
+    if (unit == nullptr){
         cout << "   Id not found!" <<endl;
         return;
     }
