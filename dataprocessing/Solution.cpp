@@ -224,20 +224,21 @@ vector<vector<string>> Solution::q3_ShowEmployeeHasDependent(){
     return eOut;
 }
 
-vector<vector<string>> Solution::q4_ShowProjecTime(string pName){
+vector<vector<string>> Solution::q4_ShowProjecTime(int pNumberInput){
+    string spNumber = to_string(pNumberInput);
     vector<TableUnit*> projects = _projectData->getData();
     vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
-    TableUnit *tU1 = _projectData->find("PName", pName);
+    TableUnit *tU1 = _projectData->find("PNumber", spNumber);
     if(tU1 != nullptr){
-        string pNo = tU1->getValue("PNumber");
+        string pName = tU1->getValue("PName");
         double workTime = 0;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->getValue("PNO") == pNo ){                                       // check project number
+            if(tU2->getValue("PNO") == spNumber ){                                       // check project number
                 workTime += stod(tU2->getValue("Hours"));
             }
         }
-        vector<string> e = {pName, pNo, to_string(workTime)};
+        vector<string> e = {pName, to_string(workTime)};
         eOut.push_back(e);
     }
     return eOut;

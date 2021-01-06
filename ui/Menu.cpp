@@ -171,17 +171,17 @@ void Menu::mn3_ShowEmployeeHasDependent(){
     }
 }
 void Menu::mn4_ShowProjecTime(){
-    string pName;
+    int pNumber;
     cout << "   Please enter Project Name (ex: 'ProductX') : ";
-    getline(cin, pName); //cin.ignore();   
-    vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime(pName);   
+    cin >> pNumber; cin.ignore();   
+    vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime(pNumber);   
     if(ptimes.size() == 0){
-        cout<<"* not found Project" << pName << endl;
+        cout<<"* not found Project" << pNumber << endl;
         return;
     }
     // Display data
     for(vector<string> vts : ptimes){
-        cout <<  "*Project " + vts[0] +  " (PNO:" + vts[1] + ") has total time is " + vts[2] + "h" <<endl;
+        cout <<  "*Project " + vts[0] +  " (PNO:" + to_string(pNumber) + ") has total time is " + vts[1] + "h" <<endl;
     }
 }
 void Menu::mn5_ShowFreeEmployee(){    
