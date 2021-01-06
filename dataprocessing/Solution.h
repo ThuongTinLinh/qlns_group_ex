@@ -78,10 +78,10 @@ public:
     
     /** @brief Function of displaying list of project information.
      *
-     * @param pName Name of the project
+     * @param pNumberInput no of the project
      * @return list information of project
     */
-    vector<vector<string>> q4_ShowProjecTime(string pName);
+    vector<vector<string>> q4_ShowProjecTime(int pNumberInput);
 
     /** @brief Function of displaying list of employees is free.
      *

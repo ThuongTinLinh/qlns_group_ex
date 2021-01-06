@@ -230,20 +230,21 @@ vector<vector<string>> Solution::q3_ShowEmployeeHasDependent(){
     return eOut;
 }
 
-vector<vector<string>> Solution::q4_ShowProjecTime(string pName){
+vector<vector<string>> Solution::q4_ShowProjecTime(int pNumberInput){
+    string spNumber = to_string(pNumberInput);
     vector<TableUnit*> projects = _projectData->getData();
     vector<TableUnit*> worksOns = _worksOnData->getData();
     vector<vector<string>> eOut;
-    TableUnit *tU1 = _projectData->find("PName", pName);
+    TableUnit *tU1 = _projectData->find("PNumber", spNumber);
     if(tU1 != nullptr){
-        string pNo = tU1->getValue("PNumber");
+        string pName = tU1->getValue("PName");
         double workTime = 0;
         for(TableUnit *tU2 : worksOns){
-            if(tU2->getValue("PNO") == pNo ){                                       // check project number
+            if(tU2->getValue("PNO") == spNumber ){                                       // check project number
                 workTime += stod(tU2->getValue("Hours"));
             }
         }
-        vector<string> e = {pName, pNo, to_string(workTime)};
+        vector<string> e = {pName, to_string(workTime)};
         eOut.push_back(e);
     }
     return eOut;
@@ -275,11 +276,12 @@ long Solution::q6_ShowDepartmentAvgSalary(string dNameInput){
     vector<TableUnit*> employees = _employeeData->getData();
     vector<TableUnit*> departments = _departmentData->getData();
     long lOut = 0;
+    int iEmployee = 0;
     for(TableUnit *tU1 : departments){
         string dNo = tU1->getValue("DNumber");
         if(tU1->getValue("DName") == dNameInput){                                   // check name of dapartment
             long sumSalary = 0;
-            int iEmployee = 0;
+            iEmployee = 0;
             for(TableUnit *tU2 : employees){
                 if(tU2->getValue("DNO") == dNo){                                    // check dapartment number of employees
                     sumSalary += stoi(tU2->getValue("Salary"));
@@ -289,6 +291,9 @@ long Solution::q6_ShowDepartmentAvgSalary(string dNameInput){
             lOut = long(sumSalary / iEmployee);
             break;
         }        
+    }
+    if(iEmployee == 0){
+        return -1;
     }
     return lOut;
 }
@@ -302,6 +307,9 @@ long Solution::q7_ShowSexAvgSalary(string sexInput){
             sumSalary += stoi(tU1->getValue("Salary"));
             iEmployee++;
         }        
+    }
+    if(iEmployee == 0){
+        return -1;
     }
     return long(sumSalary / iEmployee);
 }

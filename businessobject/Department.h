@@ -16,8 +16,25 @@ private:
 public :
     Department();
     Department(string dName, int dNumber, long mgrSSN, string mgrStartDate);
+
+    /** @brief Function update attribute from the array _member
+     *  
+     *@details  Function update attribute from the array _member
+    */
     int fromMapMember() override;
+
+    /** @brief Function save attribute in array member
+     * 
+     *@details Function save attribute in array member
+     *
+    */
     void toMapMember() override;
+    
+    /** @brief Function initialize a new memory 
+     * 
+     *@details Function initialize a new memory 
+     *
+    */
     TableUnit *clonePtr() override;
 };
 #endif

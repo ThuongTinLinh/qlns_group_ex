@@ -21,8 +21,25 @@ class Employee : public TableUnit{
 public:
     Employee();
     Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);
+
+    /** @brief Function update attribute from the array _member
+     *  
+     *@details  Function update attribute from the array _member
+    */
     int fromMapMember() override;
+
+    /** @brief Function save attribute in array member
+     * 
+     *@details Function save attribute in array member
+     *
+    */   
     void toMapMember() override;
+
+    /** @brief Function initialize a new memory 
+     * 
+     *@details Function initialize a new memory 
+     *
+    */
     TableUnit *clonePtr() override;
 };
 
