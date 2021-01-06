@@ -21,7 +21,7 @@ public :
      *  
      *@details  Function update attribute from the array _member
     */
-    int fromMapMember() override;
+    void fromMapMember() override;
 
     /** @brief Function save attribute in array member
      * 

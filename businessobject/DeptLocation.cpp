@@ -12,12 +12,9 @@ DeptLocation::DeptLocation(const int dNumber, const string dLocation){
 
 // ========Override========
 
-int DeptLocation::fromMapMember(){
-    try{
+void DeptLocation::fromMapMember(){
      _dNumber = stoi(_member["DNumber"]);
     _dLocation = _member["DLocation"];
-    } catch (...) { return 0;};
-    return 1;
 }
 void DeptLocation::toMapMember(){
     _member["DNumber"] = to_string( _dNumber);

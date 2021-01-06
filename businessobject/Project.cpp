@@ -12,14 +12,11 @@ Project::Project(string pName, int pNumber, string PLocation, int dNum){
 
 // ========Override========
 
-int Project::fromMapMember(){
-    try{
+void Project::fromMapMember(){
     _pName = _member["PName"];
     _pNumber = stoi(_member["PNumber"]);
     _pLocation = _member["PLocation"];
     _dNum= stoi(_member["DNum"]);
-    } catch (...) { return 0;};
-    return 1;
 }
 void Project::toMapMember(){
     _member["PName"] = _pName;

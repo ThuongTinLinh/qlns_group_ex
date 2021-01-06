@@ -12,13 +12,10 @@ WorksOn::WorksOn(long eSSN, int pno, double hours)
 
 // ========Override========
 
-int WorksOn::fromMapMember(){
-    try{
+void WorksOn::fromMapMember(){
     _eSSN = stol(_member["ESSN"]);
     _pno = stoi(_member["PNO"]);
     _hours = stod(_member["Hours"]);
-    } catch (...) { return 0;};
-    return 1;
 }
 void WorksOn::toMapMember(){
     _member["ESSN"] = to_string(_eSSN);

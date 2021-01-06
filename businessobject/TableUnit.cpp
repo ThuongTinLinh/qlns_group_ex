@@ -22,8 +22,10 @@ int TableUnit::fromVt(vector<string> vt){
     {   
         _member[it->first] = vt[i++];
     }
-    int check = fromMapMember();
-    return check;
+    try{
+        fromMapMember();
+    } catch (...) { return 0;};
+    return 1;
 }
 int TableUnit::fromStringDecode(string sCode){    
     vector<string> vt = Utility::fromString(sCode);
@@ -63,8 +65,11 @@ string TableUnit::toStringEncode(){
 int TableUnit::setValue(string key, string value){
     toMapMember();
     _member[key] = value;
-    int check = fromMapMember();
-    return check;
+    
+    try{
+        fromMapMember();
+    } catch (...) { return 0;};
+    return 1;
 }
 
 string TableUnit::getValue(string key){

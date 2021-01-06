@@ -16,8 +16,7 @@ Employee::Employee(string fName, string mInit, string lName, long ssn, string bD
 }
 
 // ========Override========
-int Employee::fromMapMember(){
-    try{
+void Employee::fromMapMember(){
     _fName = _member["FName"];
     _mInit = _member["MInit"];
     _lName = _member["LName"];
@@ -32,8 +31,6 @@ int Employee::fromMapMember(){
         _superSSN = stol(_member["SuperSSN"]);
     }
     _dno = stoi(_member["DNO"]);
-    } catch (...) { return 0;};
-    return 1;
 }
 void Employee::toMapMember(){
     _member["FName"] = _fName;

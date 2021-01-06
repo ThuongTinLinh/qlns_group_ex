@@ -14,7 +14,7 @@ protected:
 public:
     TableUnit();
     virtual void toMapMember() = 0;
-    virtual int fromMapMember() = 0;
+    virtual void fromMapMember() = 0;
     virtual TableUnit* clonePtr() = 0;
     
     /** @brief Function get from map 
