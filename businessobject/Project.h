@@ -15,7 +15,7 @@ class Project : public TableUnit{
 public:
     Project();
     Project(string pName, int pNumber, string pLocation, int dNum);
-    void fromMapMember() override;
+    int fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;
 };

@@ -14,7 +14,7 @@ protected:
 public:
     TableUnit();
     virtual void toMapMember() = 0;
-    virtual void fromMapMember() = 0;
+    virtual int fromMapMember() = 0;
     virtual TableUnit* clonePtr() = 0;
     
     /** @brief Function get from map 
@@ -34,15 +34,18 @@ public:
      *  
      *  Function convert value of string to value Member[key]
      * @param vector type string
+     * @return success return 1
+     *          fail return 0
      */
-    void fromVt(vector<string>);
+    int fromVt(vector<string>);
 
     /** @brief Function covert value of string to type vector
      *  
      *  Function covert value of string to type vector
-     *  @return return vector
+     * @return success return 1
+     *          fail return 0
      */
-    void fromStringDecode(string);
+    int fromStringDecode(string);
 
     /** @brief Function get value of map put in vector  
      *  
@@ -77,9 +80,11 @@ public:
      *  
      * @details Fuction get value use add value for Member[key]
      * @param key string
-     * @param value string 
+     * @param value string
+     * @return success return 1
+     *          fail return 0
      */
-    void setValue(string key, string value);
+    int setValue(string key, string value);
 
      /** @brief Function checkValue 
      *  

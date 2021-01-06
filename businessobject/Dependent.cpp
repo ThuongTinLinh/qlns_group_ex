@@ -13,12 +13,15 @@ Dependent::Dependent(long eSSN, string dependentName, string sex, string bDate, 
 }
 // ========Override========
 
-void Dependent::fromMapMember(){
+int Dependent::fromMapMember(){
+    try{
     _eSSN = stol(_member["ESSN"]);
     _dependentName = _member["DependentName"];
     _sex = _member["Sex"];
      _bDate = _member["BDate"];
    _relationship = _member["Relationship"];
+    } catch (...) { return 0;};
+    return 1;
 }
 void Dependent::toMapMember(){
     _member["ESSN"] = to_string(_eSSN);

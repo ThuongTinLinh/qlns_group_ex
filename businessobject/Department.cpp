@@ -11,11 +11,14 @@ Department::Department(string dName, int dNumber, long mgrSSN, string mgrStartDa
 }
 // ========Override========
 
-void Department::fromMapMember(){
+int Department::fromMapMember(){
+    try{
     _dName = _member["DName"];
     _dNumber = stoi(_member["DNumber"]);
     _mgrSSN =stol(_member["MgrSSN"]);
     _mgrStartDate = _member["MgrStartDate"];
+    } catch (...) { return 0;};
+    return 1;
 }
 void Department::toMapMember(){
     _member["DName"] = _dName;

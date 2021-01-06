@@ -14,7 +14,7 @@ class WorksOn : public TableUnit{
 public:
     WorksOn();
     WorksOn(long eSSN, int pno, double hours);
-    void fromMapMember() override;
+    int fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;
     

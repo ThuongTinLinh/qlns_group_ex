@@ -14,7 +14,7 @@ void TableUnit::setMapMember(map<string, string> member){
     _member = member;
     fromMapMember();
 }
-void TableUnit::fromVt(vector<string> vt){
+int TableUnit::fromVt(vector<string> vt){
     toMapMember();
     map<string, string>::iterator it;
     int i=0;
@@ -22,11 +22,13 @@ void TableUnit::fromVt(vector<string> vt){
     {   
         _member[it->first] = vt[i++];
     }
-    fromMapMember();
+    int check = fromMapMember();
+    return check;
 }
-void TableUnit::fromStringDecode(string sCode){    
+int TableUnit::fromStringDecode(string sCode){    
     vector<string> vt = Utility::fromString(sCode);
-    fromVt(vt);
+    int check = fromVt(vt);
+    return check;
 }
 
 string TableUnit::toString(){
@@ -58,10 +60,11 @@ string TableUnit::toStringEncode(){
     return sFile;
 }
 
-void TableUnit::setValue(string key, string value){
+int TableUnit::setValue(string key, string value){
     toMapMember();
     _member[key] = value;
-    fromMapMember();
+    int check = fromMapMember();
+    return check;
 }
 
 string TableUnit::getValue(string key){

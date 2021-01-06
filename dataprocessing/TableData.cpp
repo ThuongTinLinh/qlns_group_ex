@@ -99,6 +99,16 @@ vector<TableUnit*> TableData::findList(string key, string value){
     return vts;
 }
 
+// vector<TableUnit*> TableData::findListL(bool (*func)(TableUnit *tU)){
+//     vector<TableUnit*> vts;
+//     for(TableUnit* unit:_data){
+//         if(func(unit)){
+//             vts.push_back(unit);
+//         }
+//     }
+//     return vts;
+// }
+
 vector<TableUnit*> TableData::getData(){
     return _data;
 }

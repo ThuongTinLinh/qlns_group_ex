@@ -97,6 +97,7 @@ public:
      * @return return vector vts
     */
     vector<TableUnit*> findList(string key, string value);
+    // vector<TableUnit*> findListL(bool (*func)(TableUnit *tU));
 
      /** @brief Function check input have value in Data
      *  

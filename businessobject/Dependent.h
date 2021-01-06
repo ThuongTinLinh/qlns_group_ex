@@ -16,7 +16,7 @@ class Dependent : public TableUnit{
 public:
     Dependent();
     Dependent(long eSSN, string dependentName, string sex, string bDate, string relationship);
-    void fromMapMember() override;
+    int fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;
 };

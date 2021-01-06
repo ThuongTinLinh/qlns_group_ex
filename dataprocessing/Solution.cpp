@@ -188,6 +188,12 @@ void Solution::q1_ReadTable(int table){
 vector<vector<string>> Solution::q2_ShowEmployeeOfManager(string mngNameInput){
     vector<vector<string>> eOut;
     vector<TableUnit*> employees = _employeeData->getData();
+    
+    // auto func = [mngNameInput](TableUnit *tU){return tU->getValue("FName") +  " " + tU->getValue("LName") == mngNameInput;};
+    // vector<TableUnit*> employees1 = _employeeData->findListL(
+    //     [mngNameInput](TableUnit *tU){return tU->getValue("FName") +  " " + tU->getValue("LName") == mngNameInput;}
+    // );
+
     for(TableUnit *tU1 : employees){
         if(tU1->getValue("FName") +  " " + tU1->getValue("LName") == mngNameInput ){            // check name of manager
             string mngSSN = tU1->getValue("SSN");

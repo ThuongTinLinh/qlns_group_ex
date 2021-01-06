@@ -6,9 +6,16 @@ void IO::dataIn(TableUnit* pTU){
     map<string, string>::iterator it;
     cin.ignore();
     for (it = mapMember.begin(); it != mapMember.end(); it++){
-        cout << "enter value for " << it->first << " = ";
-        string s = ""; getline(cin, s);
-        pTU->setValue(it->first, s);
+        do{
+            cout << "enter value for " << it->first << " = ";
+            string s = ""; getline(cin, s);
+            int i = pTU->setValue(it->first, s);
+            if(i == 0){
+                cout << "* wrong type, please re enter value! " << endl;
+            } else {
+                break;
+            }
+        } while (true);
     }
 }
 void IO::dataIn(TableData* pTD){

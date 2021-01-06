@@ -21,7 +21,7 @@ class Employee : public TableUnit{
 public:
     Employee();
     Employee(string fName, string mInit, string lName, long ssn, string bDate, string address, string sex, int salary, long superSSN, int dno);
-    void fromMapMember() override;
+    int fromMapMember() override;
     void toMapMember() override;
     TableUnit *clonePtr() override;
 };
