@@ -172,11 +172,11 @@ void Menu::mn3_ShowEmployeeHasDependent(){
 }
 void Menu::mn4_ShowProjecTime(){
     int pNumber;
-    cout << "   Please enter Project Name (ex: 'ProductX') : ";
+    cout << "   Please enter Project Number (ex: '3') : ";
     cin >> pNumber; cin.ignore();   
     vector<vector<string>> ptimes = _solutionData->q4_ShowProjecTime(pNumber);   
     if(ptimes.size() == 0){
-        cout<<"* not found Project" << pNumber << endl;
+        cout<<"* not found Project " << pNumber << endl;
         return;
     }
     // Display data
